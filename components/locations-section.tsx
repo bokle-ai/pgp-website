@@ -36,7 +36,7 @@ export function LocationsSection() {
               <div
                 className="text-6xl font-display font-semibold mb-3 opacity-15 tabular-nums select-none"
                 style={{
-                  fontFamily: "var(--font-fraunces, Georgia, serif)",
+                  fontFamily: "var(--font-playfair, Georgia, serif)",
                   color: "var(--ink)",
                 }}
                 aria-hidden="true"
@@ -46,7 +46,7 @@ export function LocationsSection() {
               <h3
                 className="mb-1"
                 style={{
-                  fontFamily: "var(--font-fraunces, Georgia, serif)",
+                  fontFamily: "var(--font-playfair, Georgia, serif)",
                   fontWeight: 600,
                   fontSize: "1.875rem",
                   color: "var(--ink)",
@@ -58,7 +58,7 @@ export function LocationsSection() {
                 className="mb-5 italic"
                 style={{
                   color: "var(--accent-gold)",
-                  fontFamily: "var(--font-fraunces, Georgia, serif)",
+                  fontFamily: "var(--font-playfair, Georgia, serif)",
                   fontSize: "1.0625rem",
                 }}
               >
@@ -72,7 +72,7 @@ export function LocationsSection() {
                     style={{
                       color: "var(--ink-muted)",
                       lineHeight: 1.7,
-                      fontFamily: "var(--font-dm-sans, sans-serif)",
+                      fontFamily: "var(--font-montserrat, sans-serif)",
                     }}
                   >
                     {para}
@@ -90,7 +90,7 @@ export function LocationsSection() {
                       className="text-xs uppercase tracking-wide"
                       style={{
                         color: "var(--ink-faint)",
-                        fontFamily: "var(--font-dm-sans, sans-serif)",
+                        fontFamily: "var(--font-montserrat, sans-serif)",
                         letterSpacing: "0.08em",
                       }}
                     >
@@ -100,7 +100,7 @@ export function LocationsSection() {
                       className="text-sm font-medium tabular-nums"
                       style={{
                         color: "var(--ink)",
-                        fontFamily: "var(--font-dm-sans, sans-serif)",
+                        fontFamily: "var(--font-montserrat, sans-serif)",
                         fontWeight: 500,
                       }}
                     >
@@ -114,7 +114,7 @@ export function LocationsSection() {
                 className="inline-flex items-center gap-1.5 text-sm font-medium transition-opacity hover:opacity-70 w-fit group"
                 style={{
                   color: "var(--accent-gold)",
-                  fontFamily: "var(--font-dm-sans, sans-serif)",
+                  fontFamily: "var(--font-montserrat, sans-serif)",
                   fontWeight: 500,
                 }}
               >

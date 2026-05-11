@@ -110,7 +110,7 @@ export function TrustPillars() {
         <motion.div key={pillar.title} variants={item} className="flex gap-4">
           <div
             className="w-10 h-10 rounded-md flex items-center justify-center shrink-0"
-            style={{ backgroundColor: "rgba(201,162,75,0.12)", color: "var(--accent-gold)" }}
+            style={{ backgroundColor: "rgba(212,160,23,0.12)", color: "var(--accent-gold)" }}
           >
             {pillar.icon}
           </div>
@@ -118,7 +118,7 @@ export function TrustPillars() {
             <h4
               className="mb-1.5"
               style={{
-                fontFamily: "var(--font-fraunces, Georgia, serif)",
+                fontFamily: "var(--font-playfair, Georgia, serif)",
                 fontWeight: 600,
                 fontSize: "1rem",
                 color: "var(--ink)",
@@ -132,7 +132,7 @@ export function TrustPillars() {
               style={{
                 color: "var(--ink-muted)",
                 lineHeight: 1.6,
-                fontFamily: "var(--font-dm-sans, sans-serif)",
+                fontFamily: "var(--font-montserrat, sans-serif)",
               }}
             >
               {pillar.body}

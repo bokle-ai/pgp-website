@@ -87,7 +87,7 @@ export function PricingTier({ tier, animationDelay = 0 }: PricingTierProps) {
           style={{
             backgroundColor: "var(--accent-gold)",
             color: "var(--bg-deep)",
-            fontFamily: "var(--font-dm-sans, sans-serif)",
+            fontFamily: "var(--font-montserrat, sans-serif)",
             borderRadius: "4px",
           }}
         >
@@ -99,7 +99,7 @@ export function PricingTier({ tier, animationDelay = 0 }: PricingTierProps) {
         className="text-xs uppercase tracking-widest mb-2"
         style={{
           color: isFeatured ? "var(--accent-gold)" : "var(--ink-muted)",
-          fontFamily: "var(--font-dm-sans, sans-serif)",
+          fontFamily: "var(--font-montserrat, sans-serif)",
           letterSpacing: "0.18em",
         }}
       >
@@ -110,7 +110,7 @@ export function PricingTier({ tier, animationDelay = 0 }: PricingTierProps) {
         <span
           className="tabular-nums"
           style={{
-            fontFamily: "var(--font-fraunces, Georgia, serif)",
+            fontFamily: "var(--font-playfair, Georgia, serif)",
             fontWeight: 600,
             fontSize: "2.5rem",
             color: isFeatured ? "var(--bg-cream)" : "var(--ink)",
@@ -124,7 +124,7 @@ export function PricingTier({ tier, animationDelay = 0 }: PricingTierProps) {
         className="text-xs mb-8"
         style={{
           color: isFeatured ? "rgba(246,241,231,0.55)" : "var(--ink-faint)",
-          fontFamily: "var(--font-dm-sans, sans-serif)",
+          fontFamily: "var(--font-montserrat, sans-serif)",
         }}
       >
         / sq ft starting
@@ -137,7 +137,7 @@ export function PricingTier({ tier, animationDelay = 0 }: PricingTierProps) {
             className="flex items-start gap-3 text-sm"
             style={{
               color: isFeatured ? "rgba(246,241,231,0.8)" : "var(--ink-muted)",
-              fontFamily: "var(--font-dm-sans, sans-serif)",
+              fontFamily: "var(--font-montserrat, sans-serif)",
             }}
           >
             <Check
@@ -158,7 +158,7 @@ export function PricingTier({ tier, animationDelay = 0 }: PricingTierProps) {
           backgroundColor: isFeatured ? "var(--accent-gold)" : "transparent",
           color: isFeatured ? "var(--bg-deep)" : "var(--accent-gold)",
           border: isFeatured ? "none" : "1px solid var(--accent-gold)",
-          fontFamily: "var(--font-dm-sans, sans-serif)",
+          fontFamily: "var(--font-montserrat, sans-serif)",
           fontWeight: 500,
           borderRadius: "6px",
         }}

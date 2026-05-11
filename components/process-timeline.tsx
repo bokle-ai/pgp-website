@@ -58,7 +58,7 @@ export function ProcessTimeline() {
               style={{
                 backgroundColor: "var(--accent-gold)",
                 color: "var(--bg-deep)",
-                fontFamily: "var(--font-dm-sans, sans-serif)",
+                fontFamily: "var(--font-montserrat, sans-serif)",
                 fontWeight: 500,
               }}
               initial={prefersReduced ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.6 }}
@@ -72,7 +72,7 @@ export function ProcessTimeline() {
             <h3
               className="mb-2"
               style={{
-                fontFamily: "var(--font-fraunces, Georgia, serif)",
+                fontFamily: "var(--font-playfair, Georgia, serif)",
                 fontWeight: 600,
                 fontSize: "1.25rem",
                 color: "var(--ink)",
@@ -85,7 +85,7 @@ export function ProcessTimeline() {
               style={{
                 color: "var(--ink-muted)",
                 lineHeight: 1.65,
-                fontFamily: "var(--font-dm-sans, sans-serif)",
+                fontFamily: "var(--font-montserrat, sans-serif)",
               }}
             >
               {step.body}
@@ -111,7 +111,7 @@ export function ProcessTimeline() {
                 style={{
                   backgroundColor: "var(--accent-gold)",
                   color: "var(--bg-deep)",
-                  fontFamily: "var(--font-dm-sans, sans-serif)",
+                  fontFamily: "var(--font-montserrat, sans-serif)",
                   fontWeight: 500,
                 }}
                 aria-hidden="true"
@@ -130,7 +130,7 @@ export function ProcessTimeline() {
               <h3
                 className="mb-1.5"
                 style={{
-                  fontFamily: "var(--font-fraunces, Georgia, serif)",
+                  fontFamily: "var(--font-playfair, Georgia, serif)",
                   fontWeight: 600,
                   fontSize: "1.125rem",
                   color: "var(--ink)",
@@ -143,7 +143,7 @@ export function ProcessTimeline() {
                 style={{
                   color: "var(--ink-muted)",
                   lineHeight: 1.65,
-                  fontFamily: "var(--font-dm-sans, sans-serif)",
+                  fontFamily: "var(--font-montserrat, sans-serif)",
                 }}
               >
                 {step.body}

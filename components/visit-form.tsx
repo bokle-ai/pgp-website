@@ -68,7 +68,7 @@ export function VisitForm() {
     backgroundColor: "rgba(255,255,255,0.06)",
     border: "1px solid var(--line-dark)",
     color: "var(--bg-cream)",
-    fontFamily: "var(--font-dm-sans, sans-serif)",
+    fontFamily: "var(--font-montserrat, sans-serif)",
     borderRadius: "6px",
     padding: "0.75rem 1rem",
     width: "100%",
@@ -81,14 +81,14 @@ export function VisitForm() {
     fontSize: "0.8125rem",
     fontWeight: 500,
     color: "rgba(246,241,231,0.7)",
-    fontFamily: "var(--font-dm-sans, sans-serif)",
+    fontFamily: "var(--font-montserrat, sans-serif)",
     marginBottom: "0.375rem",
   };
 
   const errorStyle = {
     fontSize: "0.75rem",
     color: "#F4A261",
-    fontFamily: "var(--font-dm-sans, sans-serif)",
+    fontFamily: "var(--font-montserrat, sans-serif)",
     marginTop: "0.25rem",
   };
 
@@ -109,7 +109,7 @@ export function VisitForm() {
         <h3
           className="mb-2"
           style={{
-            fontFamily: "var(--font-fraunces, Georgia, serif)",
+            fontFamily: "var(--font-playfair, Georgia, serif)",
             fontWeight: 600,
             fontSize: "1.375rem",
             color: "var(--bg-cream)",
@@ -119,7 +119,7 @@ export function VisitForm() {
         </h3>
         <p
           className="text-sm mb-4"
-          style={{ color: "rgba(246,241,231,0.7)", fontFamily: "var(--font-dm-sans, sans-serif)", lineHeight: 1.6 }}
+          style={{ color: "rgba(246,241,231,0.7)", fontFamily: "var(--font-montserrat, sans-serif)", lineHeight: 1.6 }}
         >
           What happens next: we&apos;ll call you within 4 working hours to
           confirm a slot. If you need to reach us sooner, WhatsApp works fastest.
@@ -133,7 +133,7 @@ export function VisitForm() {
             backgroundColor: "var(--accent-gold)",
             color: "var(--bg-deep)",
             borderRadius: "6px",
-            fontFamily: "var(--font-dm-sans, sans-serif)",
+            fontFamily: "var(--font-montserrat, sans-serif)",
             fontWeight: 500,
           }}
         >
@@ -252,7 +252,7 @@ export function VisitForm() {
         style={{
           backgroundColor: "var(--accent-gold)",
           color: "var(--bg-deep)",
-          fontFamily: "var(--font-dm-sans, sans-serif)",
+          fontFamily: "var(--font-montserrat, sans-serif)",
           fontWeight: 500,
           borderRadius: "6px",
           border: "none",

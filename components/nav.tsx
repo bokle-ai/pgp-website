@@ -41,7 +41,7 @@ export function Nav() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.1, ease: EASE }}
       style={{
-        backgroundColor: scrolled ? "rgba(246,241,231,0.95)" : "transparent",
+        backgroundColor: scrolled ? "rgba(248,245,239,0.95)" : "transparent",
         backdropFilter: scrolled ? "blur(12px)" : "none",
         boxShadow: scrolled ? "0 1px 0 rgba(217,207,184,0.4)" : "none",
         transition: "background-color 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease",
@@ -66,7 +66,7 @@ export function Nav() {
                 className="text-sm font-medium transition-colors hover:text-[var(--accent-gold)]"
                 style={{
                   color: "var(--ink-muted)",
-                  fontFamily: "var(--font-dm-sans, sans-serif)",
+                  fontFamily: "var(--font-montserrat, sans-serif)",
                   fontWeight: 500,
                 }}
               >
@@ -89,7 +89,7 @@ export function Nav() {
                 style={{
                   backgroundColor: "var(--accent-gold)",
                   color: "var(--bg-deep)",
-                  fontFamily: "var(--font-dm-sans, sans-serif)",
+                  fontFamily: "var(--font-montserrat, sans-serif)",
                   fontWeight: 500,
                   borderRadius: "6px",
                 }}
@@ -132,7 +132,7 @@ export function Nav() {
                         style={{
                           color: "var(--ink)",
                           borderColor: "var(--line)",
-                          fontFamily: "var(--font-dm-sans, sans-serif)",
+                          fontFamily: "var(--font-montserrat, sans-serif)",
                           fontWeight: 500,
                         }}
                       >
@@ -152,7 +152,7 @@ export function Nav() {
                       style={{
                         backgroundColor: "var(--accent-gold)",
                         color: "var(--bg-deep)",
-                        fontFamily: "var(--font-dm-sans, sans-serif)",
+                        fontFamily: "var(--font-montserrat, sans-serif)",
                         fontWeight: 500,
                         borderRadius: "6px",
                       }}

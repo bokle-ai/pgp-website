@@ -64,7 +64,7 @@ function AnimatedStat({
       <div
         className="tabular-nums"
         style={{
-          fontFamily: "var(--font-fraunces, Georgia, serif)",
+          fontFamily: "var(--font-playfair, Georgia, serif)",
           fontWeight: 600,
           fontSize: "clamp(2rem, 4vw, 3rem)",
           color: "var(--accent-gold)",
@@ -79,7 +79,7 @@ function AnimatedStat({
         className="mt-2 text-xs uppercase tracking-widest"
         style={{
           color: "rgba(246,241,231,0.5)",
-          fontFamily: "var(--font-dm-sans, sans-serif)",
+          fontFamily: "var(--font-montserrat, sans-serif)",
           letterSpacing: "0.1em",
         }}
         aria-hidden="true"

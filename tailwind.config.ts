@@ -10,16 +10,16 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        "bg-cream": "#F6F1E7",
-        "bg-deep": "#0E2B22",
-        "bg-deep-2": "#143A2E",
-        "accent-gold": "#C9A24B",
-        "accent-gold-soft": "#E8D4A0",
-        ink: "#14201A",
-        "ink-muted": "#5A6B62",
-        "ink-faint": "#8A9991",
-        line: "#D9CFB8",
-        "line-dark": "#1F4A3A",
+        "bg-cream": "#F8F5EF",
+        "bg-deep": "#0F3D2E",
+        "bg-deep-2": "#163F30",
+        "accent-gold": "#D4A017",
+        "accent-gold-soft": "#F2C75C",
+        ink: "#1A1A1A",
+        "ink-muted": "#4D5D55",
+        "ink-faint": "#8A9A90",
+        line: "#E5DDD0",
+        "line-dark": "#1A4A35",
         success: "#2E7D5B",
         warning: "#B8860B",
         danger: "#8B3A3A",
@@ -58,8 +58,8 @@ const config: Config = {
         },
       },
       fontFamily: {
-        display: ["var(--font-fraunces)", "Georgia", "serif"],
-        body: ["var(--font-dm-sans)", "Helvetica Neue", "sans-serif"],
+        display: ["var(--font-playfair)", "Georgia", "serif"],
+        body: ["var(--font-montserrat)", "Helvetica Neue", "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",

@@ -94,7 +94,7 @@ export function OfferingCard({ type, animationDelay = 0 }: OfferingCardProps) {
           style={{
             backgroundColor: "var(--accent-gold)",
             color: "var(--bg-deep)",
-            fontFamily: "var(--font-dm-sans, sans-serif)",
+            fontFamily: "var(--font-montserrat, sans-serif)",
             borderRadius: "4px",
           }}
         >
@@ -109,7 +109,7 @@ export function OfferingCard({ type, animationDelay = 0 }: OfferingCardProps) {
       <h3
         className="mb-2"
         style={{
-          fontFamily: "var(--font-fraunces, Georgia, serif)",
+          fontFamily: "var(--font-playfair, Georgia, serif)",
           fontWeight: 600,
           fontSize: "1.5rem",
           color: "var(--ink)",
@@ -122,7 +122,7 @@ export function OfferingCard({ type, animationDelay = 0 }: OfferingCardProps) {
         style={{
           color: "var(--ink-muted)",
           lineHeight: 1.6,
-          fontFamily: "var(--font-dm-sans, sans-serif)",
+          fontFamily: "var(--font-montserrat, sans-serif)",
         }}
       >
         {d.tagline}
@@ -136,7 +136,7 @@ export function OfferingCard({ type, animationDelay = 0 }: OfferingCardProps) {
               className="flex items-start gap-3 text-sm"
               style={{
                 color: "var(--ink-muted)",
-                fontFamily: "var(--font-dm-sans, sans-serif)",
+                fontFamily: "var(--font-montserrat, sans-serif)",
               }}
             >
               <span
@@ -159,7 +159,7 @@ export function OfferingCard({ type, animationDelay = 0 }: OfferingCardProps) {
         >
           <table
             className="w-full text-xs"
-            style={{ fontFamily: "var(--font-dm-sans, sans-serif)" }}
+            style={{ fontFamily: "var(--font-montserrat, sans-serif)" }}
           >
             <thead>
               <tr style={{ backgroundColor: "rgba(201,162,75,0.1)" }}>
@@ -220,7 +220,7 @@ export function OfferingCard({ type, animationDelay = 0 }: OfferingCardProps) {
         className="text-sm font-medium transition-colors hover:opacity-70 flex items-center gap-1 group/link"
         style={{
           color: "var(--accent-gold)",
-          fontFamily: "var(--font-dm-sans, sans-serif)",
+          fontFamily: "var(--font-montserrat, sans-serif)",
           fontWeight: 500,
         }}
       >

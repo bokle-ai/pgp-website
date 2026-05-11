@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
-import { Fraunces, DM_Sans } from "next/font/google";
+import { Playfair_Display, Montserrat } from "next/font/google";
 import "./globals.css";
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
   subsets: ["latin"],
-  weight: ["400", "600"],
+  weight: ["400", "600", "700"],
   style: ["normal", "italic"],
   display: "swap",
 });
 
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
   subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["400", "500", "600"],
   display: "swap",
 });
 
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   description:
     "DTCP-approved plots, turnkey construction at honest rates, and trusted resale across Chennai's southern and western corridors — Maraimalai Nagar, Kundrathur, and Tambaram.",
   openGraph: {
-    title: "Prime Golden Properties | Land that turns into legacy.",
+    title: "Prime Golden Properties — Right Location. Right Decision.",
     description:
       "DTCP-approved plots, turnkey construction, and trusted resale across Maraimalai Nagar, Kundrathur, and Tambaram.",
     type: "website",
@@ -37,8 +37,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${dmSans.variable}`}>
-      <body style={{ fontFamily: "var(--font-dm-sans, 'Helvetica Neue', sans-serif)" }}>
+    <html lang="en" className={`${playfair.variable} ${montserrat.variable}`}>
+      <body style={{ fontFamily: "var(--font-montserrat, 'Helvetica Neue', sans-serif)" }}>
         <a href="#main-content" className="skip-to-main">
           Skip to main content
         </a>

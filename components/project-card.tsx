@@ -57,7 +57,7 @@ export function ProjectCard({
           style={{
             backgroundColor: status.bg,
             color: status.color,
-            fontFamily: "var(--font-dm-sans, sans-serif)",
+            fontFamily: "var(--font-montserrat, sans-serif)",
           }}
         >
           <span className="w-1.5 h-1.5 rounded-full bg-current" aria-hidden="true" />
@@ -68,7 +68,7 @@ export function ProjectCard({
       <div className="p-5 flex flex-col gap-3 flex-1">
         <div
           className="flex items-center gap-1.5 text-xs"
-          style={{ color: "var(--accent-gold)", fontFamily: "var(--font-dm-sans, sans-serif)" }}
+          style={{ color: "var(--accent-gold)", fontFamily: "var(--font-montserrat, sans-serif)" }}
         >
           <MapPin size={11} aria-hidden="true" />
           {project.location}
@@ -77,7 +77,7 @@ export function ProjectCard({
         <h3
           className="transition-colors group-hover:text-[var(--accent-gold)]"
           style={{
-            fontFamily: "var(--font-fraunces, Georgia, serif)",
+            fontFamily: "var(--font-playfair, Georgia, serif)",
             fontWeight: 600,
             fontSize: "1.25rem",
             color: "var(--ink)",
@@ -90,13 +90,13 @@ export function ProjectCard({
         <div className="space-y-1">
           <p
             className="text-sm"
-            style={{ color: "var(--ink-muted)", fontFamily: "var(--font-dm-sans, sans-serif)" }}
+            style={{ color: "var(--ink-muted)", fontFamily: "var(--font-montserrat, sans-serif)" }}
           >
             Plot sizes: {project.sizes}
           </p>
           <p
             className="text-sm tabular-nums"
-            style={{ color: "var(--ink-muted)", fontFamily: "var(--font-dm-sans, sans-serif)" }}
+            style={{ color: "var(--ink-muted)", fontFamily: "var(--font-montserrat, sans-serif)" }}
           >
             Rate: ₹{project.rate.toLocaleString("en-IN")} / sq ft onwards
           </p>
@@ -104,7 +104,7 @@ export function ProjectCard({
 
         <div
           className="flex flex-wrap gap-x-3 gap-y-1 text-xs"
-          style={{ color: "var(--ink-faint)", fontFamily: "var(--font-dm-sans, sans-serif)" }}
+          style={{ color: "var(--ink-faint)", fontFamily: "var(--font-montserrat, sans-serif)" }}
         >
           <span>{project.approval} Approved</span>
           <span aria-hidden="true">·</span>
@@ -121,7 +121,7 @@ export function ProjectCard({
           className="mt-auto text-sm font-medium flex items-center gap-1 transition-opacity hover:opacity-70 group/link"
           style={{
             color: "var(--accent-gold)",
-            fontFamily: "var(--font-dm-sans, sans-serif)",
+            fontFamily: "var(--font-montserrat, sans-serif)",
             fontWeight: 500,
           }}
         >

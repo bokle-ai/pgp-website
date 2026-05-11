@@ -73,7 +73,7 @@ export default async function LocationPage({
           </div>
           <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
             <nav aria-label="Breadcrumb" className="mb-6">
-              <ol className="flex items-center gap-2 text-sm" style={{ color: "rgba(246,241,231,0.6)", fontFamily: "var(--font-dm-sans, sans-serif)" }}>
+              <ol className="flex items-center gap-2 text-sm" style={{ color: "rgba(246,241,231,0.6)", fontFamily: "var(--font-montserrat, sans-serif)" }}>
                 <li><Link href="/" className="hover:text-[var(--accent-gold)] transition-colors">Home</Link></li>
                 <li aria-hidden="true">›</li>
                 <li><Link href="/#locations" className="hover:text-[var(--accent-gold)] transition-colors">Locations</Link></li>
@@ -83,14 +83,14 @@ export default async function LocationPage({
             </nav>
             <div
               className="text-xs uppercase tracking-widest mb-3 font-medium"
-              style={{ color: "var(--accent-gold)", fontFamily: "var(--font-dm-sans, sans-serif)", letterSpacing: "0.18em" }}
+              style={{ color: "var(--accent-gold)", fontFamily: "var(--font-montserrat, sans-serif)", letterSpacing: "0.18em" }}
             >
               {location.number} — Location guide
             </div>
             <h1
               className="mb-3"
               style={{
-                fontFamily: "var(--font-fraunces, Georgia, serif)",
+                fontFamily: "var(--font-playfair, Georgia, serif)",
                 fontWeight: 600,
                 fontSize: "clamp(2.5rem, 5vw + 1rem, 4.5rem)",
                 color: "var(--bg-cream)",
@@ -102,7 +102,7 @@ export default async function LocationPage({
             </h1>
             <p
               className="text-xl italic"
-              style={{ color: "var(--accent-gold)", fontFamily: "var(--font-fraunces, Georgia, serif)" }}
+              style={{ color: "var(--accent-gold)", fontFamily: "var(--font-playfair, Georgia, serif)" }}
             >
               {location.tagline}
             </p>
@@ -126,7 +126,7 @@ export default async function LocationPage({
                   <div
                     className="tabular-nums"
                     style={{
-                      fontFamily: "var(--font-fraunces, Georgia, serif)",
+                      fontFamily: "var(--font-playfair, Georgia, serif)",
                       fontWeight: 600,
                       fontSize: "1.875rem",
                       color: "var(--accent-gold)",
@@ -136,7 +136,7 @@ export default async function LocationPage({
                   </div>
                   <div
                     className="text-xs mt-1 uppercase tracking-wide"
-                    style={{ color: "rgba(246,241,231,0.5)", fontFamily: "var(--font-dm-sans, sans-serif)", letterSpacing: "0.08em" }}
+                    style={{ color: "rgba(246,241,231,0.5)", fontFamily: "var(--font-montserrat, sans-serif)", letterSpacing: "0.08em" }}
                   >
                     {stat.label}
                   </div>
@@ -154,7 +154,7 @@ export default async function LocationPage({
                 <h2
                   className="mb-6"
                   style={{
-                    fontFamily: "var(--font-fraunces, Georgia, serif)",
+                    fontFamily: "var(--font-playfair, Georgia, serif)",
                     fontWeight: 600,
                     fontSize: "clamp(1.75rem, 2.5vw + 1rem, 2.75rem)",
                     color: "var(--ink)",
@@ -167,7 +167,7 @@ export default async function LocationPage({
                   {location.body.map((para, i) => (
                     <p
                       key={i}
-                      style={{ color: "var(--ink-muted)", lineHeight: 1.7, fontFamily: "var(--font-dm-sans, sans-serif)", fontSize: "1.0625rem" }}
+                      style={{ color: "var(--ink-muted)", lineHeight: 1.7, fontFamily: "var(--font-montserrat, sans-serif)", fontSize: "1.0625rem" }}
                     >
                       {para}
                     </p>
@@ -196,14 +196,14 @@ export default async function LocationPage({
                   <div className="h-px w-8" style={{ backgroundColor: "var(--accent-gold)" }} aria-hidden="true" />
                   <span
                     className="text-xs uppercase tracking-widest font-medium"
-                    style={{ color: "var(--accent-gold)", letterSpacing: "0.18em", fontFamily: "var(--font-dm-sans, sans-serif)" }}
+                    style={{ color: "var(--accent-gold)", letterSpacing: "0.18em", fontFamily: "var(--font-montserrat, sans-serif)" }}
                   >
                     Active inventory
                   </span>
                 </div>
                 <h2
                   style={{
-                    fontFamily: "var(--font-fraunces, Georgia, serif)",
+                    fontFamily: "var(--font-playfair, Georgia, serif)",
                     fontWeight: 600,
                     fontSize: "clamp(2rem, 3vw + 1rem, 3rem)",
                     color: "var(--ink)",
@@ -233,7 +233,7 @@ export default async function LocationPage({
               <h2
                 className="mb-4"
                 style={{
-                  fontFamily: "var(--font-fraunces, Georgia, serif)",
+                  fontFamily: "var(--font-playfair, Georgia, serif)",
                   fontWeight: 600,
                   fontSize: "clamp(2rem, 3vw + 1rem, 3.5rem)",
                   color: "var(--bg-cream)",
@@ -243,7 +243,7 @@ export default async function LocationPage({
                 Visit {location.name} with us.
               </h2>
               <p
-                style={{ color: "rgba(246,241,231,0.65)", lineHeight: 1.65, fontFamily: "var(--font-dm-sans, sans-serif)" }}
+                style={{ color: "rgba(246,241,231,0.65)", lineHeight: 1.65, fontFamily: "var(--font-montserrat, sans-serif)" }}
               >
                 Site visits are 7 days a week. Pick a day that works for you.
               </p>
@@ -253,14 +253,14 @@ export default async function LocationPage({
                 <VisitForm />
               </div>
               <div className="lg:col-span-3 flex flex-col gap-4">
-                <p className="text-sm" style={{ color: "rgba(246,241,231,0.55)", fontFamily: "var(--font-dm-sans, sans-serif)", lineHeight: 1.65 }}>
+                <p className="text-sm" style={{ color: "rgba(246,241,231,0.55)", fontFamily: "var(--font-montserrat, sans-serif)", lineHeight: 1.65 }}>
                   Prefer to call directly?
                 </p>
                 <a
                   href={`tel:${siteConfig.phonePlain}`}
                   className="transition-opacity hover:opacity-75"
                   style={{
-                    fontFamily: "var(--font-fraunces, Georgia, serif)",
+                    fontFamily: "var(--font-playfair, Georgia, serif)",
                     fontWeight: 600,
                     fontSize: "1.75rem",
                     color: "var(--bg-cream)",
@@ -277,7 +277,7 @@ export default async function LocationPage({
                     backgroundColor: "#25D366",
                     color: "white",
                     borderRadius: "6px",
-                    fontFamily: "var(--font-dm-sans, sans-serif)",
+                    fontFamily: "var(--font-montserrat, sans-serif)",
                     fontWeight: 500,
                   }}
                 >

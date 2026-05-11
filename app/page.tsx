@@ -109,7 +109,7 @@ export default function Home() {
                   className="text-sm"
                   style={{
                     color: "var(--ink-faint)",
-                    fontFamily: "var(--font-dm-sans, sans-serif)",
+                    fontFamily: "var(--font-montserrat, sans-serif)",
                   }}
                 >
                   Showing {displayedProjects.length} of 12 active projects
@@ -133,7 +133,7 @@ export default function Home() {
                 className="inline-flex items-center gap-2 text-sm font-medium transition-opacity hover:opacity-70 group"
                 style={{
                   color: "var(--accent-gold)",
-                  fontFamily: "var(--font-dm-sans, sans-serif)",
+                  fontFamily: "var(--font-montserrat, sans-serif)",
                   fontWeight: 500,
                 }}
               >
@@ -179,7 +179,7 @@ export default function Home() {
                 className="text-xs"
                 style={{
                   color: "var(--ink-faint)",
-                  fontFamily: "var(--font-dm-sans, sans-serif)",
+                  fontFamily: "var(--font-montserrat, sans-serif)",
                   lineHeight: 1.6,
                 }}
               >
@@ -296,7 +296,7 @@ export default function Home() {
                   <h3
                     className="mb-2"
                     style={{
-                      fontFamily: "var(--font-fraunces, Georgia, serif)",
+                      fontFamily: "var(--font-playfair, Georgia, serif)",
                       fontWeight: 600,
                       fontSize: "1.25rem",
                       color: "var(--accent-gold)",
@@ -308,7 +308,7 @@ export default function Home() {
                     href={`tel:${siteConfig.phonePlain}`}
                     className="block transition-opacity hover:opacity-75"
                     style={{
-                      fontFamily: "var(--font-fraunces, Georgia, serif)",
+                      fontFamily: "var(--font-playfair, Georgia, serif)",
                       fontWeight: 600,
                       fontSize: "2rem",
                       color: "var(--bg-cream)",
@@ -325,7 +325,7 @@ export default function Home() {
                     style={{
                       backgroundColor: "#25D366",
                       color: "white",
-                      fontFamily: "var(--font-dm-sans, sans-serif)",
+                      fontFamily: "var(--font-montserrat, sans-serif)",
                       fontWeight: 500,
                       borderRadius: "6px",
                     }}
@@ -349,7 +349,7 @@ export default function Home() {
                       className="text-xs uppercase tracking-widest mb-2"
                       style={{
                         color: "rgba(246,241,231,0.35)",
-                        fontFamily: "var(--font-dm-sans, sans-serif)",
+                        fontFamily: "var(--font-montserrat, sans-serif)",
                         letterSpacing: "0.1em",
                       }}
                     >
@@ -359,7 +359,7 @@ export default function Home() {
                       className="not-italic text-sm"
                       style={{
                         color: "rgba(246,241,231,0.55)",
-                        fontFamily: "var(--font-dm-sans, sans-serif)",
+                        fontFamily: "var(--font-montserrat, sans-serif)",
                         lineHeight: 1.65,
                       }}
                     >
@@ -369,7 +369,7 @@ export default function Home() {
                       className="mt-3 text-xs"
                       style={{
                         color: "rgba(246,241,231,0.35)",
-                        fontFamily: "var(--font-dm-sans, sans-serif)",
+                        fontFamily: "var(--font-montserrat, sans-serif)",
                       }}
                     >
                       {siteConfig.workingHours}

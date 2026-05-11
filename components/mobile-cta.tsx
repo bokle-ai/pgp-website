@@ -36,7 +36,7 @@ export function MobileCTA() {
             style={{
               backgroundColor: "var(--accent-gold)",
               color: "var(--bg-deep)",
-              fontFamily: "var(--font-dm-sans, sans-serif)",
+              fontFamily: "var(--font-montserrat, sans-serif)",
               fontWeight: 500,
               borderRadius: "100px",
               boxShadow: "0 4px 20px rgba(201,162,75,0.35)",

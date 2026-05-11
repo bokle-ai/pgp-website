@@ -20,7 +20,7 @@ export function FAQAccordion() {
           <AccordionTrigger
             className="text-left py-5 hover:no-underline"
             style={{
-              fontFamily: "var(--font-dm-sans, sans-serif)",
+              fontFamily: "var(--font-montserrat, sans-serif)",
               fontWeight: 500,
               fontSize: "0.9375rem",
               color: "var(--ink)",
@@ -30,7 +30,7 @@ export function FAQAccordion() {
           </AccordionTrigger>
           <AccordionContent
             style={{
-              fontFamily: "var(--font-dm-sans, sans-serif)",
+              fontFamily: "var(--font-montserrat, sans-serif)",
               fontSize: "0.9375rem",
               color: "var(--ink-muted)",
               lineHeight: 1.7,

@@ -75,7 +75,7 @@ export function SectionHeader({
             style={{
               color: "var(--accent-gold)",
               letterSpacing: "0.18em",
-              fontFamily: "var(--font-dm-sans, sans-serif)",
+              fontFamily: "var(--font-montserrat, sans-serif)",
             }}
           >
             {eyebrow}
@@ -86,7 +86,7 @@ export function SectionHeader({
       <motion.h2
         variants={fadeUp}
         style={{
-          fontFamily: "var(--font-fraunces, Georgia, serif)",
+          fontFamily: "var(--font-playfair, Georgia, serif)",
           fontWeight: 600,
           fontSize: "clamp(2rem, 3vw + 1rem, 3.5rem)",
           color: titleDark ? "var(--bg-cream)" : "var(--ink)",
@@ -105,7 +105,7 @@ export function SectionHeader({
               ? "rgba(246,241,231,0.65)"
               : "var(--ink-muted)",
             lineHeight: 1.65,
-            fontFamily: "var(--font-dm-sans, sans-serif)",
+            fontFamily: "var(--font-montserrat, sans-serif)",
           }}
         >
           {subtitle}

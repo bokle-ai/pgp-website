@@ -42,7 +42,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           </div>
           <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 w-full">
             <nav aria-label="Breadcrumb" className="mb-5">
-              <ol className="flex items-center gap-2 text-xs" style={{ color: "rgba(246,241,231,0.5)", fontFamily: "var(--font-dm-sans, sans-serif)" }}>
+              <ol className="flex items-center gap-2 text-xs" style={{ color: "rgba(246,241,231,0.5)", fontFamily: "var(--font-montserrat, sans-serif)" }}>
                 <li><Link href="/" className="hover:text-[var(--accent-gold)] transition-colors">Home</Link></li>
                 <li aria-hidden="true">›</li>
                 <li><Link href="/projects" className="hover:text-[var(--accent-gold)] transition-colors">Projects</Link></li>
@@ -51,15 +51,15 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
               </ol>
             </nav>
             <div className="flex items-center gap-2 mb-3">
-              <span className="px-2.5 py-1 rounded-full text-xs font-medium" style={{ backgroundColor: "var(--accent-gold)", color: "var(--bg-deep)", fontFamily: "var(--font-dm-sans, sans-serif)" }}>{project.approval} Approved</span>
-              <span className="px-2.5 py-1 rounded-full text-xs font-medium" style={{ backgroundColor: project.status === "available" ? "#2E7D5B" : project.status === "few-left" ? "#B8860B" : "#8B3A3A", color: "white", fontFamily: "var(--font-dm-sans, sans-serif)" }}>
+              <span className="px-2.5 py-1 rounded-full text-xs font-medium" style={{ backgroundColor: "var(--accent-gold)", color: "var(--bg-deep)", fontFamily: "var(--font-montserrat, sans-serif)" }}>{project.approval} Approved</span>
+              <span className="px-2.5 py-1 rounded-full text-xs font-medium" style={{ backgroundColor: project.status === "available" ? "#2E7D5B" : project.status === "few-left" ? "#B8860B" : "#8B3A3A", color: "white", fontFamily: "var(--font-montserrat, sans-serif)" }}>
                 {project.status === "available" ? "Available" : project.status === "few-left" ? "Few Left" : "Sold Out"}
               </span>
             </div>
-            <h1 className="mb-2" style={{ fontFamily: "var(--font-fraunces, Georgia, serif)", fontWeight: 600, fontSize: "clamp(2.5rem, 4vw + 1rem, 4rem)", color: "var(--bg-cream)", lineHeight: 1.05, letterSpacing: "-0.02em" }}>
+            <h1 className="mb-2" style={{ fontFamily: "var(--font-playfair, Georgia, serif)", fontWeight: 600, fontSize: "clamp(2.5rem, 4vw + 1rem, 4rem)", color: "var(--bg-cream)", lineHeight: 1.05, letterSpacing: "-0.02em" }}>
               {project.name}
             </h1>
-            <p className="text-base" style={{ color: "rgba(246,241,231,0.7)", fontFamily: "var(--font-dm-sans, sans-serif)" }}>
+            <p className="text-base" style={{ color: "rgba(246,241,231,0.7)", fontFamily: "var(--font-montserrat, sans-serif)" }}>
               {project.location} · {project.plotCount} plots · {project.sizes}
             </p>
           </div>
@@ -78,16 +78,16 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                     { label: "Approval", value: project.approval },
                   ].map((d) => (
                     <div key={d.label} className="p-4" style={{ border: "1px solid var(--line)" }}>
-                      <p className="text-xs uppercase tracking-wide mb-1" style={{ color: "var(--ink-faint)", fontFamily: "var(--font-dm-sans, sans-serif)", letterSpacing: "0.08em" }}>{d.label}</p>
-                      <p className="text-sm font-medium" style={{ color: "var(--ink)", fontFamily: "var(--font-dm-sans, sans-serif)", fontWeight: 500 }}>{d.value}</p>
+                      <p className="text-xs uppercase tracking-wide mb-1" style={{ color: "var(--ink-faint)", fontFamily: "var(--font-montserrat, sans-serif)", letterSpacing: "0.08em" }}>{d.label}</p>
+                      <p className="text-sm font-medium" style={{ color: "var(--ink)", fontFamily: "var(--font-montserrat, sans-serif)", fontWeight: 500 }}>{d.value}</p>
                     </div>
                   ))}
                 </div>
                 <div>
-                  <h2 className="mb-3" style={{ fontFamily: "var(--font-fraunces, Georgia, serif)", fontWeight: 600, fontSize: "1.375rem", color: "var(--ink)" }}>Amenities</h2>
+                  <h2 className="mb-3" style={{ fontFamily: "var(--font-playfair, Georgia, serif)", fontWeight: 600, fontSize: "1.375rem", color: "var(--ink)" }}>Amenities</h2>
                   <ul className="grid grid-cols-2 gap-2">
                     {project.amenities.map((a) => (
-                      <li key={a} className="flex items-center gap-2 text-sm" style={{ color: "var(--ink-muted)", fontFamily: "var(--font-dm-sans, sans-serif)" }}>
+                      <li key={a} className="flex items-center gap-2 text-sm" style={{ color: "var(--ink-muted)", fontFamily: "var(--font-montserrat, sans-serif)" }}>
                         <span style={{ color: "var(--accent-gold)" }} aria-hidden="true">—</span> {a}
                       </li>
                     ))}
@@ -95,10 +95,10 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                 </div>
               </div>
               <div className="lg:col-span-5 p-8" style={{ backgroundColor: "var(--bg-deep)", position: "sticky", top: "110px", alignSelf: "start" }}>
-                <h2 className="mb-6" style={{ fontFamily: "var(--font-fraunces, Georgia, serif)", fontWeight: 600, fontSize: "1.375rem", color: "var(--bg-cream)" }}>Book a site visit</h2>
+                <h2 className="mb-6" style={{ fontFamily: "var(--font-playfair, Georgia, serif)", fontWeight: 600, fontSize: "1.375rem", color: "var(--bg-cream)" }}>Book a site visit</h2>
                 <VisitForm />
                 <div className="mt-5 pt-5" style={{ borderTop: "1px solid var(--line-dark)" }}>
-                  <a href={`tel:${siteConfig.phonePlain}`} className="block text-xl font-display transition-opacity hover:opacity-75" style={{ fontFamily: "var(--font-fraunces, Georgia, serif)", fontWeight: 600, color: "var(--accent-gold)" }}>{siteConfig.phone}</a>
+                  <a href={`tel:${siteConfig.phonePlain}`} className="block text-xl font-display transition-opacity hover:opacity-75" style={{ fontFamily: "var(--font-playfair, Georgia, serif)", fontWeight: 600, color: "var(--accent-gold)" }}>{siteConfig.phone}</a>
                 </div>
               </div>
             </div>

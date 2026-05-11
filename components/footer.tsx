@@ -75,7 +75,7 @@ export function Footer() {
             <PGPLogo darkMode={true} />
             <p
               className="mt-4 text-sm"
-              style={{ color: "rgba(246,241,231,0.55)", fontFamily: "var(--font-dm-sans, sans-serif)", lineHeight: 1.65 }}
+              style={{ color: "rgba(246,241,231,0.55)", fontFamily: "var(--font-montserrat, sans-serif)", lineHeight: 1.65 }}
             >
               {siteConfig.tagline}
               <br />
@@ -92,7 +92,7 @@ export function Footer() {
           <div>
             <h3
               className="text-xs uppercase tracking-widest mb-5"
-              style={{ color: "var(--accent-gold)", fontFamily: "var(--font-dm-sans, sans-serif)", letterSpacing: "0.18em" }}
+              style={{ color: "var(--accent-gold)", fontFamily: "var(--font-montserrat, sans-serif)", letterSpacing: "0.18em" }}
             >
               Locations
             </h3>
@@ -107,7 +107,7 @@ export function Footer() {
                     <Link
                       href={`/locations/${slug}`}
                       className="text-sm transition-colors hover:text-[var(--accent-gold)]"
-                      style={{ color: "rgba(246,241,231,0.55)", fontFamily: "var(--font-dm-sans, sans-serif)" }}
+                      style={{ color: "rgba(246,241,231,0.55)", fontFamily: "var(--font-montserrat, sans-serif)" }}
                     >
                       {loc}
                     </Link>
@@ -121,7 +121,7 @@ export function Footer() {
           <div>
             <h3
               className="text-xs uppercase tracking-widest mb-5"
-              style={{ color: "var(--accent-gold)", fontFamily: "var(--font-dm-sans, sans-serif)", letterSpacing: "0.18em" }}
+              style={{ color: "var(--accent-gold)", fontFamily: "var(--font-montserrat, sans-serif)", letterSpacing: "0.18em" }}
             >
               Services
             </h3>
@@ -131,7 +131,7 @@ export function Footer() {
                   <Link
                     href={link.href}
                     className="text-sm transition-colors hover:text-[var(--accent-gold)]"
-                    style={{ color: "rgba(246,241,231,0.55)", fontFamily: "var(--font-dm-sans, sans-serif)" }}
+                    style={{ color: "rgba(246,241,231,0.55)", fontFamily: "var(--font-montserrat, sans-serif)" }}
                   >
                     {link.label}
                   </Link>
@@ -144,13 +144,13 @@ export function Footer() {
           <div>
             <h3
               className="text-xs uppercase tracking-widest mb-5"
-              style={{ color: "var(--accent-gold)", fontFamily: "var(--font-dm-sans, sans-serif)", letterSpacing: "0.18em" }}
+              style={{ color: "var(--accent-gold)", fontFamily: "var(--font-montserrat, sans-serif)", letterSpacing: "0.18em" }}
             >
               Contact
             </h3>
             <address
               className="not-italic space-y-3"
-              style={{ fontFamily: "var(--font-dm-sans, sans-serif)" }}
+              style={{ fontFamily: "var(--font-montserrat, sans-serif)" }}
             >
               <p className="text-sm" style={{ color: "rgba(246,241,231,0.55)", lineHeight: 1.6 }}>
                 {siteConfig.address}
@@ -190,7 +190,7 @@ export function Footer() {
           style={{
             borderTop: "1px solid var(--line-dark)",
             color: "rgba(246,241,231,0.3)",
-            fontFamily: "var(--font-dm-sans, sans-serif)",
+            fontFamily: "var(--font-montserrat, sans-serif)",
           }}
         >
           <p>

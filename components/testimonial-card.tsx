@@ -44,7 +44,7 @@ export function TestimonialCard({
       <blockquote
         className="flex-1 mb-5"
         style={{
-          fontFamily: "var(--font-fraunces, Georgia, serif)",
+          fontFamily: "var(--font-playfair, Georgia, serif)",
           fontWeight: 400,
           fontStyle: "italic",
           fontSize: "1rem",
@@ -61,7 +61,7 @@ export function TestimonialCard({
           style={{
             backgroundColor: "var(--bg-deep)",
             color: "var(--accent-gold)",
-            fontFamily: "var(--font-dm-sans, sans-serif)",
+            fontFamily: "var(--font-montserrat, sans-serif)",
           }}
           aria-hidden="true"
         >
@@ -72,7 +72,7 @@ export function TestimonialCard({
             className="text-sm font-medium"
             style={{
               color: "var(--ink)",
-              fontFamily: "var(--font-dm-sans, sans-serif)",
+              fontFamily: "var(--font-montserrat, sans-serif)",
               fontWeight: 500,
             }}
           >
@@ -82,7 +82,7 @@ export function TestimonialCard({
             className="text-xs"
             style={{
               color: "var(--ink-faint)",
-              fontFamily: "var(--font-dm-sans, sans-serif)",
+              fontFamily: "var(--font-montserrat, sans-serif)",
             }}
           >
             {testimonial.project} · {testimonial.location}

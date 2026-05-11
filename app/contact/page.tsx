@@ -21,7 +21,7 @@ export default function ContactPage() {
           <h1
             className="mb-4"
             style={{
-              fontFamily: "var(--font-fraunces, Georgia, serif)",
+              fontFamily: "var(--font-playfair, Georgia, serif)",
               fontWeight: 600,
               fontSize: "clamp(2.5rem, 4vw + 1rem, 4rem)",
               color: "var(--bg-cream)",
@@ -31,7 +31,7 @@ export default function ContactPage() {
           >
             Let&rsquo;s talk land.
           </h1>
-          <p className="mb-14 text-base" style={{ color: "rgba(246,241,231,0.65)", fontFamily: "var(--font-dm-sans, sans-serif)", lineHeight: 1.65 }}>
+          <p className="mb-14 text-base" style={{ color: "rgba(246,241,231,0.65)", fontFamily: "var(--font-montserrat, sans-serif)", lineHeight: 1.65 }}>
             Fill in the form or reach us directly. We respond within 4 working hours.
           </p>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-12 gap-y-10">
@@ -40,20 +40,20 @@ export default function ContactPage() {
             </div>
             <div className="lg:col-span-5 space-y-6">
               <div>
-                <p className="text-xs uppercase tracking-widest mb-2" style={{ color: "rgba(246,241,231,0.35)", fontFamily: "var(--font-dm-sans, sans-serif)", letterSpacing: "0.1em" }}>Phone</p>
-                <a href={`tel:${siteConfig.phonePlain}`} className="text-2xl font-display transition-opacity hover:opacity-75" style={{ fontFamily: "var(--font-fraunces, Georgia, serif)", fontWeight: 600, color: "var(--bg-cream)" }}>{siteConfig.phone}</a>
+                <p className="text-xs uppercase tracking-widest mb-2" style={{ color: "rgba(246,241,231,0.35)", fontFamily: "var(--font-montserrat, sans-serif)", letterSpacing: "0.1em" }}>Phone</p>
+                <a href={`tel:${siteConfig.phonePlain}`} className="text-2xl font-display transition-opacity hover:opacity-75" style={{ fontFamily: "var(--font-playfair, Georgia, serif)", fontWeight: 600, color: "var(--bg-cream)" }}>{siteConfig.phone}</a>
               </div>
               <div>
-                <p className="text-xs uppercase tracking-widest mb-2" style={{ color: "rgba(246,241,231,0.35)", fontFamily: "var(--font-dm-sans, sans-serif)", letterSpacing: "0.1em" }}>Email</p>
-                <a href={`mailto:${siteConfig.email}`} className="text-sm transition-colors hover:text-[var(--accent-gold)]" style={{ color: "rgba(246,241,231,0.6)", fontFamily: "var(--font-dm-sans, sans-serif)" }}>{siteConfig.email}</a>
+                <p className="text-xs uppercase tracking-widest mb-2" style={{ color: "rgba(246,241,231,0.35)", fontFamily: "var(--font-montserrat, sans-serif)", letterSpacing: "0.1em" }}>Email</p>
+                <a href={`mailto:${siteConfig.email}`} className="text-sm transition-colors hover:text-[var(--accent-gold)]" style={{ color: "rgba(246,241,231,0.6)", fontFamily: "var(--font-montserrat, sans-serif)" }}>{siteConfig.email}</a>
               </div>
               <div>
-                <p className="text-xs uppercase tracking-widest mb-2" style={{ color: "rgba(246,241,231,0.35)", fontFamily: "var(--font-dm-sans, sans-serif)", letterSpacing: "0.1em" }}>Office</p>
-                <address className="not-italic text-sm" style={{ color: "rgba(246,241,231,0.6)", fontFamily: "var(--font-dm-sans, sans-serif)", lineHeight: 1.65 }}>{siteConfig.address}</address>
+                <p className="text-xs uppercase tracking-widest mb-2" style={{ color: "rgba(246,241,231,0.35)", fontFamily: "var(--font-montserrat, sans-serif)", letterSpacing: "0.1em" }}>Office</p>
+                <address className="not-italic text-sm" style={{ color: "rgba(246,241,231,0.6)", fontFamily: "var(--font-montserrat, sans-serif)", lineHeight: 1.65 }}>{siteConfig.address}</address>
               </div>
               <div>
-                <p className="text-xs uppercase tracking-widest mb-2" style={{ color: "rgba(246,241,231,0.35)", fontFamily: "var(--font-dm-sans, sans-serif)", letterSpacing: "0.1em" }}>Hours</p>
-                <p className="text-sm" style={{ color: "rgba(246,241,231,0.6)", fontFamily: "var(--font-dm-sans, sans-serif)" }}>{siteConfig.workingHours}</p>
+                <p className="text-xs uppercase tracking-widest mb-2" style={{ color: "rgba(246,241,231,0.35)", fontFamily: "var(--font-montserrat, sans-serif)", letterSpacing: "0.1em" }}>Hours</p>
+                <p className="text-sm" style={{ color: "rgba(246,241,231,0.6)", fontFamily: "var(--font-montserrat, sans-serif)" }}>{siteConfig.workingHours}</p>
               </div>
             </div>
           </div>

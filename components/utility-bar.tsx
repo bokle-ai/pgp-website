@@ -10,7 +10,7 @@ export function UtilityBar() {
       <div className="max-w-7xl mx-auto px-6 lg:px-10 w-full flex items-center justify-between">
         <span
           className="text-xs hidden sm:block"
-          style={{ color: "rgba(246,241,231,0.55)", fontFamily: "var(--font-dm-sans, sans-serif)" }}
+          style={{ color: "rgba(246,241,231,0.55)", fontFamily: "var(--font-montserrat, sans-serif)" }}
         >
           RERA Reg. No. {siteConfig.rera}
         </span>
@@ -19,7 +19,7 @@ export function UtilityBar() {
           <a
             href={`tel:${siteConfig.phonePlain}`}
             className="flex items-center gap-1.5 text-xs transition-opacity hover:opacity-80"
-            style={{ color: "var(--accent-gold)", fontFamily: "var(--font-dm-sans, sans-serif)" }}
+            style={{ color: "var(--accent-gold)", fontFamily: "var(--font-montserrat, sans-serif)" }}
             aria-label="Call us"
           >
             <Phone size={12} />
@@ -34,7 +34,7 @@ export function UtilityBar() {
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 text-xs transition-opacity hover:opacity-80"
-            style={{ color: "var(--accent-gold)", fontFamily: "var(--font-dm-sans, sans-serif)" }}
+            style={{ color: "var(--accent-gold)", fontFamily: "var(--font-montserrat, sans-serif)" }}
             aria-label="WhatsApp us"
           >
             <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -48,7 +48,7 @@ export function UtilityBar() {
           <a
             href={`mailto:${siteConfig.email}`}
             className="text-xs hidden sm:block transition-opacity hover:opacity-80"
-            style={{ color: "rgba(246,241,231,0.55)", fontFamily: "var(--font-dm-sans, sans-serif)" }}
+            style={{ color: "rgba(246,241,231,0.55)", fontFamily: "var(--font-montserrat, sans-serif)" }}
             aria-label="Email us"
           >
             {siteConfig.email}

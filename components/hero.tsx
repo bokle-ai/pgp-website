@@ -71,7 +71,7 @@ export function Hero() {
                   style={{
                     color: "var(--accent-gold)",
                     letterSpacing: "0.18em",
-                    fontFamily: "var(--font-dm-sans, sans-serif)",
+                    fontFamily: "var(--font-montserrat, sans-serif)",
                   }}
                 >
                   Est. 2013 · Chennai Outskirts
@@ -83,7 +83,7 @@ export function Hero() {
                 className="font-display leading-[1.05] tracking-tight mb-6"
                 style={{
                   fontSize: "clamp(2.5rem, 5vw + 1rem, 5.5rem)",
-                  fontFamily: "var(--font-fraunces, Georgia, serif)",
+                  fontFamily: "var(--font-playfair, Georgia, serif)",
                   fontWeight: 600,
                   letterSpacing: "-0.02em",
                   color: "var(--ink)",
@@ -109,7 +109,7 @@ export function Hero() {
                 style={{
                   color: "var(--ink-muted)",
                   lineHeight: 1.65,
-                  fontFamily: "var(--font-dm-sans, sans-serif)",
+                  fontFamily: "var(--font-montserrat, sans-serif)",
                 }}
               >
                 DTCP-approved plots, turnkey construction at honest rates, and
@@ -127,7 +127,7 @@ export function Hero() {
                   style={{
                     backgroundColor: "var(--accent-gold)",
                     color: "var(--bg-deep)",
-                    fontFamily: "var(--font-dm-sans, sans-serif)",
+                    fontFamily: "var(--font-montserrat, sans-serif)",
                     fontWeight: 500,
                     borderRadius: "6px",
                     minHeight: "56px",
@@ -141,7 +141,7 @@ export function Hero() {
                   style={{
                     color: "var(--ink)",
                     borderColor: "var(--line)",
-                    fontFamily: "var(--font-dm-sans, sans-serif)",
+                    fontFamily: "var(--font-montserrat, sans-serif)",
                     fontWeight: 500,
                     borderRadius: "6px",
                     minHeight: "56px",
@@ -179,7 +179,7 @@ export function Hero() {
                       className="flex items-center gap-1.5 text-sm"
                       style={{
                         color: "var(--ink-muted)",
-                        fontFamily: "var(--font-dm-sans, sans-serif)",
+                        fontFamily: "var(--font-montserrat, sans-serif)",
                       }}
                     >
                       <svg
@@ -296,7 +296,7 @@ export function Hero() {
                   className="text-xs uppercase tracking-wider"
                   style={{
                     color: "var(--accent-gold)",
-                    fontFamily: "var(--font-dm-sans, sans-serif)",
+                    fontFamily: "var(--font-montserrat, sans-serif)",
                     letterSpacing: "0.1em",
                   }}
                 >
@@ -307,7 +307,7 @@ export function Hero() {
                 className="text-sm font-medium"
                 style={{
                   color: "var(--bg-cream)",
-                  fontFamily: "var(--font-dm-sans, sans-serif)",
+                  fontFamily: "var(--font-montserrat, sans-serif)",
                 }}
               >
                 32 plots available across
