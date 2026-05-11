@@ -116,7 +116,7 @@ export function Nav() {
             >
               <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
               <div className="pt-6">
-                <PGPLogo />
+                <PGPLogo variant="stacked" />
                 <nav className="mt-10 flex flex-col gap-1" aria-label="Mobile navigation">
                   {navLinks.map((link, i) => (
                     <motion.div

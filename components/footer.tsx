@@ -72,7 +72,7 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 mb-14">
           {/* Col 1 — Brand */}
           <div>
-            <PGPLogo darkMode={true} />
+            <PGPLogo variant="stacked" darkMode={true} />
             <p
               className="mt-4 text-sm"
               style={{ color: "rgba(246,241,231,0.55)", fontFamily: "var(--font-montserrat, sans-serif)", lineHeight: 1.65 }}
