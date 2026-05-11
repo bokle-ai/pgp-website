@@ -25,7 +25,7 @@ export function LocationsSection() {
           >
             {/* Text column */}
             <motion.div
-              className={`lg:col-span-7 py-14 flex flex-col justify-center ${
+              className={`lg:col-span-7 py-8 lg:py-14 flex flex-col justify-center ${
                 textOnLeft ? "lg:pr-14" : "lg:order-2 lg:pl-14"
               }`}
               initial={prefersReduced ? { opacity: 1, x: 0 } : { opacity: 0, x: textOnLeft ? -32 : 32 }}
@@ -34,7 +34,7 @@ export function LocationsSection() {
               transition={{ duration: 0.7, delay: 0.15, ease: EASE }}
             >
               <div
-                className="text-6xl font-display font-semibold mb-3 opacity-15 tabular-nums select-none"
+                className="text-4xl lg:text-6xl font-display font-semibold mb-3 opacity-15 tabular-nums select-none"
                 style={{
                   fontFamily: "var(--font-playfair, Georgia, serif)",
                   color: "var(--ink)",
@@ -130,7 +130,7 @@ export function LocationsSection() {
 
             {/* Image column */}
             <motion.div
-              className={`lg:col-span-5 relative min-h-[300px] ${textOnLeft ? "" : "lg:order-1"}`}
+              className={`lg:col-span-5 relative min-h-[240px] lg:min-h-[400px] ${textOnLeft ? "" : "lg:order-1"}`}
               initial={prefersReduced ? { opacity: 1, x: 0 } : { opacity: 0, x: textOnLeft ? 32 : -32 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-80px" }}

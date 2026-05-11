@@ -38,7 +38,7 @@ export default function Home() {
         {/* What we do */}
         <section
           id="plots"
-          className="py-24 lg:py-32"
+          className="py-16 lg:py-32"
           style={{ backgroundColor: "var(--bg-cream)" }}
           aria-label="Our services"
         >
@@ -53,16 +53,16 @@ export default function Home() {
 
             <div
               id="construction"
-              className="grid grid-cols-1 md:grid-cols-3 border"
-              style={{ borderColor: "var(--line)" }}
+              className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x border"
+              style={{ borderColor: "var(--line)", "--tw-divide-opacity": 1 } as React.CSSProperties}
             >
-              <div style={{ borderRight: "1px solid var(--line)" }}>
+              <div className="[border-color:var(--line)]">
                 <OfferingCard type="plots" animationDelay={0} />
               </div>
-              <div style={{ borderRight: "1px solid var(--line)" }}>
+              <div className="[border-color:var(--line)]">
                 <OfferingCard type="construction" animationDelay={0.12} />
               </div>
-              <div id="resale">
+              <div id="resale" className="[border-color:var(--line)]">
                 <OfferingCard type="resale" animationDelay={0.24} />
               </div>
             </div>
@@ -72,7 +72,7 @@ export default function Home() {
         {/* Locations */}
         <section
           id="locations"
-          className="py-24 lg:py-32"
+          className="py-16 lg:py-32"
           style={{ backgroundColor: "white" }}
           aria-label="Locations we serve"
         >
@@ -94,7 +94,7 @@ export default function Home() {
 
         {/* Projects grid */}
         <section
-          className="py-24 lg:py-32"
+          className="py-16 lg:py-32"
           style={{ backgroundColor: "var(--bg-cream)" }}
           aria-label="Active project inventory"
         >
@@ -147,7 +147,7 @@ export default function Home() {
         {/* Construction pricing */}
         <section
           id="construction-pricing"
-          className="py-24 lg:py-32"
+          className="py-16 lg:py-32"
           style={{ backgroundColor: "white" }}
           aria-label="Construction packages"
         >
@@ -166,7 +166,7 @@ export default function Home() {
             </div>
 
             <div
-              className="grid grid-cols-1 md:grid-cols-3 gap-px"
+              className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-px"
               style={{ background: "var(--line)" }}
             >
               {(["standard", "premium", "luxury"] as const).map((tier, i) => (
@@ -193,7 +193,7 @@ export default function Home() {
 
         {/* Why PGP */}
         <section
-          className="py-24 lg:py-32"
+          className="py-16 lg:py-32"
           style={{ backgroundColor: "var(--bg-cream)" }}
           aria-label="Why choose PGP"
         >
@@ -207,7 +207,7 @@ export default function Home() {
 
         {/* Process */}
         <section
-          className="py-24 lg:py-32"
+          className="py-16 lg:py-32"
           style={{ backgroundColor: "white" }}
           aria-label="How it works"
         >
@@ -224,7 +224,7 @@ export default function Home() {
 
         {/* Testimonials */}
         <section
-          className="py-24 lg:py-32"
+          className="py-16 lg:py-32"
           style={{ backgroundColor: "var(--bg-cream)" }}
           aria-label="Customer testimonials"
         >
@@ -246,7 +246,7 @@ export default function Home() {
 
         {/* FAQ */}
         <section
-          className="py-24 lg:py-32"
+          className="py-16 lg:py-32"
           style={{ backgroundColor: "white" }}
           aria-label="Frequently asked questions"
         >

@@ -97,7 +97,7 @@ export function StatStrip() {
       style={{ backgroundColor: "var(--bg-deep)" }}
       aria-label="Company statistics"
     >
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 flex flex-wrap justify-center sm:justify-between gap-8 lg:gap-0">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 grid grid-cols-2 sm:flex sm:flex-wrap sm:justify-between gap-y-10 gap-x-6 sm:gap-8 lg:gap-0">
         {siteConfig.stats.map((stat, i) => (
           <div key={stat.label} className="flex items-center gap-8 lg:gap-12">
             <AnimatedStat value={stat.value} label={stat.label} delay={i * 0.12} />

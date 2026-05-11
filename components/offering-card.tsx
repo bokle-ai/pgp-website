@@ -66,7 +66,7 @@ export function OfferingCard({ type, animationDelay = 0 }: OfferingCardProps) {
 
   return (
     <motion.div
-      className="relative flex flex-col p-8 group h-full"
+      className="relative flex flex-col p-6 sm:p-8 group h-full"
       style={{
         backgroundColor: d.featured ? "rgba(232,212,160,0.22)" : "white",
         border: "1px solid var(--line)",

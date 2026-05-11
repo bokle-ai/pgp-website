@@ -45,7 +45,7 @@ export function Hero() {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-[88vh] flex items-center pt-36 pb-24 overflow-hidden"
+      className="relative min-h-[88vh] flex items-center pt-28 lg:pt-36 pb-16 lg:pb-24 overflow-hidden"
       aria-label="Hero"
       style={{
         backgroundColor: "var(--bg-cream)",
@@ -82,7 +82,7 @@ export function Hero() {
                 {...motionProps(0.1)}
                 className="font-display leading-[1.05] tracking-tight mb-6"
                 style={{
-                  fontSize: "clamp(2.5rem, 5vw + 1rem, 5.5rem)",
+                  fontSize: "clamp(2.2rem, 5vw + 1rem, 5.5rem)",
                   fontFamily: "var(--font-playfair, Georgia, serif)",
                   fontWeight: 600,
                   letterSpacing: "-0.02em",
@@ -159,7 +159,7 @@ export function Hero() {
 
               <motion.div
                 {...motionProps(0.46)}
-                className="flex flex-wrap items-center gap-x-5 gap-y-2"
+                className="grid grid-cols-2 sm:flex sm:flex-wrap items-center gap-x-5 gap-y-3"
               >
                 {[
                   "DTCP & CMDA Approved",

@@ -65,7 +65,7 @@ export function PricingTier({ tier, animationDelay = 0 }: PricingTierProps) {
 
   return (
     <motion.div
-      className="relative flex flex-col p-8"
+      className="relative flex flex-col p-5 sm:p-8"
       style={{
         border: isFeatured ? "2px solid var(--accent-gold)" : "1px solid var(--line)",
         backgroundColor: isFeatured ? "var(--bg-deep)" : "white",
@@ -112,7 +112,7 @@ export function PricingTier({ tier, animationDelay = 0 }: PricingTierProps) {
           style={{
             fontFamily: "var(--font-playfair, Georgia, serif)",
             fontWeight: 600,
-            fontSize: "2.5rem",
+            fontSize: "clamp(1.75rem, 5vw, 2.5rem)",
             color: isFeatured ? "var(--bg-cream)" : "var(--ink)",
             lineHeight: 1,
           }}

@@ -88,7 +88,7 @@ export function SectionHeader({
         style={{
           fontFamily: "var(--font-playfair, Georgia, serif)",
           fontWeight: 600,
-          fontSize: "clamp(2rem, 3vw + 1rem, 3.5rem)",
+          fontSize: "clamp(1.75rem, 3vw + 1rem, 3.5rem)",
           color: titleDark ? "var(--bg-cream)" : "var(--ink)",
           lineHeight: 1.1,
         }}

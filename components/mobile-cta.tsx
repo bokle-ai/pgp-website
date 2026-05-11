@@ -24,7 +24,7 @@ export function MobileCTA() {
       {visible && (
         <motion.div
           key="mobile-cta"
-          className="fixed bottom-6 left-4 z-50 md:hidden"
+          className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 md:hidden"
           initial={prefersReduced ? { opacity: 0 } : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={prefersReduced ? { opacity: 0 } : { opacity: 0, y: 20 }}
