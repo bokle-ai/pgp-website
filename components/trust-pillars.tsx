@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import type { Variants } from "framer-motion";
 import { EASE } from "@/lib/animation";
@@ -8,73 +9,41 @@ const pillars = [
   {
     title: "Local expertise, local accountability.",
     body: "We work three corridors. Not thirty. We're around when you need us.",
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
-        <circle cx="12" cy="9" r="2.5" />
-      </svg>
-    ),
   },
   {
     title: "Clear titles, every time.",
     body: "DTCP / CMDA approval, patta, EC, parent docs — verified before you sign.",
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
-        <polyline points="14 2 14 8 20 8" />
-        <line x1="16" y1="13" x2="8" y2="13" />
-        <line x1="16" y1="17" x2="8" y2="17" />
-        <polyline points="10 9 9 9 8 9" />
-      </svg>
-    ),
   },
   {
     title: "One team, end-to-end.",
     body: "Plot, construction, resale — handled by people who know your project.",
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
-        <circle cx="9" cy="7" r="4" />
-        <path d="M23 21v-2a4 4 0 00-3-3.87" />
-        <path d="M16 3.13a4 4 0 010 7.75" />
-      </svg>
-    ),
   },
   {
     title: "Transparent pricing.",
     body: "Per-sq-ft rates published. Government charges itemised. No hidden costs.",
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <line x1="12" y1="1" x2="12" y2="23" />
-        <path d="M17 5H9.5a3.5 3.5 0 100 7h5a3.5 3.5 0 110 7H6" />
-      </svg>
-    ),
-  },
-  {
-    title: "Site visits, 7 days.",
-    body: "Including weekends and holidays. NRI customers — we send video walkthroughs.",
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-        <line x1="16" y1="2" x2="16" y2="6" />
-        <line x1="8" y1="2" x2="8" y2="6" />
-        <line x1="3" y1="10" x2="21" y2="10" />
-      </svg>
-    ),
-  },
-  {
-    title: "Resale support, even years later.",
-    body: "Buy from us, sell through us. Lifetime listing access at no premium.",
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <polyline points="17 1 21 5 17 9" />
-        <path d="M3 11V9a4 4 0 014-4h14" />
-        <polyline points="7 23 3 19 7 15" />
-        <path d="M21 13v2a4 4 0 01-4 4H3" />
-      </svg>
-    ),
   },
 ];
+
+function Check() {
+  return (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 18 18"
+      fill="none"
+      aria-hidden="true"
+      style={{ color: "var(--accent-gold)" }}
+    >
+      <path
+        d="M3.5 9.5l3.5 3.5L14.5 5"
+        stroke="currentColor"
+        strokeWidth="1.75"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
 
 export function TrustPillars() {
   const prefersReduced = useReducedMotion();
@@ -90,7 +59,7 @@ export function TrustPillars() {
   };
 
   const item: Variants = {
-    hidden: { opacity: 0, y: 24 },
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
@@ -99,47 +68,143 @@ export function TrustPillars() {
   };
 
   return (
-    <motion.div
-      className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
-      variants={container}
-      initial={prefersReduced ? "visible" : "hidden"}
-      whileInView="visible"
-      viewport={{ once: true, margin: "-60px" }}
-    >
-      {pillars.map((pillar) => (
-        <motion.div key={pillar.title} variants={item} className="flex gap-4">
-          <div
-            className="w-10 h-10 rounded-md flex items-center justify-center shrink-0"
-            style={{ backgroundColor: "rgba(212,160,23,0.12)", color: "var(--accent-gold)" }}
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+      {/* Left — heritage statement */}
+      <motion.div
+        className="lg:col-span-5"
+        initial={prefersReduced ? "visible" : "hidden"}
+        whileInView="visible"
+        viewport={{ once: true, margin: "-60px" }}
+        variants={container}
+      >
+        <motion.div variants={item}>
+          <span
+            style={{
+              fontFamily: "var(--font-playfair, Georgia, serif)",
+              fontWeight: 500,
+              fontSize: "clamp(4rem, 8vw, 6rem)",
+              color: "var(--accent-gold)",
+              lineHeight: 1,
+              letterSpacing: "-0.03em",
+              display: "block",
+            }}
           >
-            {pillar.icon}
-          </div>
-          <div>
-            <h4
-              className="mb-1.5"
-              style={{
-                fontFamily: "var(--font-playfair, Georgia, serif)",
-                fontWeight: 600,
-                fontSize: "1rem",
-                color: "var(--ink)",
-                lineHeight: 1.3,
-              }}
-            >
-              {pillar.title}
-            </h4>
-            <p
-              className="text-sm"
-              style={{
-                color: "var(--ink-muted)",
-                lineHeight: 1.6,
-                fontFamily: "var(--font-montserrat, sans-serif)",
-              }}
-            >
-              {pillar.body}
-            </p>
-          </div>
+            200+
+          </span>
         </motion.div>
-      ))}
-    </motion.div>
+        <motion.p
+          variants={item}
+          className="mt-5 max-w-[24ch]"
+          style={{
+            fontFamily: "var(--font-playfair, Georgia, serif)",
+            fontWeight: 400,
+            fontSize: "1.5rem",
+            color: "var(--ink)",
+            lineHeight: 1.35,
+            letterSpacing: "-0.01em",
+          }}
+        >
+          families have trusted us with their land decisions since 2013.
+        </motion.p>
+
+        <motion.div
+          variants={item}
+          className="mt-8 flex flex-wrap gap-x-4 gap-y-2"
+        >
+          {["12 years", "3 corridors", "18 projects"].map((s, i) => (
+            <div key={s} className="flex items-center gap-3">
+              {i > 0 && (
+                <span
+                  className="w-1 h-1 rounded-full"
+                  style={{ backgroundColor: "var(--accent-gold)" }}
+                  aria-hidden="true"
+                />
+              )}
+              <span
+                className="text-xs uppercase"
+                style={{
+                  color: "var(--ink-muted)",
+                  letterSpacing: "0.18em",
+                  fontFamily: "var(--font-montserrat, sans-serif)",
+                }}
+              >
+                {s}
+              </span>
+            </div>
+          ))}
+        </motion.div>
+
+        <motion.div variants={item} className="mt-8">
+          <Link
+            href="/about"
+            className="inline-flex items-center gap-2 text-sm font-medium transition-opacity hover:opacity-70 group/link"
+            style={{
+              color: "var(--accent-gold)",
+              fontFamily: "var(--font-montserrat, sans-serif)",
+            }}
+          >
+            Our story
+            <span
+              className="transition-transform group-hover/link:translate-x-1"
+              aria-hidden="true"
+            >
+              →
+            </span>
+          </Link>
+        </motion.div>
+      </motion.div>
+
+      {/* Right — pillar list */}
+      <motion.ul
+        className="lg:col-span-7"
+        variants={container}
+        initial={prefersReduced ? "visible" : "hidden"}
+        whileInView="visible"
+        viewport={{ once: true, margin: "-60px" }}
+      >
+        {pillars.map((p, i) => (
+          <motion.li
+            key={p.title}
+            variants={item}
+            className="flex items-start gap-5 py-6"
+            style={{
+              borderTop:
+                i === 0 ? "1px solid var(--line)" : "1px solid var(--line)",
+              borderBottom:
+                i === pillars.length - 1 ? "1px solid var(--line)" : "none",
+            }}
+          >
+            <span className="mt-1 shrink-0">
+              <Check />
+            </span>
+            <div className="flex-1">
+              <h4
+                className="mb-1.5"
+                style={{
+                  fontFamily: "var(--font-playfair, Georgia, serif)",
+                  fontWeight: 500,
+                  fontSize: "1.15rem",
+                  color: "var(--ink)",
+                  lineHeight: 1.3,
+                  letterSpacing: "-0.01em",
+                }}
+              >
+                {p.title}
+              </h4>
+              <p
+                className="text-sm"
+                style={{
+                  color: "var(--ink-muted)",
+                  lineHeight: 1.6,
+                  fontFamily: "var(--font-montserrat, sans-serif)",
+                }}
+              >
+                {p.body}
+              </p>
+            </div>
+          </motion.li>
+        ))}
+      </motion.ul>
+    </div>
   );
 }

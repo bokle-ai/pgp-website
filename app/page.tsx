@@ -2,7 +2,6 @@ import { UtilityBar } from "@/components/utility-bar";
 import { Nav } from "@/components/nav";
 import { Hero } from "@/components/hero";
 import { StatStrip } from "@/components/stat-strip";
-import { OfferingCard } from "@/components/offering-card";
 import { ProjectCard } from "@/components/project-card";
 import { PricingTier } from "@/components/pricing-tier";
 import { TestimonialCard } from "@/components/testimonial-card";
@@ -16,6 +15,7 @@ import { ScrollReveal } from "@/components/scroll-reveal";
 import { TrustPillars } from "@/components/trust-pillars";
 import { ProcessTimeline } from "@/components/process-timeline";
 import { LocationsSection } from "@/components/locations-section";
+import { ServiceRows } from "@/components/service-rows";
 import { projects } from "@/lib/data/projects";
 import { testimonials } from "@/lib/data/testimonials";
 import { siteConfig } from "@/lib/data/site";
@@ -35,38 +35,20 @@ export default function Home() {
         {/* Stats strip */}
         <StatStrip />
 
-        {/* What we do */}
+        {/* What we do — editorial rows */}
         <section
-          id="plots"
-          className="py-16 lg:py-32"
+          className="pt-20 lg:pt-32 pb-0"
           style={{ backgroundColor: "var(--bg-cream)" }}
           aria-label="Our services"
         >
-          <div className="max-w-7xl mx-auto px-6 lg:px-10">
-            <div className="mb-12">
-              <SectionHeader
-                eyebrow="What we do"
-                title="Three doors. One trusted partner."
-                subtitle="Whether you're buying your first plot, building your home, or moving on from an old one — we're the same team end-to-end."
-              />
-            </div>
-
-            <div
-              id="construction"
-              className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x border"
-              style={{ borderColor: "var(--line)", "--tw-divide-opacity": 1 } as React.CSSProperties}
-            >
-              <div className="[border-color:var(--line)]">
-                <OfferingCard type="plots" animationDelay={0} />
-              </div>
-              <div className="[border-color:var(--line)]">
-                <OfferingCard type="construction" animationDelay={0.12} />
-              </div>
-              <div id="resale" className="[border-color:var(--line)]">
-                <OfferingCard type="resale" animationDelay={0.24} />
-              </div>
-            </div>
+          <div className="max-w-7xl mx-auto px-6 lg:px-10 mb-16 lg:mb-24">
+            <SectionHeader
+              eyebrow="What we do"
+              title="Three doors. One trusted partner."
+              subtitle="Whether you're buying your first plot, building your home, or moving on from an old one — we're the same team end-to-end."
+            />
           </div>
+          <ServiceRows />
         </section>
 
         {/* Locations */}
@@ -198,8 +180,8 @@ export default function Home() {
           aria-label="Why choose PGP"
         >
           <div className="max-w-7xl mx-auto px-6 lg:px-10">
-            <div className="mb-12">
-              <SectionHeader title="Why families trust PGP." />
+            <div className="mb-14">
+              <SectionHeader eyebrow="Why PGP" title="Why families trust us." />
             </div>
             <TrustPillars />
           </div>

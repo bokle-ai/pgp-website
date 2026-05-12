@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { MapPin } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { EASE } from "@/lib/animation";
 import type { Project } from "@/lib/data/projects";
@@ -10,17 +9,17 @@ import type { Project } from "@/lib/data/projects";
 const statusConfig = {
   available: {
     label: "Available",
-    bg: "rgba(46,125,91,0.9)",
+    bg: "rgba(46,125,91,0.95)",
     color: "#fff",
   },
   "few-left": {
-    label: "Few Left",
-    bg: "rgba(184,134,11,0.9)",
+    label: "Selling Fast",
+    bg: "rgba(184,134,11,0.95)",
     color: "#fff",
   },
   "sold-out": {
     label: "Sold Out",
-    bg: "rgba(139,58,58,0.88)",
+    bg: "rgba(139,58,58,0.9)",
     color: "#fff",
   },
 };
@@ -37,27 +36,39 @@ export function ProjectCard({
 
   return (
     <motion.article
-      className="group flex flex-col"
+      className="group relative flex flex-col bg-white"
       style={{ border: "1px solid var(--line)" }}
       initial={prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.65, delay: animationDelay, ease: EASE }}
     >
-      <div className="relative aspect-[4/3] rounded-2xl overflow-hidden img-warm">
+      {/* Gold left border on hover */}
+      <span
+        className="absolute left-0 top-0 bottom-0 w-[3px] scale-y-0 group-hover:scale-y-100 origin-top transition-transform duration-500"
+        style={{ backgroundColor: "var(--accent-gold)" }}
+        aria-hidden="true"
+      />
+
+      <div
+        className="relative overflow-hidden img-warm"
+        style={{ aspectRatio: "3 / 2" }}
+      >
         <Image
           src={project.image}
           alt={`${project.name} — plotted layout in ${project.location}`}
           fill
-          className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+          className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
         <div
-          className="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium"
+          className="absolute top-4 left-4 flex items-center gap-1.5 px-3 py-1 text-[10px] uppercase"
           style={{
             backgroundColor: status.bg,
             color: status.color,
             fontFamily: "var(--font-montserrat, sans-serif)",
+            letterSpacing: "0.14em",
+            fontWeight: 600,
           }}
         >
           <span className="w-1.5 h-1.5 rounded-full bg-current" aria-hidden="true" />
@@ -65,64 +76,50 @@ export function ProjectCard({
         </div>
       </div>
 
-      <div className="p-5 flex flex-col gap-3 flex-1">
-        <div
-          className="flex items-center gap-1.5 text-xs"
-          style={{ color: "var(--accent-gold)", fontFamily: "var(--font-montserrat, sans-serif)" }}
-        >
-          <MapPin size={11} aria-hidden="true" />
-          {project.location}
-        </div>
-
+      <div className="p-6 flex flex-col gap-3 flex-1">
         <h3
-          className="transition-colors group-hover:text-[var(--accent-gold)]"
           style={{
             fontFamily: "var(--font-playfair, Georgia, serif)",
-            fontWeight: 600,
-            fontSize: "1.25rem",
+            fontWeight: 500,
+            fontSize: "1.35rem",
             color: "var(--ink)",
+            letterSpacing: "-0.01em",
             lineHeight: 1.2,
           }}
         >
           {project.name}
         </h3>
 
-        <div className="space-y-1">
-          <p
-            className="text-sm"
-            style={{ color: "var(--ink-muted)", fontFamily: "var(--font-montserrat, sans-serif)" }}
-          >
-            Plot sizes: {project.sizes}
-          </p>
-          <p
-            className="text-sm tabular-nums"
-            style={{ color: "var(--ink-muted)", fontFamily: "var(--font-montserrat, sans-serif)" }}
-          >
-            Rate: ₹{project.rate.toLocaleString("en-IN")} / sq ft onwards
-          </p>
-        </div>
-
-        <div
-          className="flex flex-wrap gap-x-3 gap-y-1 text-xs"
-          style={{ color: "var(--ink-faint)", fontFamily: "var(--font-montserrat, sans-serif)" }}
+        <p
+          className="text-xs uppercase"
+          style={{
+            color: "var(--ink-faint)",
+            fontFamily: "var(--font-montserrat, sans-serif)",
+            letterSpacing: "0.16em",
+          }}
         >
-          <span>{project.approval} Approved</span>
-          <span aria-hidden="true">·</span>
-          <span>{project.plotCount} plots</span>
-          {project.amenities.slice(0, 1).map((a) => (
-            <span key={a}>
-              <span aria-hidden="true">·</span> {a}
-            </span>
-          ))}
-        </div>
+          {project.location}
+        </p>
+
+        <p
+          className="text-sm tabular-nums mt-1"
+          style={{
+            color: "var(--ink-muted)",
+            fontFamily: "var(--font-montserrat, sans-serif)",
+          }}
+        >
+          From ₹{project.rate.toLocaleString("en-IN")} / sq ft
+        </p>
 
         <Link
           href={`/projects/${project.slug}`}
-          className="mt-auto text-sm font-medium flex items-center gap-1 transition-opacity hover:opacity-70 group/link"
+          className="mt-auto pt-4 text-sm font-medium flex items-center gap-1.5 transition-opacity hover:opacity-70 group/link"
           style={{
             color: "var(--accent-gold)",
             fontFamily: "var(--font-montserrat, sans-serif)",
             fontWeight: 500,
+            borderTop: "1px solid var(--line)",
+            marginTop: "0.5rem",
           }}
         >
           View project

@@ -2,17 +2,6 @@ import Link from "next/link";
 import { PGPLogo } from "./pgp-logo";
 import { siteConfig } from "@/lib/data/site";
 
-const locationLinks = [
-  "Plots in Maraimalai Nagar",
-  "Plots in Kundrathur",
-  "Plots in East Tambaram",
-  "Plots in West Tambaram",
-  "Plots in Selaiyur",
-  "Plots in Chitlapakkam",
-  "Plots in Perungalathur",
-  "Plots in Mudichur",
-];
-
 const serviceLinks = [
   { label: "Plots", href: "/#plots" },
   { label: "Construction", href: "/#construction" },
@@ -20,7 +9,26 @@ const serviceLinks = [
   { label: "NRI Services", href: "/contact?type=nri" },
   { label: "Home Loans", href: "/contact?type=loan" },
   { label: "About", href: "/about" },
-  { label: "Blog", href: "/blog" },
+];
+
+const locationLinks = [
+  "Maraimalai Nagar",
+  "Kundrathur",
+  "East Tambaram",
+  "West Tambaram",
+  "Perungalathur",
+  "Mudichur",
+  "Chitlapakkam",
+  "Selaiyur",
+];
+
+const seoKeywords = [
+  "Plots in Maraimalai Nagar",
+  "Plots in Kundrathur",
+  "Plots in Tambaram",
+  "DTCP Approved Plots Chennai",
+  "Plots near GST Road",
+  "Plots near OMR",
 ];
 
 function SocialIcon({ type, href }: { type: string; href: string }) {
@@ -61,6 +69,17 @@ function SocialIcon({ type, href }: { type: string; href: string }) {
   );
 }
 
+const headingStyle: React.CSSProperties = {
+  color: "var(--accent-gold)",
+  fontFamily: "var(--font-montserrat, sans-serif)",
+  letterSpacing: "0.2em",
+};
+
+const linkStyle: React.CSSProperties = {
+  color: "rgba(246,241,231,0.6)",
+  fontFamily: "var(--font-montserrat, sans-serif)",
+};
+
 export function Footer() {
   return (
     <footer
@@ -68,46 +87,58 @@ export function Footer() {
       style={{ backgroundColor: "var(--bg-deep)" }}
       aria-label="Site footer"
     >
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 pt-16 pb-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 mb-14">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 pt-20 pb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-14 mb-16">
           {/* Col 1 — Brand */}
           <div>
             <PGPLogo variant="stacked" darkMode={true} />
             <p
-              className="mt-4 text-sm"
+              className="mt-5 text-sm max-w-[28ch]"
               style={{ color: "rgba(246,241,231,0.55)", fontFamily: "var(--font-montserrat, sans-serif)", lineHeight: 1.65 }}
             >
               {siteConfig.tagline}
-              <br />
-              DTCP-approved plots, turnkey construction, and trusted resale across Chennai&rsquo;s outskirts since {siteConfig.foundedYear}.
             </p>
-            <div className="flex items-center gap-3 mt-5">
+            <div className="flex items-center gap-4 mt-6">
               {Object.entries(siteConfig.social).map(([type, href]) => (
                 <SocialIcon key={type} type={type} href={href} />
               ))}
             </div>
           </div>
 
-          {/* Col 2 — Locations */}
+          {/* Col 2 — Services */}
           <div>
-            <h3
-              className="text-xs uppercase tracking-widest mb-5"
-              style={{ color: "var(--accent-gold)", fontFamily: "var(--font-montserrat, sans-serif)", letterSpacing: "0.18em" }}
-            >
+            <h3 className="text-[10px] uppercase mb-5" style={headingStyle}>
+              Services
+            </h3>
+            <ul className="space-y-3">
+              {serviceLinks.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="text-sm transition-colors hover:text-[var(--accent-gold)]"
+                    style={linkStyle}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Col 3 — Locations */}
+          <div>
+            <h3 className="text-[10px] uppercase mb-5" style={headingStyle}>
               Locations
             </h3>
-            <ul className="space-y-2.5">
+            <ul className="space-y-3">
               {locationLinks.map((loc) => {
-                const slug = loc
-                  .toLowerCase()
-                  .replace("plots in ", "")
-                  .replace(/\s+/g, "-");
+                const slug = loc.toLowerCase().replace(/\s+/g, "-");
                 return (
                   <li key={loc}>
                     <Link
                       href={`/locations/${slug}`}
                       className="text-sm transition-colors hover:text-[var(--accent-gold)]"
-                      style={{ color: "rgba(246,241,231,0.55)", fontFamily: "var(--font-montserrat, sans-serif)" }}
+                      style={linkStyle}
                     >
                       {loc}
                     </Link>
@@ -117,48 +148,16 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Col 3 — Services */}
-          <div>
-            <h3
-              className="text-xs uppercase tracking-widest mb-5"
-              style={{ color: "var(--accent-gold)", fontFamily: "var(--font-montserrat, sans-serif)", letterSpacing: "0.18em" }}
-            >
-              Services
-            </h3>
-            <ul className="space-y-2.5">
-              {serviceLinks.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="text-sm transition-colors hover:text-[var(--accent-gold)]"
-                    style={{ color: "rgba(246,241,231,0.55)", fontFamily: "var(--font-montserrat, sans-serif)" }}
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
           {/* Col 4 — Contact */}
           <div>
-            <h3
-              className="text-xs uppercase tracking-widest mb-5"
-              style={{ color: "var(--accent-gold)", fontFamily: "var(--font-montserrat, sans-serif)", letterSpacing: "0.18em" }}
-            >
+            <h3 className="text-[10px] uppercase mb-5" style={headingStyle}>
               Contact
             </h3>
-            <address
-              className="not-italic space-y-3"
-              style={{ fontFamily: "var(--font-montserrat, sans-serif)" }}
-            >
-              <p className="text-sm" style={{ color: "rgba(246,241,231,0.55)", lineHeight: 1.6 }}>
-                {siteConfig.address}
-              </p>
+            <address className="not-italic space-y-3" style={{ fontFamily: "var(--font-montserrat, sans-serif)" }}>
               <a
                 href={`tel:${siteConfig.phonePlain}`}
                 className="block text-sm transition-colors hover:text-[var(--accent-gold)]"
-                style={{ color: "rgba(246,241,231,0.55)" }}
+                style={linkStyle}
               >
                 {siteConfig.phone}
               </a>
@@ -167,35 +166,59 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block text-sm transition-colors hover:text-[var(--accent-gold)]"
-                style={{ color: "rgba(246,241,231,0.55)" }}
+                style={linkStyle}
               >
-                WhatsApp: {siteConfig.phone}
+                WhatsApp
               </a>
               <a
                 href={`mailto:${siteConfig.email}`}
                 className="block text-sm transition-colors hover:text-[var(--accent-gold)]"
-                style={{ color: "rgba(246,241,231,0.55)" }}
+                style={linkStyle}
               >
                 {siteConfig.email}
               </a>
-              <p className="text-xs" style={{ color: "rgba(246,241,231,0.35)" }}>
+              <p className="text-sm" style={{ color: "rgba(246,241,231,0.55)", lineHeight: 1.6 }}>
+                {siteConfig.address}
+              </p>
+              <p className="text-xs pt-1" style={{ color: "rgba(246,241,231,0.4)" }}>
                 {siteConfig.workingHours}
               </p>
             </address>
           </div>
         </div>
 
+        {/* SEO keyword row */}
+        <div
+          className="py-8"
+          style={{ borderTop: "1px solid var(--line-dark)", borderBottom: "1px solid var(--line-dark)" }}
+        >
+          <p
+            className="text-[11px] flex flex-wrap items-center gap-x-3 gap-y-1.5"
+            style={{
+              color: "rgba(246,241,231,0.4)",
+              fontFamily: "var(--font-montserrat, sans-serif)",
+              letterSpacing: "0.04em",
+            }}
+          >
+            {seoKeywords.map((kw, i) => (
+              <span key={kw} className="flex items-center gap-3">
+                {i > 0 && (
+                  <span style={{ color: "rgba(212,160,23,0.5)" }} aria-hidden="true">·</span>
+                )}
+                {kw}
+              </span>
+            ))}
+          </p>
+        </div>
+
         <div
           className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs"
           style={{
-            borderTop: "1px solid var(--line-dark)",
-            color: "rgba(246,241,231,0.3)",
+            color: "rgba(246,241,231,0.35)",
             fontFamily: "var(--font-montserrat, sans-serif)",
           }}
         >
-          <p>
-            &copy; 2025 Prime Golden Properties. RERA Reg. No. {siteConfig.rera}
-          </p>
+          <p>&copy; 2025 Prime Golden Properties. RERA Reg. No. {siteConfig.rera}</p>
           <div className="flex items-center gap-4">
             <Link href="/privacy" className="transition-colors hover:text-[var(--accent-gold)]">
               Privacy
