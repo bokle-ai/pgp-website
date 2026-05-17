@@ -16,6 +16,7 @@ import { TrustPillars } from "@/components/trust-pillars";
 import { ProcessTimeline } from "@/components/process-timeline";
 import { LocationsSection } from "@/components/locations-section";
 import { ServiceRows } from "@/components/service-rows";
+import { FAQSchema } from "@/components/json-ld";
 import { projects } from "@/lib/data/projects";
 import { testimonials } from "@/lib/data/testimonials";
 import { siteConfig } from "@/lib/data/site";
@@ -232,6 +233,7 @@ export default function Home() {
           style={{ backgroundColor: "white" }}
           aria-label="Frequently asked questions"
         >
+          <FAQSchema />
           <div className="max-w-4xl mx-auto px-6 lg:px-10">
             <div className="mb-12">
               <SectionHeader

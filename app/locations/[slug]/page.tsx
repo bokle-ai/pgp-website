@@ -8,6 +8,7 @@ import { Footer } from "@/components/footer";
 import { WhatsAppFAB } from "@/components/whatsapp-fab";
 import { ProjectCard } from "@/components/project-card";
 import { VisitForm } from "@/components/visit-form";
+import { LocationSchema } from "@/components/json-ld";
 import { locations } from "@/lib/data/locations";
 import { projects } from "@/lib/data/projects";
 import { siteConfig } from "@/lib/data/site";
@@ -48,6 +49,11 @@ export default async function LocationPage({
 
   return (
     <>
+      <LocationSchema
+        name={location.name}
+        slug={location.slug}
+        startingPrice={location.stats.startingPrice}
+      />
       <UtilityBar />
       <Nav />
       <main id="main-content">
