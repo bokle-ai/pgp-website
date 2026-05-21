@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   },
   description:
     "DTCP-approved plots, turnkey construction at honest rates, and trusted resale across Chennai's southern and western corridors — Maraimalai Nagar, Kundrathur, and Tambaram.",
-  metadataBase: new URL("https://www.primegoldenproperties.in"),
+  metadataBase: new URL("https://www.primegoldenproperties.com"),
   openGraph: {
     title: "Prime Golden Properties — Land that turns into legacy.",
     description:

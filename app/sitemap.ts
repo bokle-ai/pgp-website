@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { locations } from "@/lib/data/locations";
 import { projects } from "@/lib/data/projects";
 
-const BASE_URL = "https://www.primegoldenproperties.in";
+const BASE_URL = "https://www.primegoldenproperties.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
