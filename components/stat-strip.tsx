@@ -5,10 +5,10 @@ import type { Variants } from "framer-motion";
 import { EASE } from "@/lib/animation";
 
 const stats = [
-  { value: "12+", label: "Years" },
-  { value: "200+", label: "Families" },
+  { value: "12+", label: "Years in business" },
+  { value: "310+", label: "Happy families" },
   { value: "3", label: "Corridors" },
-  { value: "₹1,650", label: "/sqft onward" },
+  { value: "₹4 L", label: "Plots from" },
 ];
 
 export function StatStrip() {

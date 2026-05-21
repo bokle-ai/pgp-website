@@ -101,15 +101,30 @@ export function ProjectCard({
           {project.location}
         </p>
 
-        <p
-          className="text-sm tabular-nums mt-1"
-          style={{
-            color: "var(--ink-muted)",
-            fontFamily: "var(--font-montserrat, sans-serif)",
-          }}
-        >
-          From ₹{project.rate.toLocaleString("en-IN")} / sq ft
-        </p>
+        <div className="flex items-baseline gap-3 mt-1 flex-wrap">
+          <p
+            className="text-sm tabular-nums font-medium"
+            style={{
+              color: "var(--ink)",
+              fontFamily: "var(--font-playfair, Georgia, serif)",
+              fontSize: "1.1rem",
+            }}
+          >
+            ₹{project.priceInLakhs % 1 === 0
+              ? project.priceInLakhs
+              : project.priceInLakhs}{" "}
+            Lakhs
+          </p>
+          <p
+            className="text-xs tabular-nums"
+            style={{
+              color: "var(--ink-faint)",
+              fontFamily: "var(--font-montserrat, sans-serif)",
+            }}
+          >
+            {project.sizes}
+          </p>
+        </div>
 
         <Link
           href={`/projects/${project.slug}`}

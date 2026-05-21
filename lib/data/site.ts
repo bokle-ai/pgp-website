@@ -3,7 +3,7 @@ export const siteConfig = {
   shortName: "PGP",
   tagline: "Land that turns into legacy.",
   description:
-    "DTCP-approved plots, turnkey construction at honest rates, and trusted resale across Chennai's southern and western corridors — Maraimalai Nagar, Kundrathur, and Tambaram.",
+    "DTCP-approved plots across Papanthangal, Perumpallam, and Cheyyar — turnkey construction at honest rates and trusted resale across Tamil Nadu.",
   phone: "+91 98765 43210",
   phonePlain: "9876543210",
   whatsapp: "919876543210",

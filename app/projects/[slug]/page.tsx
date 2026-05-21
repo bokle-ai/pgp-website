@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!project) return {};
   return {
     title: `${project.name} | Prime Golden Properties`,
-    description: `${project.approval} approved plotted layout in ${project.location}. ${project.plotCount} plots, ${project.sizes}, starting ₹${project.rate.toLocaleString("en-IN")}/sq ft.`,
+    description: `${project.approval} approved plotted layout in ${project.location}. ${project.sizes} plots starting ₹${project.priceInLakhs} Lakhs — ready to construct.`,
   };
 }
 
@@ -60,7 +60,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
               {project.name}
             </h1>
             <p className="text-base" style={{ color: "rgba(246,241,231,0.7)", fontFamily: "var(--font-montserrat, sans-serif)" }}>
-              {project.location} · {project.plotCount} plots · {project.sizes}
+              {project.location} · {project.sizes} · ₹{project.priceInLakhs} Lakhs
             </p>
           </div>
         </section>
@@ -72,8 +72,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
               <div className="lg:col-span-7 space-y-8">
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                   {[
-                    { label: "Plots", value: project.plotCount.toString() },
-                    { label: "Sizes", value: project.sizes },
+                    { label: "Price", value: `₹${project.priceInLakhs} Lakhs` },
+                    { label: "Plot size", value: project.sizes },
                     { label: "Rate", value: `₹${project.rate.toLocaleString("en-IN")}/sq ft` },
                     { label: "Approval", value: project.approval },
                   ].map((d) => (

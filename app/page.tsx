@@ -95,7 +95,7 @@ export default function Home() {
                     fontFamily: "var(--font-montserrat, sans-serif)",
                   }}
                 >
-                  Showing {displayedProjects.length} of 12 active projects
+                  Showing {displayedProjects.length} of {projects.length} active projects
                 </p>
               </ScrollReveal>
             </div>
@@ -120,7 +120,7 @@ export default function Home() {
                   fontWeight: 500,
                 }}
               >
-                View all 12 projects
+                View all projects
                 <span className="transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
               </Link>
             </ScrollReveal>

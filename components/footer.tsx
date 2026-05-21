@@ -12,23 +12,21 @@ const serviceLinks = [
 ];
 
 const locationLinks = [
-  "Maraimalai Nagar",
-  "Kundrathur",
-  "East Tambaram",
-  "West Tambaram",
-  "Perungalathur",
-  "Mudichur",
-  "Chitlapakkam",
-  "Selaiyur",
+  "Papanthangal",
+  "Perumpallam",
+  "Cheyyar",
+  "Thavasi",
+  "Sengadu",
+  "Irungal",
 ];
 
 const seoKeywords = [
-  "Plots in Maraimalai Nagar",
-  "Plots in Kundrathur",
-  "Plots in Tambaram",
+  "Plots in Papanthangal",
+  "Plots in Perumpallam",
+  "Plots in Cheyyar",
   "DTCP Approved Plots Chennai",
-  "Plots near GST Road",
-  "Plots near OMR",
+  "Plots near Cheyyar",
+  "Affordable plots Tamil Nadu",
 ];
 
 function SocialIcon({ type, href }: { type: string; href: string }) {
