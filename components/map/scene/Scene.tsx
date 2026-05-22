@@ -10,6 +10,7 @@ import { TableBackdrop } from './TableBackdrop';
 import { BeaconCluster } from './BeaconCluster';
 import { DistrictLines } from './DistrictLines';
 import { MapLabels } from './MapLabels';
+import { DistanceArcs } from './DistanceArcs';
 import { CameraRig } from './CameraRig';
 import { BRAND } from '@/lib/brand-tokens';
 
@@ -63,12 +64,13 @@ export function Scene({ tnGeoJSON, districtGeoJSON, lite = false }: Props) {
       <Suspense fallback={null}>
         <Environment preset="studio" environmentIntensity={0.3} />
         <TableBackdrop />
-        <TamilNaduMesh tnGeoJSON={tnGeoJSON} lite={lite} />
+        <TamilNaduMesh tnGeoJSON={tnGeoJSON} districtGeoJSON={districtGeoJSON} lite={lite} />
         <DistrictLines
           tnGeoJSON={tnGeoJSON}
           districtGeoJSON={districtGeoJSON}
           extrudeDepth={extrudeDepth}
         />
+        <DistanceArcs tnGeoJSON={tnGeoJSON} />
         <BeaconCluster tnGeoJSON={tnGeoJSON} />
         <MapLabels tnGeoJSON={tnGeoJSON} />
         <CameraRig tnGeoJSON={tnGeoJSON} lite={lite} />

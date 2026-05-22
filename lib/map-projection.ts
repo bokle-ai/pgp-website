@@ -20,28 +20,31 @@ export function getMeshCenterOffset(tnGeoJSON: GeoJSON.FeatureCollection): [numb
   if (_centerOffset) return _centerOffset;
 
   const proj = getProjection(tnGeoJSON as GeoPermissibleObjects);
-  const feature = tnGeoJSON.features[0];
-  const geom = feature.geometry;
-  if (geom.type !== 'Polygon' && geom.type !== 'MultiPolygon') {
-    _centerOffset = [0, 0];
-    return _centerOffset;
-  }
-  const outerRing =
-    geom.type === 'Polygon'
-      ? (geom.coordinates[0] as [number, number][])
-      : (geom.coordinates[0][0] as [number, number][]);
+
+  const outerRings: [number, number][][] = [];
+  tnGeoJSON.features.forEach((f) => {
+    const g = f.geometry;
+    if (g.type === 'Polygon') {
+      outerRings.push(g.coordinates[0] as [number, number][]);
+    } else if (g.type === 'MultiPolygon') {
+      (g.coordinates as [number, number][][][]).forEach((poly) =>
+        outerRings.push(poly[0])
+      );
+    }
+  });
 
   let minX = Infinity, maxX = -Infinity, minZ = Infinity, maxZ = -Infinity;
-  outerRing.forEach((coord) => {
-    const r = proj(coord);
-    if (!r) return;
-    const [x, y] = r;
-    const sx = x - 5;
-    const sz = -(y - 5);
-    if (sx < minX) minX = sx;
-    if (sx > maxX) maxX = sx;
-    if (sz < minZ) minZ = sz;
-    if (sz > maxZ) maxZ = sz;
+  outerRings.forEach((ring) => {
+    ring.forEach((coord) => {
+      const r = proj(coord);
+      if (!r) return;
+      const sx = r[0] - 5;
+      const sz = -(r[1] - 5);
+      if (sx < minX) minX = sx;
+      if (sx > maxX) maxX = sx;
+      if (sz < minZ) minZ = sz;
+      if (sz > maxZ) maxZ = sz;
+    });
   });
 
   _centerOffset = [(minX + maxX) / 2, (minZ + maxZ) / 2];

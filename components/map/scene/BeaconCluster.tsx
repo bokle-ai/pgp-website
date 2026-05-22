@@ -33,11 +33,11 @@ export function BeaconCluster({ tnGeoJSON }: Props) {
       {/* Chennai reference dot + ring */}
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[chennaPos[0], EXTRUDE_TOP + 0.01, chennaPos[1]]}>
         <circleGeometry args={[0.13, 32]} />
-        <meshStandardMaterial color={BRAND.accentGold} transparent opacity={0.28} metalness={0.5} roughness={0.4} />
+        <meshStandardMaterial color={BRAND.accentGold} transparent opacity={0.5} metalness={0.5} roughness={0.4} />
       </mesh>
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[chennaPos[0], EXTRUDE_TOP + 0.015, chennaPos[1]]}>
         <ringGeometry args={[0.13, 0.18, 32]} />
-        <meshStandardMaterial color={BRAND.accentGold} transparent opacity={0.5} metalness={0.5} roughness={0.3} />
+        <meshStandardMaterial color={BRAND.accentGold} transparent opacity={0.85} metalness={0.5} roughness={0.3} />
       </mesh>
 
       {/* Project beacons */}

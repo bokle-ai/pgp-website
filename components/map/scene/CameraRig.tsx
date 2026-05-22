@@ -10,9 +10,11 @@ import { useMapStore } from '../hooks/useMapStore';
 import { projectLatLng } from '@/lib/map-projection';
 import { CORRIDORS } from '@/lib/data/map-projects';
 
-const INITIAL_POS = new THREE.Vector3(0, 9, 10);
-const INITIAL_TARGET = new THREE.Vector3(0, 0, 0);
-const ENTRY_POS = new THREE.Vector3(0, 18, 18);
+// Frame the NE region (Chennai outskirts where the 6 projects live)
+// while keeping the rest of TN visible as context.
+const INITIAL_POS = new THREE.Vector3(-1.5, 8, 9);
+const INITIAL_TARGET = new THREE.Vector3(1.2, 0, -1);
+const ENTRY_POS = new THREE.Vector3(-2, 18, 18);
 
 interface Props {
   tnGeoJSON: GeoJSON.FeatureCollection;
