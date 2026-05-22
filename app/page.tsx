@@ -15,7 +15,7 @@ import { ScrollReveal } from "@/components/scroll-reveal";
 import { TrustPillars } from "@/components/trust-pillars";
 import { ProcessTimeline } from "@/components/process-timeline";
 import { LocationsSection } from "@/components/locations-section";
-import { ServiceRows } from "@/components/service-rows";
+import { OfferingCard } from "@/components/offering-card";
 import { FAQSchema } from "@/components/json-ld";
 import { projects } from "@/lib/data/projects";
 import { testimonials } from "@/lib/data/testimonials";
@@ -36,20 +36,38 @@ export default function Home() {
         {/* Stats strip */}
         <StatStrip />
 
-        {/* What we do — editorial rows */}
+        {/* What we do */}
         <section
-          className="pt-20 lg:pt-32 pb-0"
+          id="plots"
+          className="py-16 lg:py-32"
           style={{ backgroundColor: "var(--bg-cream)" }}
           aria-label="Our services"
         >
-          <div className="max-w-7xl mx-auto px-6 lg:px-10 mb-16 lg:mb-24">
-            <SectionHeader
-              eyebrow="What we do"
-              title="Three doors. One trusted partner."
-              subtitle="Whether you're buying your first plot, building your home, or moving on from an old one — we're the same team end-to-end."
-            />
+          <div className="max-w-7xl mx-auto px-6 lg:px-10">
+            <div className="mb-12">
+              <SectionHeader
+                eyebrow="What we do"
+                title="Three doors. One trusted partner."
+                subtitle="Whether you're buying your first plot, building your home, or moving on from an old one — we're the same team end-to-end."
+              />
+            </div>
+
+            <div
+              id="construction"
+              className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x border"
+              style={{ borderColor: "var(--line)" }}
+            >
+              <div className="[border-color:var(--line)]">
+                <OfferingCard type="plots" animationDelay={0} />
+              </div>
+              <div className="[border-color:var(--line)]">
+                <OfferingCard type="construction" animationDelay={0.12} />
+              </div>
+              <div id="resale" className="[border-color:var(--line)]">
+                <OfferingCard type="resale" animationDelay={0.24} />
+              </div>
+            </div>
           </div>
-          <ServiceRows />
         </section>
 
         {/* Locations */}
