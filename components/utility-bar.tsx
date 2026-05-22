@@ -1,11 +1,27 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { siteConfig } from "@/lib/data/site";
 import { Phone } from "lucide-react";
 
 export function UtilityBar() {
+  const [hidden, setHidden] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setHidden(window.scrollY > 40);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <div
-      style={{ backgroundColor: "var(--bg-deep)" }}
-      className="w-full h-9 flex items-center"
+      style={{
+        backgroundColor: "var(--bg-deep)",
+        transform: hidden ? "translateY(-100%)" : "translateY(0)",
+        transition: "transform 0.4s cubic-bezier(0.22, 1, 0.36, 1)",
+      }}
+      className="w-full h-9 flex items-center fixed top-0 left-0 right-0 z-50"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-10 w-full flex items-center justify-between">
         <span
