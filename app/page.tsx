@@ -15,6 +15,7 @@ import { ScrollReveal } from "@/components/scroll-reveal";
 import { TrustPillars } from "@/components/trust-pillars";
 import { ProcessTimeline } from "@/components/process-timeline";
 import { LocationsSection } from "@/components/locations-section";
+import { ProjectMap } from "@/components/map/ProjectMap";
 import { OfferingCard } from "@/components/offering-card";
 import { FAQSchema } from "@/components/json-ld";
 import { projects } from "@/lib/data/projects";
@@ -70,26 +71,25 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Locations */}
+        {/* Interactive 3D Map — replaces Locations section on desktop */}
         <section
           id="locations"
-          className="py-16 lg:py-32"
           style={{ backgroundColor: "white" }}
           aria-label="Locations we serve"
         >
-          <div className="max-w-7xl mx-auto px-6 lg:px-10">
-            <div className="mb-14">
-              <SectionHeader
-                eyebrow="Where we build"
-                title={
-                  <>
-                    Three corridors. Each with its
-                    <br className="hidden lg:block" /> own reason to invest.
-                  </>
-                }
-              />
-            </div>
-            <LocationsSection />
+          <ProjectMap />
+          {/* Mobile fallback already built into ProjectMap — LocationsSection kept as supplemental */}
+          <div className="hidden lg:block max-w-7xl mx-auto px-6 lg:px-10 pb-16">
+            <p
+              className="text-xs text-center"
+              style={{
+                color: "var(--ink-faint)",
+                fontFamily: "var(--font-montserrat, sans-serif)",
+                letterSpacing: "0.1em",
+              }}
+            >
+              Use the filter pills to explore by corridor · Click a beacon to see project details
+            </p>
           </div>
         </section>
 
