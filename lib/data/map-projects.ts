@@ -13,16 +13,19 @@ export type MapProject = {
   amenities: string[];
 };
 
+// All 6 projects are villages within Cheyyar Taluk, Tiruvannamalai district —
+// ~95–105 km SW of Chennai. Coordinates are micro-offsets around Cheyyar town
+// (12.662 N, 79.543 E) so beacons fan out instead of stacking on the same pin.
 export const MAP_PROJECTS: MapProject[] = [
   {
     slug: 'sulaman-nagar',
     name: 'Sulaman Nagar',
     corridor: 'papanthangal',
-    corridorDisplay: 'Papanthangal',
+    corridorDisplay: 'Papanthangal, Cheyyar',
     sizes: '1,200 sq ft',
     priceInLakhs: 9,
     status: 'available',
-    coordinates: { lat: 13.0200, lng: 80.1010 },
+    coordinates: { lat: 12.6850, lng: 79.5200 },
     approval: 'DTCP',
     amenities: ['Ready to Construct'],
   },
@@ -30,11 +33,11 @@ export const MAP_PROJECTS: MapProject[] = [
     slug: 'vetrivel-nagar',
     name: 'Vetrivel Nagar',
     corridor: 'perumpallam',
-    corridorDisplay: 'Perumpallam',
+    corridorDisplay: 'Perumpallam, Cheyyar',
     sizes: '1,150 sq ft',
     priceInLakhs: 15,
     status: 'available',
-    coordinates: { lat: 12.6200, lng: 79.9500 },
+    coordinates: { lat: 12.6500, lng: 79.5600 },
     approval: 'DTCP',
     amenities: ['Ready to Construct'],
   },
@@ -42,11 +45,11 @@ export const MAP_PROJECTS: MapProject[] = [
     slug: 'valli-murugan-nagar',
     name: 'Valli Murugan Nagar',
     corridor: 'perumpallam',
-    corridorDisplay: 'Perumpallam',
+    corridorDisplay: 'Perumpallam, Cheyyar',
     sizes: '600 sq ft',
     priceInLakhs: 4,
     status: 'available',
-    coordinates: { lat: 12.5980, lng: 79.9350 },
+    coordinates: { lat: 12.6480, lng: 79.5620 },
     approval: 'DTCP',
     amenities: ['Ready to Construct'],
   },
@@ -58,7 +61,7 @@ export const MAP_PROJECTS: MapProject[] = [
     sizes: '2,400 sq ft',
     priceInLakhs: 5,
     status: 'available',
-    coordinates: { lat: 12.6710, lng: 79.5500 },
+    coordinates: { lat: 12.6700, lng: 79.5550 },
     approval: 'DTCP',
     amenities: ['Ready to Construct'],
   },
@@ -70,7 +73,7 @@ export const MAP_PROJECTS: MapProject[] = [
     sizes: '1,200 sq ft',
     priceInLakhs: 7.5,
     status: 'available',
-    coordinates: { lat: 12.6580, lng: 79.5650 },
+    coordinates: { lat: 12.6400, lng: 79.5200 },
     approval: 'DTCP',
     amenities: ['Water Line', 'CCTV', 'Fully Compounded', '24×7 Security'],
   },
@@ -82,7 +85,7 @@ export const MAP_PROJECTS: MapProject[] = [
     sizes: '1,000 sq ft',
     priceInLakhs: 7.25,
     status: 'available',
-    coordinates: { lat: 12.6450, lng: 79.5750 },
+    coordinates: { lat: 12.6250, lng: 79.5350 },
     approval: 'DTCP',
     amenities: ['Water Line', 'CCTV', 'Fully Compounded', '24×7 Security'],
   },
@@ -92,24 +95,28 @@ export const CORRIDORS = [
   {
     id: 'papanthangal' as const,
     name: 'Papanthangal',
-    tagline: "West Chennai's rising address.",
-    distance: '15 km from Chennai',
-    center: { lat: 13.0200, lng: 80.1010 },
+    tagline: 'Quiet village pocket inside Cheyyar.',
+    distance: '~100 km from Chennai',
+    center: { lat: 12.6850, lng: 79.5200 },
   },
   {
     id: 'perumpallam' as const,
     name: 'Perumpallam',
-    tagline: 'Affordable land, lasting value.',
-    distance: '50 km from Chennai',
-    center: { lat: 12.6090, lng: 79.9420 },
+    tagline: 'Affordable land, 2 km from Cheyyar town.',
+    distance: '~100 km from Chennai',
+    center: { lat: 12.6490, lng: 79.5610 },
   },
   {
     id: 'cheyyar' as const,
     name: 'Cheyyar',
     tagline: 'Space, security, and peace of mind.',
-    distance: '100 km from Chennai',
-    center: { lat: 12.6580, lng: 79.5650 },
+    distance: '~100 km from Chennai',
+    center: { lat: 12.6620, lng: 79.5430 },
   },
 ];
+
+// Geographic centre of the project cluster — used to draw a single
+// distance arc from Chennai to the area.
+export const CLUSTER_CENTER = { lat: 12.658, lng: 79.540 };
 
 export const CHENNAI_REFERENCE = { lat: 13.0827, lng: 80.2707 };
