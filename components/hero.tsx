@@ -12,7 +12,7 @@ const fadeUp = {
 };
 
 const stagger = {
-  visible: { transition: { staggerChildren: 0.15 } },
+  visible: { transition: { staggerChildren: 0.12 } },
 };
 
 export function Hero() {
@@ -43,48 +43,73 @@ export function Hero() {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-[88vh] flex items-center pt-28 lg:pt-36 pb-16 lg:pb-24 overflow-hidden"
+      className="relative min-h-[92vh] flex items-center pt-32 lg:pt-40 pb-20 lg:pb-28 overflow-hidden"
       aria-label="Hero"
       style={{
-        backgroundColor: "var(--bg-cream)",
-        background:
-          "radial-gradient(circle at 90% 10%, rgba(201,162,75,0.08), transparent 50%), var(--bg-cream)",
+        backgroundColor: "var(--bg-deep)",
+        // Two soft golden glows in opposite corners + base gradient
+        background: `
+          radial-gradient(ellipse 60% 50% at 85% 20%, rgba(212,160,23,0.18), transparent 60%),
+          radial-gradient(ellipse 50% 60% at 10% 80%, rgba(212,160,23,0.10), transparent 60%),
+          linear-gradient(180deg, #0F3D2E 0%, #0C3527 100%)
+        `,
       }}
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-8 gap-y-16 items-center">
-          {/* Left column */}
+      {/* Subtle grain / dot texture */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 opacity-[0.04] pointer-events-none"
+        style={{
+          backgroundImage:
+            "radial-gradient(rgba(255,255,255,0.6) 1px, transparent 1px)",
+          backgroundSize: "26px 26px",
+        }}
+      />
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-10 w-full relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-10 gap-y-14 items-center">
+          {/* LEFT — copy */}
           <div className="lg:col-span-7">
             <motion.div
-              {...(prefersReduced ? {} : { initial: "hidden", animate: "visible", variants: stagger })}
+              {...(prefersReduced
+                ? {}
+                : { initial: "hidden", animate: "visible", variants: stagger })}
             >
-              <motion.div {...motionProps(0)} className="flex items-center gap-3 mb-6">
-                <div
-                  className="h-px w-8"
+              <motion.div
+                {...motionProps(0)}
+                className="inline-flex items-center gap-2 px-3 py-1.5 mb-7 rounded-full"
+                style={{
+                  border: "1px solid rgba(212,160,23,0.32)",
+                  backgroundColor: "rgba(212,160,23,0.08)",
+                }}
+              >
+                <span
+                  className="w-1.5 h-1.5 rounded-full"
                   style={{ backgroundColor: "var(--accent-gold)" }}
                   aria-hidden="true"
                 />
                 <span
-                  className="text-xs font-medium uppercase tracking-widest"
+                  className="text-[11px] uppercase"
                   style={{
                     color: "var(--accent-gold)",
                     letterSpacing: "0.18em",
                     fontFamily: "var(--font-montserrat, sans-serif)",
+                    fontWeight: 600,
                   }}
                 >
-                  Est. 2013 · Chennai Outskirts
+                  Est. 2013 · Chennai Outskirts · 310+ Families
                 </span>
               </motion.div>
 
               <motion.h1
-                {...motionProps(0.1)}
-                className="font-display leading-[1.05] tracking-tight mb-6"
+                {...motionProps(0.08)}
+                className="font-display leading-[1.02] tracking-tight mb-7"
                 style={{
-                  fontSize: "clamp(2.2rem, 5vw + 1rem, 5.5rem)",
+                  fontSize: "clamp(2.4rem, 5.2vw + 1rem, 6rem)",
                   fontFamily: "var(--font-playfair, Georgia, serif)",
                   fontWeight: 600,
-                  letterSpacing: "-0.02em",
-                  color: "var(--ink)",
+                  letterSpacing: "-0.025em",
+                  color: "var(--bg-cream)",
                 }}
               >
                 Land that turns
@@ -102,52 +127,52 @@ export function Hero() {
               </motion.h1>
 
               <motion.p
-                {...motionProps(0.22)}
-                className="text-base lg:text-lg mb-8 max-w-[50ch]"
+                {...motionProps(0.18)}
+                className="text-base lg:text-lg mb-10 max-w-[54ch]"
                 style={{
-                  color: "var(--ink-muted)",
+                  color: "rgba(248,245,239,0.78)",
                   lineHeight: 1.65,
                   fontFamily: "var(--font-montserrat, sans-serif)",
                 }}
               >
                 DTCP-approved plots, turnkey construction at honest rates, and
-                trusted resale — across Papanthangal, Perumpallam, and Cheyyar.
-                Three corridors, one quietly relentless team.
+                trusted resale — across Cheyyar Taluk, a quiet 100&nbsp;km south-west of Chennai.
+                Three village corridors, one quietly relentless team.
               </motion.p>
 
               <motion.div
-                {...motionProps(0.34)}
-                className="flex flex-col sm:flex-row gap-3 mb-10"
+                {...motionProps(0.28)}
+                className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 mb-12"
               >
                 <Link
                   href="/#site-visit"
-                  className="inline-flex items-center justify-center px-7 h-14 text-sm font-medium transition-opacity hover:opacity-90 active:scale-[0.98]"
+                  className="inline-flex items-center justify-center px-8 h-[56px] text-[15px] transition-all hover:brightness-110 active:scale-[0.98]"
                   style={{
-                    backgroundColor: "var(--accent-gold)",
+                    background:
+                      "linear-gradient(135deg, var(--accent-gold) 0%, #E0B43F 100%)",
                     color: "var(--bg-deep)",
                     fontFamily: "var(--font-montserrat, sans-serif)",
-                    fontWeight: 500,
-                    borderRadius: "6px",
-                    minHeight: "56px",
+                    fontWeight: 600,
+                    borderRadius: "999px",
+                    boxShadow:
+                      "0 12px 32px rgba(212,160,23,0.35), inset 0 1px 0 rgba(255,255,255,0.3)",
                   }}
                 >
                   Schedule a Site Visit
                 </Link>
                 <Link
                   href="/#plots"
-                  className="inline-flex items-center justify-center px-7 h-14 text-sm font-medium border group transition-all hover:border-[var(--accent-gold)]"
+                  className="group inline-flex items-center text-[15px] transition-colors"
                   style={{
-                    color: "var(--ink)",
-                    borderColor: "var(--line)",
+                    color: "rgba(248,245,239,0.88)",
                     fontFamily: "var(--font-montserrat, sans-serif)",
                     fontWeight: 500,
-                    borderRadius: "6px",
-                    minHeight: "56px",
                   }}
                 >
-                  Browse Available Plots
+                  Or browse available plots
                   <span
-                    className="ml-1.5 transition-transform group-hover:translate-x-1"
+                    className="ml-2 transition-transform group-hover:translate-x-1"
+                    style={{ color: "var(--accent-gold)" }}
                     aria-hidden="true"
                   >
                     →
@@ -155,71 +180,87 @@ export function Hero() {
                 </Link>
               </motion.div>
 
+              {/* Social proof / trust strip */}
               <motion.div
-                {...motionProps(0.46)}
-                className="grid grid-cols-2 sm:flex sm:flex-wrap items-center gap-x-5 gap-y-3"
+                {...motionProps(0.4)}
+                className="pt-8"
+                style={{ borderTop: "1px solid rgba(248,245,239,0.08)" }}
               >
-                {[
-                  "DTCP & CMDA Approved",
-                  "RERA Registered",
-                  "100% Clear Titles",
-                  "Local Since 2013",
-                ].map((item, i) => (
-                  <div key={item} className="flex items-center gap-2">
-                    {i > 0 && (
+                <p
+                  className="text-[11px] uppercase mb-4"
+                  style={{
+                    color: "rgba(248,245,239,0.55)",
+                    letterSpacing: "0.22em",
+                    fontFamily: "var(--font-montserrat, sans-serif)",
+                    fontWeight: 600,
+                  }}
+                >
+                  Trusted across the Chennai outskirts since 2013
+                </p>
+                <div className="flex flex-wrap items-center gap-x-7 gap-y-3">
+                  {[
+                    { num: "310+", label: "Families housed" },
+                    { num: "12+", label: "Years operating" },
+                    { num: "6", label: "Active projects" },
+                    { num: "100%", label: "DTCP approved" },
+                  ].map((stat) => (
+                    <div key={stat.label} className="flex items-baseline gap-2">
                       <span
-                        className="hidden sm:block w-1 h-1 rounded-full"
-                        style={{ backgroundColor: "var(--accent-gold)" }}
-                        aria-hidden="true"
-                      />
-                    )}
-                    <span
-                      className="flex items-center gap-1.5 text-sm"
-                      style={{
-                        color: "var(--ink-muted)",
-                        fontFamily: "var(--font-montserrat, sans-serif)",
-                      }}
-                    >
-                      <svg
-                        width="14"
-                        height="14"
-                        viewBox="0 0 14 14"
-                        fill="none"
-                        aria-hidden="true"
+                        className="text-2xl"
+                        style={{
+                          color: "var(--bg-cream)",
+                          fontFamily: "var(--font-playfair, Georgia, serif)",
+                          fontWeight: 600,
+                        }}
                       >
-                        <circle
-                          cx="7"
-                          cy="7"
-                          r="7"
-                          fill="var(--accent-gold)"
-                          opacity="0.2"
-                        />
-                        <path
-                          d="M4 7l2 2 4-4"
-                          stroke="var(--accent-gold)"
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                      {item}
-                    </span>
-                  </div>
-                ))}
+                        {stat.num}
+                      </span>
+                      <span
+                        className="text-xs"
+                        style={{
+                          color: "rgba(248,245,239,0.6)",
+                          fontFamily: "var(--font-montserrat, sans-serif)",
+                        }}
+                      >
+                        {stat.label}
+                      </span>
+                    </div>
+                  ))}
+                </div>
               </motion.div>
             </motion.div>
           </div>
 
-          {/* Right column — image collage */}
-          <div className="lg:col-span-5 relative h-[540px] lg:h-[600px] hidden md:block">
-            {/* Large image — aerial plots (with parallax) */}
+          {/* RIGHT — image collage */}
+          <div className="lg:col-span-5 relative h-[480px] lg:h-[600px] hidden md:block">
+            {/* Soft golden glow behind the visuals */}
+            <div
+              aria-hidden="true"
+              className="absolute -inset-12 rounded-full pointer-events-none"
+              style={{
+                background:
+                  "radial-gradient(circle, rgba(212,160,23,0.16) 0%, transparent 60%)",
+              }}
+            />
+
+            {/* Large image — aerial plots */}
             <motion.div
               style={{ y: parallaxY }}
-              className="absolute right-0 top-0 w-[75%] aspect-[4/5] rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(14,43,34,0.18)] img-warm"
-              initial={prefersReduced ? {} : { opacity: 0, scale: 0.96 }}
+              className="absolute right-0 top-0 w-[78%] aspect-[4/5] rounded-2xl overflow-hidden img-warm"
+              initial={
+                prefersReduced ? {} : { opacity: 0, scale: 0.96 }
+              }
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.9, delay: 0.3, ease: EASE }}
             >
+              <div
+                className="absolute inset-0 z-10 pointer-events-none"
+                style={{
+                  boxShadow:
+                    "inset 0 0 0 1px rgba(212,160,23,0.22), 0 24px 64px rgba(0,0,0,0.45)",
+                  borderRadius: "1rem",
+                }}
+              />
               <Image
                 src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=700&h=875&fit=crop"
                 alt="Aerial view of a plotted residential layout with marked plots and roads"
@@ -232,12 +273,22 @@ export function Hero() {
 
             {/* Smaller image — family site visit */}
             <motion.div
-              className="absolute left-0 bottom-10 w-[52%] aspect-square rounded-2xl overflow-hidden shadow-[0_12px_40px_rgba(14,43,34,0.15)] img-warm"
+              className="absolute left-0 bottom-12 w-[54%] aspect-square rounded-2xl overflow-hidden img-warm"
               style={{ zIndex: 2 }}
-              initial={prefersReduced ? {} : { opacity: 0, scale: 0.96 }}
+              initial={
+                prefersReduced ? {} : { opacity: 0, scale: 0.96 }
+              }
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.9, delay: 0.45, ease: EASE }}
             >
+              <div
+                className="absolute inset-0 z-10 pointer-events-none"
+                style={{
+                  boxShadow:
+                    "inset 0 0 0 1px rgba(212,160,23,0.2), 0 18px 48px rgba(0,0,0,0.4)",
+                  borderRadius: "1rem",
+                }}
+              />
               <Image
                 src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=400&fit=crop"
                 alt="Young family reviewing property documents at a site visit"
@@ -247,63 +298,57 @@ export function Hero() {
               />
             </motion.div>
 
-            {/* Smallest image — blueprint */}
+            {/* Floating inventory card — works on dark bg */}
             <motion.div
-              className="absolute left-10 top-0 w-[36%] aspect-[3/4] rounded-2xl overflow-hidden shadow-[0_8px_24px_rgba(14,43,34,0.12)] img-warm"
-              style={{ zIndex: 3 }}
-              initial={prefersReduced ? {} : { opacity: 0, scale: 0.96 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.9, delay: 0.55, ease: EASE }}
-            >
-              <Image
-                src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=280&h=373&fit=crop"
-                alt="Construction blueprint and survey documents for a plot layout"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 0px, 14vw"
-              />
-            </motion.div>
-
-            {/* Floating inventory card */}
-            <motion.div
-              className="absolute right-4 bottom-4 z-10 px-4 py-3 rounded-xl"
+              className="absolute right-4 bottom-6 z-20 px-5 py-4 rounded-xl"
               style={{
-                backgroundColor: "var(--bg-deep)",
-                border: "1px solid var(--accent-gold)",
-                minWidth: "200px",
+                backgroundColor: "rgba(15,61,46,0.85)",
+                border: "1px solid rgba(212,160,23,0.5)",
+                backdropFilter: "blur(10px)",
+                WebkitBackdropFilter: "blur(10px)",
+                minWidth: "220px",
+                boxShadow: "0 12px 32px rgba(0,0,0,0.4)",
               }}
-              initial={prefersReduced ? {} : { opacity: 0, y: 16 }}
+              initial={
+                prefersReduced ? {} : { opacity: 0, y: 16 }
+              }
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.75, ease: EASE }}
             >
-              <div className="flex items-center gap-2 mb-1">
+              <div className="flex items-center gap-2 mb-1.5">
                 <motion.span
                   className="w-2 h-2 rounded-full"
                   style={{ backgroundColor: "var(--accent-gold)" }}
-                  animate={prefersReduced ? {} : { opacity: [1, 0.3, 1] }}
+                  animate={
+                    prefersReduced ? {} : { opacity: [1, 0.3, 1] }
+                  }
                   transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                   aria-hidden="true"
                 />
                 <span
-                  className="text-xs uppercase tracking-wider"
+                  className="text-[10px] uppercase tracking-wider"
                   style={{
                     color: "var(--accent-gold)",
                     fontFamily: "var(--font-montserrat, sans-serif)",
-                    letterSpacing: "0.1em",
+                    letterSpacing: "0.16em",
+                    fontWeight: 700,
                   }}
                 >
                   Live inventory
                 </span>
               </div>
               <p
-                className="text-sm font-medium"
+                className="text-sm"
                 style={{
                   color: "var(--bg-cream)",
                   fontFamily: "var(--font-montserrat, sans-serif)",
+                  fontWeight: 500,
+                  lineHeight: 1.4,
                 }}
               >
                 Plots available across
-                <br />6 active projects
+                <br />
+                6 active projects
               </p>
             </motion.div>
           </div>
