@@ -2,7 +2,7 @@
 
 import { useMemo } from 'react';
 import * as THREE from 'three';
-import { getProjection } from '@/lib/map-projection';
+import { getProjection, getMeshCenterOffset } from '@/lib/map-projection';
 import { BRAND } from '@/lib/brand-tokens';
 
 interface Props {
@@ -13,25 +13,28 @@ interface Props {
 export function TamilNaduMesh({ tnGeoJSON, lite = false }: Props) {
   const { geometry, lineGeometry } = useMemo(() => {
     const projection = getProjection(tnGeoJSON as Parameters<typeof getProjection>[0]);
+    const center = getMeshCenterOffset(tnGeoJSON);
 
     const feature = tnGeoJSON.features[0];
-    const geometry = feature.geometry;
-    if (geometry.type !== 'Polygon' && geometry.type !== 'MultiPolygon') {
+    const geom = feature.geometry;
+    if (geom.type !== 'Polygon' && geom.type !== 'MultiPolygon') {
       return { geometry: new THREE.BufferGeometry(), lineGeometry: new THREE.BufferGeometry() };
     }
     const coords =
-      geometry.type === 'Polygon'
-        ? (geometry.coordinates[0] as [number, number][])
-        : (geometry.coordinates[0][0] as [number, number][]);
+      geom.type === 'Polygon'
+        ? (geom.coordinates[0] as [number, number][])
+        : (geom.coordinates[0][0] as [number, number][]);
 
-    // Build extruded shape
+    // Build shape using bounding-box-centred coordinates
     const shape = new THREE.Shape();
     coords.forEach((coord, i) => {
       const result = projection(coord);
       if (!result) return;
       const [x, y] = result;
-      if (i === 0) shape.moveTo(x - 5, -(y - 5));
-      else shape.lineTo(x - 5, -(y - 5));
+      const sx = (x - 5) - center[0];
+      const sz = (-(y - 5)) - center[1];
+      if (i === 0) shape.moveTo(sx, sz);
+      else shape.lineTo(sx, sz);
     });
 
     const extrudeDepth = lite ? 0.25 : 0.4;
@@ -44,33 +47,26 @@ export function TamilNaduMesh({ tnGeoJSON, lite = false }: Props) {
       bevelOffset: 0,
     };
 
-    const geom = new THREE.ExtrudeGeometry(shape, extrudeSettings);
-    geom.computeVertexNormals();
-    geom.center();
+    // No .center() — our coordinates are already bounding-box centred
+    const extrudedGeom = new THREE.ExtrudeGeometry(shape, extrudeSettings);
+    extrudedGeom.computeVertexNormals();
 
     // Coastline line — floats above top face
     const topY = extrudeDepth + 0.01;
-    const points = coords.map((coord) => {
+    const linePoints = coords.map((coord) => {
       const result = projection(coord);
       if (!result) return new THREE.Vector3(0, topY, 0);
       const [x, y] = result;
-      return new THREE.Vector3(x - 5, topY, -(y - 5));
+      return new THREE.Vector3((x - 5) - center[0], topY, (-(y - 5)) - center[1]);
     });
-    // Centre line geometry to match mesh
-    const centre = new THREE.Vector3();
-    points.forEach((p) => centre.add(p));
-    centre.divideScalar(points.length);
-    const centredPoints = points.map((p) =>
-      new THREE.Vector3(p.x - centre.x, p.y, p.z - centre.z)
-    );
-    const lineGeom = new THREE.BufferGeometry().setFromPoints(centredPoints);
+    const lineGeom = new THREE.BufferGeometry().setFromPoints(linePoints);
 
-    return { geometry: geom, lineGeometry: lineGeom };
+    return { geometry: extrudedGeom, lineGeometry: lineGeom };
   }, [tnGeoJSON, lite]);
 
   return (
     <group>
-      {/* Landmass */}
+      {/* Landmass — rotated to lie flat */}
       <mesh
         geometry={geometry}
         rotation={[-Math.PI / 2, 0, 0]}
@@ -80,15 +76,15 @@ export function TamilNaduMesh({ tnGeoJSON, lite = false }: Props) {
       >
         <meshStandardMaterial
           color={BRAND.bgDeep}
-          roughness={0.58}
+          roughness={0.56}
           metalness={0.04}
           envMapIntensity={0.35}
         />
       </mesh>
 
-      {/* Coastline gold accent */}
-      <lineSegments geometry={lineGeometry} rotation={[0, 0, 0]} position={[0, 0, 0]}>
-        <lineBasicMaterial color={BRAND.accentGold} transparent opacity={0.45} />
+      {/* Gold coastline accent line */}
+      <lineSegments geometry={lineGeometry} position={[0, 0, 0]}>
+        <lineBasicMaterial color={BRAND.accentGold} transparent opacity={0.5} />
       </lineSegments>
     </group>
   );

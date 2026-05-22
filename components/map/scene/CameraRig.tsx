@@ -66,7 +66,7 @@ export function CameraRig({ tnGeoJSON, lite = false }: Props) {
     const [px, pz] = projectLatLng(
       selectedProject.coordinates.lat,
       selectedProject.coordinates.lng,
-      tnGeoJSON as Parameters<typeof projectLatLng>[2]
+      tnGeoJSON
     );
 
     const targetPos = new THREE.Vector3(px + 1.5, 2.5, pz + 3);
@@ -102,7 +102,7 @@ export function CameraRig({ tnGeoJSON, lite = false }: Props) {
     const [px, pz] = projectLatLng(
       corridor.center.lat,
       corridor.center.lng,
-      tnGeoJSON as Parameters<typeof projectLatLng>[2]
+      tnGeoJSON
     );
     const targetPos = new THREE.Vector3(px, 5, pz + 5);
     const lookAt = new THREE.Vector3(px, 0, pz);

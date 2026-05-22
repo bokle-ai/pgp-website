@@ -1,6 +1,6 @@
 'use client';
 
-import { Suspense } from 'react';
+import { Suspense, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Environment, PerformanceMonitor } from '@react-three/drei';
 import { EffectComposer, Noise, Vignette } from '@react-three/postprocessing';
@@ -8,18 +8,21 @@ import { BlendFunction } from 'postprocessing';
 import { TamilNaduMesh } from './TamilNaduMesh';
 import { TableBackdrop } from './TableBackdrop';
 import { BeaconCluster } from './BeaconCluster';
+import { DistrictLines } from './DistrictLines';
+import { MapLabels } from './MapLabels';
 import { CameraRig } from './CameraRig';
 import { BRAND } from '@/lib/brand-tokens';
-import { useState } from 'react';
 
 interface Props {
   tnGeoJSON: GeoJSON.FeatureCollection;
+  districtGeoJSON: GeoJSON.FeatureCollection;
   lite?: boolean;
 }
 
-export function Scene({ tnGeoJSON, lite = false }: Props) {
+export function Scene({ tnGeoJSON, districtGeoJSON, lite = false }: Props) {
   const [degraded, setDegraded] = useState(false);
   const shadows = !lite && !degraded;
+  const extrudeDepth = lite ? 0.25 : 0.4;
 
   return (
     <Canvas
@@ -51,23 +54,29 @@ export function Scene({ tnGeoJSON, lite = false }: Props) {
         shadow-bias={-0.0005}
       />
 
-      {/* Rim light — warm gold from behind-left */}
+      {/* Rim — warm gold from behind-left */}
       <directionalLight position={[-4, 6, -3]} intensity={0.3} color={BRAND.accentGold} />
 
-      {/* Fill light — soft front */}
+      {/* Fill — soft front */}
       <pointLight position={[0, 3, 5]} intensity={0.38} color="#FFF5DC" distance={18} />
 
       <Suspense fallback={null}>
         <Environment preset="studio" environmentIntensity={0.3} />
         <TableBackdrop />
         <TamilNaduMesh tnGeoJSON={tnGeoJSON} lite={lite} />
+        <DistrictLines
+          tnGeoJSON={tnGeoJSON}
+          districtGeoJSON={districtGeoJSON}
+          extrudeDepth={extrudeDepth}
+        />
         <BeaconCluster tnGeoJSON={tnGeoJSON} />
+        <MapLabels tnGeoJSON={tnGeoJSON} />
         <CameraRig tnGeoJSON={tnGeoJSON} lite={lite} />
       </Suspense>
 
       {!lite && !degraded && (
         <EffectComposer multisampling={4}>
-          <Noise opacity={0.038} blendFunction={BlendFunction.OVERLAY} />
+          <Noise opacity={0.035} blendFunction={BlendFunction.OVERLAY} />
           <Vignette eskil={false} offset={0.18} darkness={0.38} />
         </EffectComposer>
       )}

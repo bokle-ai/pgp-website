@@ -1,11 +1,10 @@
 import { geoMercator } from 'd3-geo';
 import type { GeoPermissibleObjects } from 'd3-geo';
 
-// We lazily initialise the projection once the GeoJSON is loaded.
-// This module exports a factory so the projection is consistent across
-// TamilNaduMesh, CoastlineLine, and all beacon placements.
-
 let _projection: ReturnType<typeof geoMercator> | null = null;
+// The bounding-box centre of the extruded state mesh after THREE geometry.center()
+// We compute this once from the outer ring and reuse it so all scene objects align.
+let _centerOffset: [number, number] | null = null;
 
 export function getProjection(tnGeoJSON: GeoPermissibleObjects) {
   if (!_projection) {
@@ -14,15 +13,52 @@ export function getProjection(tnGeoJSON: GeoPermissibleObjects) {
   return _projection;
 }
 
+/** Compute and cache the bounding-box centre of the state outline in scene space.
+ *  This matches what THREE.ExtrudeGeometry.center() applies to the mesh.
+ */
+export function getMeshCenterOffset(tnGeoJSON: GeoJSON.FeatureCollection): [number, number] {
+  if (_centerOffset) return _centerOffset;
+
+  const proj = getProjection(tnGeoJSON as GeoPermissibleObjects);
+  const feature = tnGeoJSON.features[0];
+  const geom = feature.geometry;
+  if (geom.type !== 'Polygon' && geom.type !== 'MultiPolygon') {
+    _centerOffset = [0, 0];
+    return _centerOffset;
+  }
+  const outerRing =
+    geom.type === 'Polygon'
+      ? (geom.coordinates[0] as [number, number][])
+      : (geom.coordinates[0][0] as [number, number][]);
+
+  let minX = Infinity, maxX = -Infinity, minZ = Infinity, maxZ = -Infinity;
+  outerRing.forEach((coord) => {
+    const r = proj(coord);
+    if (!r) return;
+    const [x, y] = r;
+    const sx = x - 5;
+    const sz = -(y - 5);
+    if (sx < minX) minX = sx;
+    if (sx > maxX) maxX = sx;
+    if (sz < minZ) minZ = sz;
+    if (sz > maxZ) maxZ = sz;
+  });
+
+  _centerOffset = [(minX + maxX) / 2, (minZ + maxZ) / 2];
+  return _centerOffset;
+}
+
+/** Project lat/lng → [x, z] in scene space, centred on the TN mesh origin. */
 export function projectLatLng(
   lat: number,
   lng: number,
-  tnGeoJSON: GeoPermissibleObjects
+  tnGeoJSON: GeoJSON.FeatureCollection
 ): [number, number] {
-  const proj = getProjection(tnGeoJSON);
+  const proj = getProjection(tnGeoJSON as GeoPermissibleObjects);
   const result = proj([lng, lat]);
   if (!result) return [0, 0];
   const [x, y] = result;
-  // Offset to centre and flip Y (d3 projects Y-down, Three.js is Y-up)
-  return [x - 5, -(y - 5)];
+  const raw: [number, number] = [x - 5, -(y - 5)];
+  const center = getMeshCenterOffset(tnGeoJSON);
+  return [raw[0] - center[0], raw[1] - center[1]];
 }

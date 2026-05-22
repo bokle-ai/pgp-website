@@ -14,17 +14,24 @@ interface Props {
 
 export function ProjectMap3D({ viewportType }: Props) {
   const [tnGeoJSON, setTnGeoJSON] = useState<GeoJSON.FeatureCollection | null>(null);
+  const [districtGeoJSON, setDistrictGeoJSON] = useState<GeoJSON.FeatureCollection | null>(null);
 
   useEffect(() => {
-    fetch('/data/tamil-nadu.geojson')
-      .then((r) => r.json())
-      .then(setTnGeoJSON)
+    Promise.all([
+      fetch('/data/tamil-nadu.geojson').then((r) => r.json()),
+      fetch('/data/tamil-nadu-districts.geojson').then((r) => r.json()),
+    ])
+      .then(([tn, dist]) => {
+        setTnGeoJSON(tn);
+        setDistrictGeoJSON(dist);
+      })
       .catch(console.error);
   }, []);
 
   const lite = viewportType === '3d-lite';
+  const loading = !tnGeoJSON || !districtGeoJSON;
 
-  if (!tnGeoJSON) {
+  if (loading) {
     return (
       <div
         className="w-full flex items-center justify-center"
@@ -47,10 +54,11 @@ export function ProjectMap3D({ viewportType }: Props) {
 
   return (
     <div className="relative w-full" style={{ height: lite ? '60vh' : '80vh' }}>
-      {/* 3D Canvas */}
-      <Scene tnGeoJSON={tnGeoJSON} lite={lite} />
-
-      {/* UI overlays */}
+      <Scene
+        tnGeoJSON={tnGeoJSON}
+        districtGeoJSON={districtGeoJSON}
+        lite={lite}
+      />
       {!lite && <MapHeader />}
       <CorridorFilter />
       {!lite && <StatsRow />}
