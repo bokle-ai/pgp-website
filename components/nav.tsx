@@ -22,6 +22,10 @@ const navLinks = [
   { label: "Contact", href: "/contact" },
 ];
 
+// Logo sits between these two halves at the visual centre of the nav.
+const navLinksLeft = navLinks.slice(0, 3);  // Plots, Construction, Resale
+const navLinksRight = navLinks.slice(3);    // Locations, About, Contact
+
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -48,13 +52,22 @@ export function Nav() {
         height: "80px",
       }}
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 h-full flex items-center justify-between">
-        <Link href="/" aria-label="Prime Golden Properties home">
-          <PGPLogo darkMode={false} />
+      <div className="max-w-7xl mx-auto px-6 lg:px-10 h-full relative flex items-center justify-center lg:justify-center">
+        {/* Mobile: left-aligned logo so the hamburger fits on the right */}
+        <Link
+          href="/"
+          aria-label="Prime Golden Properties home"
+          className="lg:hidden absolute left-6"
+        >
+          <PGPLogo variant="icon" />
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-8" aria-label="Main navigation">
-          {mounted && navLinks.map((link, i) => (
+        {/* Desktop: nav with logo centred between two halves of links */}
+        <nav
+          className="hidden lg:flex items-center gap-8"
+          aria-label="Main navigation"
+        >
+          {mounted && navLinksLeft.map((link, i) => (
             <motion.div
               key={link.label}
               initial={{ opacity: 0, y: -8 }}
@@ -74,9 +87,42 @@ export function Nav() {
               </Link>
             </motion.div>
           ))}
+
+          {/* Centre logo — replaces the wordmark, sits between the two link halves */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.92 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.15, ease: EASE }}
+            className="mx-2"
+          >
+            <Link href="/" aria-label="Prime Golden Properties home" className="block">
+              <PGPLogo variant="icon" />
+            </Link>
+          </motion.div>
+
+          {mounted && navLinksRight.map((link, i) => (
+            <motion.div
+              key={link.label}
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.2 + (navLinksLeft.length + i) * 0.06, ease: EASE }}
+            >
+              <Link
+                href={link.href}
+                className="text-sm font-medium transition-colors hover:text-[var(--accent-gold)]"
+                style={{
+                  color: "var(--ink-muted)",
+                  fontFamily: "var(--font-montserrat, sans-serif)",
+                  fontWeight: 500,
+                }}
+              >
+                {link.label}
+              </Link>
+            </motion.div>
+          ))}
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="absolute right-6 lg:right-10 flex items-center gap-3">
           {mounted && (
             <motion.div
               initial={{ opacity: 0, scale: 0.92 }}
