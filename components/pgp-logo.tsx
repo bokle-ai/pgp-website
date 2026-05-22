@@ -1,11 +1,13 @@
 import Image from "next/image";
 
 interface PGPLogoProps {
-  variant?: "horizontal" | "stacked" | "icon";
+  variant?: "horizontal" | "stacked" | "icon" | "full";
   className?: string;
   darkMode?: boolean;
   /** Pixel size of the icon crop (height). Width auto-scales with the same ratio. Only used for variant="icon". */
   size?: number;
+  /** Height in pixels for the full-lockup variant. Defaults to 96. */
+  height?: number;
 }
 
 // Natural logo dimensions: 1080 × 1350 (portrait, ratio = 0.8)
@@ -14,7 +16,36 @@ interface PGPLogoProps {
 //   render image at width=110px (height auto = 137.5px),
 //   center horizontally, clip to top 58px → shows y 0–568 of original ✓
 
-export function PGPLogo({ variant = "horizontal", className = "", darkMode = false, size }: PGPLogoProps) {
+export function PGPLogo({ variant = "horizontal", className = "", darkMode = false, size, height }: PGPLogoProps) {
+  /* ── Full-lockup variant — shows the entire PNG (emblem + wordmark) without cropping,
+       sized by height. This is what we use in the nav now. */
+  if (variant === "full") {
+    const h = height ?? 96;
+    // Original image ratio: 1080 × 1350 = 0.8 (portrait)
+    const w = Math.round(h * (1080 / 1350));
+    return (
+      <div
+        className={className}
+        aria-label="Prime Golden Properties"
+        style={{ width: w, height: h, transition: "width 0.3s ease, height 0.3s ease" }}
+      >
+        <Image
+          src="/logo.png"
+          alt="Prime Golden Properties"
+          width={1080}
+          height={1350}
+          priority
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "contain",
+            display: "block",
+          }}
+        />
+      </div>
+    );
+  }
+
   /* ── Stacked / full-lockup variant (footer, print) ── */
   if (variant === "stacked") {
     return (

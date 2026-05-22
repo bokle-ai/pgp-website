@@ -35,9 +35,9 @@ export function Nav() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Big & prominent logo: 76px at rest, 56px when scrolled.
-  const logoSize = scrolled ? 56 : 76;
-  const barPaddingY = scrolled ? "10px" : "16px";
+  // Big & prominent full-lockup logo: 100 px tall at rest, 64 px when scrolled.
+  const logoHeight = scrolled ? 64 : 100;
+  const barPaddingY = scrolled ? "8px" : "10px";
 
   return (
     <motion.header
@@ -72,19 +72,55 @@ export function Nav() {
           <Link
             href="/"
             aria-label="Prime Golden Properties home"
-            className="block relative"
+            className="relative flex items-center gap-3.5"
           >
-            {/* Subtle gold halo behind the logo */}
+            {/* Soft gold halo behind the emblem */}
             <span
               aria-hidden="true"
-              className="absolute inset-0 pointer-events-none"
+              className="absolute pointer-events-none"
               style={{
+                left: 0,
+                top: 0,
+                width: logoHeight * 0.9,
+                height: logoHeight,
                 background:
-                  "radial-gradient(circle, rgba(212,160,23,0.18) 0%, rgba(212,160,23,0) 70%)",
-                transform: "scale(1.5)",
+                  "radial-gradient(circle, rgba(212,160,23,0.28) 0%, rgba(212,160,23,0) 65%)",
+                transform: "scale(1.3)",
               }}
             />
-            <PGPLogo variant="icon" size={logoSize} />
+            <PGPLogo variant="icon" size={logoHeight} />
+            <div
+              className="hidden sm:flex flex-col"
+              style={{ lineHeight: 1 }}
+            >
+              <span
+                style={{
+                  fontFamily: "var(--font-playfair, Georgia, serif)",
+                  fontWeight: 700,
+                  fontSize: scrolled ? "1.15rem" : "1.4rem",
+                  color: "var(--bg-cream)",
+                  letterSpacing: "-0.01em",
+                  lineHeight: 1.1,
+                  transition: "font-size 0.3s ease",
+                }}
+              >
+                Prime Golden
+              </span>
+              <span
+                style={{
+                  fontFamily: "var(--font-montserrat, sans-serif)",
+                  fontWeight: 700,
+                  fontSize: scrolled ? "0.6rem" : "0.7rem",
+                  color: "var(--accent-gold)",
+                  letterSpacing: "0.32em",
+                  textTransform: "uppercase",
+                  marginTop: 4,
+                  transition: "font-size 0.3s ease",
+                }}
+              >
+                Properties
+              </span>
+            </div>
           </Link>
 
           <nav
@@ -101,12 +137,12 @@ export function Nav() {
                 >
                   <Link
                     href={link.href}
-                    className="group relative text-[15px] transition-colors"
+                    className="group relative text-[17px] transition-colors"
                     style={{
-                      color: "rgba(248,245,239,0.85)",
+                      color: "rgba(248,245,239,0.96)",
                       fontFamily: "var(--font-montserrat, sans-serif)",
                       fontWeight: 500,
-                      letterSpacing: "0.01em",
+                      letterSpacing: "0.005em",
                     }}
                   >
                     <span className="transition-colors group-hover:text-[var(--accent-gold)]">
@@ -127,9 +163,9 @@ export function Nav() {
         <div className="flex items-center gap-3">
           <Link
             href="/login"
-            className="hidden lg:inline-flex items-center text-[15px] transition-colors hover:text-[var(--accent-gold)]"
+            className="hidden lg:inline-flex items-center text-[16px] transition-colors hover:text-[var(--accent-gold)]"
             style={{
-              color: "rgba(248,245,239,0.75)",
+              color: "rgba(248,245,239,0.88)",
               fontFamily: "var(--font-montserrat, sans-serif)",
               fontWeight: 500,
             }}
@@ -145,7 +181,7 @@ export function Nav() {
             >
               <Link
                 href="/#site-visit"
-                className="hidden lg:inline-flex items-center text-[15px] transition-all active:scale-[0.98] hover:brightness-110"
+                className="hidden lg:inline-flex items-center text-[16px] transition-all active:scale-[0.98] hover:brightness-110"
                 style={{
                   background:
                     "linear-gradient(135deg, var(--accent-gold) 0%, #E0B43F 100%)",

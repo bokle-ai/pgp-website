@@ -17,7 +17,9 @@ export function UtilityBar() {
   return (
     <div
       style={{
-        backgroundColor: "var(--bg-deep)",
+        // Near-black so it visually separates from the deep-green nav below.
+        backgroundColor: "#08221A",
+        borderBottom: "1px solid rgba(212,160,23,0.18)",
         transform: hidden ? "translateY(-100%)" : "translateY(0)",
         transition: "transform 0.4s cubic-bezier(0.22, 1, 0.36, 1)",
       }}
