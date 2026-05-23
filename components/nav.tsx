@@ -72,56 +72,23 @@ export function Nav() {
           <Link
             href="/"
             aria-label="Prime Golden Properties home"
-            className="relative flex items-center gap-3.5"
+            className="relative flex items-center"
           >
-            {/* Light cream tile so the green emblem doesn't disappear into the dark nav */}
+            {/* Cream tile holding the FULL logo lockup (pin + PRIME GOLDEN PROPERTIES wordmark baked into the PNG). */}
             <div
               className="flex items-center justify-center relative"
               style={{
-                width: logoHeight + 14,
                 height: logoHeight + 14,
                 backgroundColor: "var(--bg-cream)",
                 borderRadius: 14,
                 border: "1px solid rgba(212,160,23,0.45)",
                 boxShadow:
                   "0 8px 22px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.6)",
-                padding: 7,
-                transition: "width 0.3s ease, height 0.3s ease",
+                padding: "8px 12px",
+                transition: "height 0.3s ease, padding 0.3s ease",
               }}
             >
-              <PGPLogo variant="icon" size={logoHeight} />
-            </div>
-            <div
-              className="hidden sm:flex flex-col"
-              style={{ lineHeight: 1 }}
-            >
-              <span
-                style={{
-                  fontFamily: "var(--font-playfair, Georgia, serif)",
-                  fontWeight: 700,
-                  fontSize: scrolled ? "1.15rem" : "1.4rem",
-                  color: "var(--bg-cream)",
-                  letterSpacing: "-0.01em",
-                  lineHeight: 1.1,
-                  transition: "font-size 0.3s ease",
-                }}
-              >
-                Prime Golden
-              </span>
-              <span
-                style={{
-                  fontFamily: "var(--font-montserrat, sans-serif)",
-                  fontWeight: 700,
-                  fontSize: scrolled ? "0.6rem" : "0.7rem",
-                  color: "var(--accent-gold)",
-                  letterSpacing: "0.32em",
-                  textTransform: "uppercase",
-                  marginTop: 4,
-                  transition: "font-size 0.3s ease",
-                }}
-              >
-                Properties
-              </span>
+              <PGPLogo variant="full" height={logoHeight} />
             </div>
           </Link>
 
