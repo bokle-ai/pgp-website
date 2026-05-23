@@ -35,9 +35,10 @@ export function Nav() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Big & prominent full-lockup logo: 100 px tall at rest, 64 px when scrolled.
-  const logoHeight = scrolled ? 64 : 100;
-  const barPaddingY = scrolled ? "8px" : "10px";
+  // Full lockup needs real estate so the green "PRIME", gold "GOLDEN",
+  // "PROPERTIES" and the "Right Location. Right Decision." tagline all read.
+  const logoHeight = scrolled ? 96 : 144;
+  const barPaddingY = scrolled ? "6px" : "8px";
 
   return (
     <motion.header
@@ -74,17 +75,18 @@ export function Nav() {
             aria-label="Prime Golden Properties home"
             className="relative flex items-center"
           >
-            {/* Cream tile holding the FULL logo lockup (pin + PRIME GOLDEN PROPERTIES wordmark baked into the PNG). */}
+            {/* Cream tile holding the FULL transparent logo lockup
+                (pin + PRIME GOLDEN PROPERTIES + "Right Location. Right Decision." tagline). */}
             <div
               className="flex items-center justify-center relative"
               style={{
-                height: logoHeight + 14,
+                height: logoHeight + 18,
                 backgroundColor: "var(--bg-cream)",
-                borderRadius: 14,
+                borderRadius: 16,
                 border: "1px solid rgba(212,160,23,0.45)",
                 boxShadow:
-                  "0 8px 22px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.6)",
-                padding: "8px 12px",
+                  "0 10px 28px rgba(0,0,0,0.32), inset 0 1px 0 rgba(255,255,255,0.7)",
+                padding: "10px 14px",
                 transition: "height 0.3s ease, padding 0.3s ease",
               }}
             >

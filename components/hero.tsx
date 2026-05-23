@@ -43,7 +43,7 @@ export function Hero() {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-[92vh] flex items-center pt-44 lg:pt-52 pb-20 lg:pb-28 overflow-hidden"
+      className="relative min-h-[92vh] flex items-center pt-56 lg:pt-64 pb-20 lg:pb-28 overflow-hidden"
       aria-label="Hero"
       style={{
         backgroundColor: "var(--bg-deep)",
