@@ -74,21 +74,23 @@ export function Nav() {
             aria-label="Prime Golden Properties home"
             className="relative flex items-center gap-3.5"
           >
-            {/* Soft gold halo behind the emblem */}
-            <span
-              aria-hidden="true"
-              className="absolute pointer-events-none"
+            {/* Light cream tile so the green emblem doesn't disappear into the dark nav */}
+            <div
+              className="flex items-center justify-center relative"
               style={{
-                left: 0,
-                top: 0,
-                width: logoHeight * 0.9,
-                height: logoHeight,
-                background:
-                  "radial-gradient(circle, rgba(212,160,23,0.28) 0%, rgba(212,160,23,0) 65%)",
-                transform: "scale(1.3)",
+                width: logoHeight + 14,
+                height: logoHeight + 14,
+                backgroundColor: "var(--bg-cream)",
+                borderRadius: 14,
+                border: "1px solid rgba(212,160,23,0.45)",
+                boxShadow:
+                  "0 8px 22px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.6)",
+                padding: 7,
+                transition: "width 0.3s ease, height 0.3s ease",
               }}
-            />
-            <PGPLogo variant="icon" size={logoHeight} />
+            >
+              <PGPLogo variant="icon" size={logoHeight} />
+            </div>
             <div
               className="hidden sm:flex flex-col"
               style={{ lineHeight: 1 }}
