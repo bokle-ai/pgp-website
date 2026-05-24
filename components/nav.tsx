@@ -22,6 +22,10 @@ const navLinks = [
   { label: "Contact", href: "/contact" },
 ];
 
+// Logo sits between these two halves at the visual centre of the nav.
+const navLinksLeft = navLinks.slice(0, 3);  // Plots, Construction, Resale
+const navLinksRight = navLinks.slice(3);    // Locations, About, Contact
+
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -35,115 +39,128 @@ export function Nav() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Full lockup needs real estate so the green "PRIME", gold "GOLDEN",
-  // "PROPERTIES" and the "Right Location. Right Decision." tagline all read.
-  const logoHeight = scrolled ? 96 : 144;
-  const barPaddingY = scrolled ? "6px" : "8px";
+  // Centred transparent logo — the cream nav itself acts as the backdrop.
+  const logoHeight = scrolled ? 88 : 124;
 
   return (
     <motion.header
-      // Sits below the 36px utility bar at rest; slides up to the top edge
-      // when the utility bar hides on scroll.
       className="fixed left-0 right-0 z-40"
       initial={{ opacity: 0, y: -16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.05, ease: EASE }}
       style={{
         top: scrolled ? "0px" : "36px",
-        transition:
-          "top 0.4s cubic-bezier(0.22, 1, 0.36, 1), backdrop-filter 0.3s ease",
-        backgroundColor: scrolled ? "rgba(15,61,46,0.92)" : "var(--bg-deep)",
-        backdropFilter: scrolled ? "blur(14px) saturate(140%)" : "none",
-        WebkitBackdropFilter: scrolled ? "blur(14px) saturate(140%)" : "none",
+        backgroundColor: "var(--bg-cream)",
+        boxShadow: scrolled
+          ? "0 8px 24px rgba(15,61,46,0.10), 0 1px 0 rgba(15,61,46,0.06)"
+          : "0 4px 14px rgba(15,61,46,0.05)",
         borderBottom: scrolled
           ? "1px solid rgba(212,160,23,0.18)"
-          : "1px solid rgba(212,160,23,0.08)",
+          : "1px solid rgba(15,61,46,0.04)",
+        transition:
+          "top 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease, padding 0.3s ease",
       }}
     >
       <div
-        className="max-w-7xl mx-auto px-5 lg:px-10 flex items-center justify-between"
+        className="max-w-7xl mx-auto px-5 lg:px-10 relative flex items-center"
         style={{
-          paddingTop: barPaddingY,
-          paddingBottom: barPaddingY,
+          paddingTop: scrolled ? "10px" : "14px",
+          paddingBottom: scrolled ? "10px" : "14px",
           transition: "padding 0.3s ease",
         }}
       >
-        {/* LEFT: big logo + nav links (desktop) */}
-        <div className="flex items-center gap-8 lg:gap-10">
-          <Link
-            href="/"
-            aria-label="Prime Golden Properties home"
-            className="relative flex items-center"
-          >
-            {/* Cream tile holding the FULL transparent logo lockup
-                (pin + PRIME GOLDEN PROPERTIES + "Right Location. Right Decision." tagline). */}
-            <div
-              className="flex items-center justify-center relative"
-              style={{
-                height: logoHeight + 18,
-                backgroundColor: "var(--bg-cream)",
-                borderRadius: 16,
-                border: "1px solid rgba(212,160,23,0.45)",
-                boxShadow:
-                  "0 10px 28px rgba(0,0,0,0.32), inset 0 1px 0 rgba(255,255,255,0.7)",
-                padding: "10px 14px",
-                transition: "height 0.3s ease, padding 0.3s ease",
-              }}
-            >
-              <PGPLogo variant="full" height={logoHeight} />
-            </div>
-          </Link>
+        {/* Mobile: small logo on left, hamburger on right */}
+        <Link
+          href="/"
+          aria-label="Prime Golden Properties home"
+          className="lg:hidden block"
+        >
+          <PGPLogo variant="full" height={scrolled ? 52 : 68} />
+        </Link>
 
-          <nav
-            className="hidden lg:flex items-center gap-7"
-            aria-label="Main navigation"
-          >
-            {mounted &&
-              navLinks.map((link, i) => (
-                <motion.div
-                  key={link.label}
-                  initial={{ opacity: 0, y: -6 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.35, delay: 0.15 + i * 0.05, ease: EASE }}
+        {/* Desktop: LEFT nav links */}
+        <nav
+          className="hidden lg:flex items-center gap-8 flex-1 justify-end"
+          aria-label="Main navigation (left)"
+        >
+          {mounted &&
+            navLinksLeft.map((link, i) => (
+              <motion.div
+                key={link.label}
+                initial={{ opacity: 0, y: -6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.35, delay: 0.15 + i * 0.05, ease: EASE }}
+              >
+                <Link
+                  href={link.href}
+                  className="group relative text-[17px] transition-colors"
+                  style={{
+                    color: "var(--bg-deep)",
+                    fontFamily: "var(--font-montserrat, sans-serif)",
+                    fontWeight: 500,
+                    letterSpacing: "0.005em",
+                  }}
                 >
-                  <Link
-                    href={link.href}
-                    className="group relative text-[17px] transition-colors"
-                    style={{
-                      color: "rgba(248,245,239,0.96)",
-                      fontFamily: "var(--font-montserrat, sans-serif)",
-                      fontWeight: 500,
-                      letterSpacing: "0.005em",
-                    }}
-                  >
-                    <span className="transition-colors group-hover:text-[var(--accent-gold)]">
-                      {link.label}
-                    </span>
-                    <span
-                      className="absolute left-0 right-0 -bottom-1.5 h-px scale-x-0 group-hover:scale-x-100 transition-transform origin-center"
-                      style={{ backgroundColor: "var(--accent-gold)" }}
-                      aria-hidden="true"
-                    />
-                  </Link>
-                </motion.div>
-              ))}
-          </nav>
-        </div>
+                  <span className="transition-colors group-hover:text-[var(--accent-gold)]">
+                    {link.label}
+                  </span>
+                  <span
+                    className="absolute left-0 right-0 -bottom-1.5 h-px scale-x-0 group-hover:scale-x-100 transition-transform origin-center"
+                    style={{ backgroundColor: "var(--accent-gold)" }}
+                    aria-hidden="true"
+                  />
+                </Link>
+              </motion.div>
+            ))}
+        </nav>
 
-        {/* RIGHT: CTA + mobile hamburger */}
-        <div className="flex items-center gap-3">
-          <Link
-            href="/login"
-            className="hidden lg:inline-flex items-center text-[16px] transition-colors hover:text-[var(--accent-gold)]"
-            style={{
-              color: "rgba(248,245,239,0.88)",
-              fontFamily: "var(--font-montserrat, sans-serif)",
-              fontWeight: 500,
-            }}
-          >
-            Sign in
-          </Link>
+        {/* Desktop: CENTRED transparent logo */}
+        <Link
+          href="/"
+          aria-label="Prime Golden Properties home"
+          className="hidden lg:block mx-6 xl:mx-10 shrink-0"
+        >
+          <PGPLogo variant="full" height={logoHeight} />
+        </Link>
 
+        {/* Desktop: RIGHT nav links */}
+        <nav
+          className="hidden lg:flex items-center gap-8 flex-1 justify-start"
+          aria-label="Main navigation (right)"
+        >
+          {mounted &&
+            navLinksRight.map((link, i) => (
+              <motion.div
+                key={link.label}
+                initial={{ opacity: 0, y: -6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.35, delay: 0.15 + i * 0.05, ease: EASE }}
+              >
+                <Link
+                  href={link.href}
+                  className="group relative text-[17px] transition-colors"
+                  style={{
+                    color: "var(--bg-deep)",
+                    fontFamily: "var(--font-montserrat, sans-serif)",
+                    fontWeight: 500,
+                    letterSpacing: "0.005em",
+                  }}
+                >
+                  <span className="transition-colors group-hover:text-[var(--accent-gold)]">
+                    {link.label}
+                  </span>
+                  <span
+                    className="absolute left-0 right-0 -bottom-1.5 h-px scale-x-0 group-hover:scale-x-100 transition-transform origin-center"
+                    style={{ backgroundColor: "var(--accent-gold)" }}
+                    aria-hidden="true"
+                  />
+                </Link>
+              </motion.div>
+            ))}
+        </nav>
+
+        {/* Right edge: Schedule CTA + mobile hamburger (absolutely positioned) */}
+        <div className="absolute right-5 lg:right-10 top-1/2 -translate-y-1/2 flex items-center gap-3">
           {mounted && (
             <motion.div
               initial={{ opacity: 0, scale: 0.92 }}
@@ -152,7 +169,7 @@ export function Nav() {
             >
               <Link
                 href="/#site-visit"
-                className="hidden lg:inline-flex items-center text-[16px] transition-all active:scale-[0.98] hover:brightness-110"
+                className="hidden lg:inline-flex items-center text-[15px] transition-all active:scale-[0.98] hover:brightness-110"
                 style={{
                   background:
                     "linear-gradient(135deg, var(--accent-gold) 0%, #E0B43F 100%)",
@@ -160,7 +177,7 @@ export function Nav() {
                   fontFamily: "var(--font-montserrat, sans-serif)",
                   fontWeight: 600,
                   letterSpacing: "0.02em",
-                  padding: scrolled ? "9px 20px" : "11px 24px",
+                  padding: scrolled ? "9px 18px" : "11px 22px",
                   borderRadius: "999px",
                   boxShadow:
                     "0 6px 18px rgba(212,160,23,0.32), inset 0 1px 0 rgba(255,255,255,0.28)",
@@ -177,8 +194,8 @@ export function Nav() {
               <button
                 className="lg:hidden p-2.5 rounded-full transition-colors"
                 style={{
-                  color: "var(--bg-cream)",
-                  backgroundColor: "rgba(248,245,239,0.08)",
+                  color: "var(--bg-deep)",
+                  backgroundColor: "rgba(15,61,46,0.06)",
                 }}
                 aria-label="Open navigation menu"
               >
@@ -192,7 +209,7 @@ export function Nav() {
             >
               <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
               <div className="pt-6">
-                <PGPLogo variant="stacked" />
+                <PGPLogo variant="full" height={140} />
                 <nav
                   className="mt-10 flex flex-col gap-1"
                   aria-label="Mobile navigation"

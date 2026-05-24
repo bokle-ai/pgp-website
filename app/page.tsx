@@ -13,8 +13,7 @@ import { SectionHeader } from "@/components/section-header";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { TrustPillars } from "@/components/trust-pillars";
 import { ProcessTimeline } from "@/components/process-timeline";
-import { LocationsSection } from "@/components/locations-section";
-import { ProjectMap } from "@/components/map/ProjectMap";
+import { ProjectMapScroll } from "@/components/map/ProjectMapScroll";
 import { OfferingCard } from "@/components/offering-card";
 import { FAQSchema } from "@/components/json-ld";
 import { projects } from "@/lib/data/projects";
@@ -82,26 +81,13 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Interactive 3D Map — replaces Locations section on desktop */}
+        {/* Scroll-driven 2D map: TN wide → corridor → Cheyyar Taluk */}
         <section
           id="locations"
-          style={{ backgroundColor: "white" }}
-          aria-label="Locations we serve"
+          style={{ backgroundColor: "var(--bg-cream)" }}
+          aria-label="Where we build — scroll-driven map"
         >
-          <ProjectMap />
-          {/* Mobile fallback already built into ProjectMap — LocationsSection kept as supplemental */}
-          <div className="hidden lg:block max-w-7xl mx-auto px-6 lg:px-10 pb-16">
-            <p
-              className="text-xs text-center"
-              style={{
-                color: "var(--ink-faint)",
-                fontFamily: "var(--font-montserrat, sans-serif)",
-                letterSpacing: "0.1em",
-              }}
-            >
-              Use the filter pills to explore by corridor · Click a beacon to see project details
-            </p>
-          </div>
+          <ProjectMapScroll />
         </section>
 
         {/* Projects grid */}
