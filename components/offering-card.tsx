@@ -1,11 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { EASE } from "@/lib/animation";
-import { PlotIcon } from "./icons/plot-icon";
-import { HouseIcon } from "./icons/house-icon";
-import { HandshakeIcon } from "./icons/handshake-icon";
 
 interface OfferingCardProps {
   type: "plots" | "construction" | "resale";
@@ -14,224 +12,217 @@ interface OfferingCardProps {
 
 const data = {
   plots: {
-    icon: PlotIcon,
     title: "Plots",
-    tagline: "DTCP & CMDA approved layouts in Chennai's growth corridors.",
+    eyebrow: "DTCP & CMDA approved",
+    tagline:
+      "Cleared, ready-to-build plots in the Cheyyar corridor — sizes from 600 to 2,400 sq ft, starting at ₹4 Lakhs.",
     bullets: [
-      "Sizes from 600 to 2,400 sq ft",
-      "Starting at ₹1,650 / sq ft",
       "Clear titles, full legal due diligence",
+      "Plot sizes 600 – 2,400 sq ft",
       "Site visits 7 days a week",
     ],
+    image:
+      "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=900&h=600&fit=crop",
+    imageAlt: "Aerial view of a plotted residential layout",
     cta: { label: "View available plots", href: "/#plots" },
-    featured: false,
-    badge: null,
-    pricingTable: null,
+    badge: null as string | null,
   },
   construction: {
-    icon: HouseIcon,
     title: "Construction",
-    tagline: "Turnkey home construction at transparent per-sq-ft rates.",
-    bullets: null,
-    cta: { label: "Get a construction quote", href: "/#construction" },
-    featured: true,
-    badge: "Most asked for",
-    pricingTable: [
-      { tier: "Standard", rate: "₹1,850", notes: "Foundation to handover, basic finishes" },
-      { tier: "Premium", rate: "₹2,450", notes: "Vitrified flooring, modular kitchen" },
-      { tier: "Luxury", rate: "₹3,200", notes: "Imported finishes, smart home" },
+    eyebrow: "Turnkey · transparent rates",
+    tagline:
+      "Per-sq-ft pricing from foundation to handover. What's listed is what you pay — no surprise extras.",
+    bullets: [
+      "Standard from ₹1,850 / sq ft",
+      "Premium ₹2,450 — vitrified, modular kitchen",
+      "Luxury ₹3,200 — imported finishes, smart home",
     ],
+    image:
+      "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=900&h=600&fit=crop",
+    imageAlt: "Construction of a contemporary home",
+    cta: { label: "Get a construction quote", href: "/#construction-pricing" },
+    badge: "Most asked for",
   },
   resale: {
-    icon: HandshakeIcon,
     title: "Resale",
-    tagline: "Already own land? We'll find the right buyer.",
+    eyebrow: "Buyer network · end-to-end",
+    tagline:
+      "Already own land in the Chennai outskirts? We'll find the right buyer and run the paperwork.",
     bullets: [
       "Verified buyer network",
       "Professional listing & valuation",
       "Documentation handled end-to-end",
-      "Transparent commission structure",
     ],
+    image:
+      "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=900&h=600&fit=crop",
+    imageAlt: "Family reviewing property documents",
     cta: { label: "List your property", href: "/contact?type=resale" },
-    featured: false,
-    badge: null,
-    pricingTable: null,
+    badge: null as string | null,
   },
 };
 
 export function OfferingCard({ type, animationDelay = 0 }: OfferingCardProps) {
   const d = data[type];
-  const Icon = d.icon;
   const prefersReduced = useReducedMotion();
 
   return (
     <motion.div
-      className="relative flex flex-col p-6 sm:p-8 group h-full"
+      className="group relative flex flex-col h-full overflow-hidden"
       style={{
-        backgroundColor: d.featured ? "rgba(232,212,160,0.22)" : "white",
-        border: "1px solid var(--line)",
-        borderRadius: 0,
+        backgroundColor: "var(--bg-cream)",
+        borderRadius: 24,
+        border: "1px solid rgba(212,160,23,0.18)",
+        boxShadow: "0 18px 48px rgba(0,0,0,0.25)",
       }}
-      initial={prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 28 }}
+      initial={
+        prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 32 }
+      }
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.65, delay: animationDelay, ease: EASE }}
-      whileHover={prefersReduced ? {} : { y: -4 }}
+      transition={{ duration: 0.7, delay: animationDelay, ease: EASE }}
+      whileHover={prefersReduced ? {} : { y: -6 }}
     >
-      {/* Hover gold left border */}
-      <motion.div
-        className="absolute left-0 top-0 bottom-0 w-1"
-        style={{ backgroundColor: "var(--accent-gold)" }}
-        initial={{ scaleY: 0, originY: 0 }}
-        whileHover={{ scaleY: 1 }}
-        transition={{ duration: 0.25, ease: EASE }}
-        aria-hidden="true"
-      />
-
-      {d.badge && (
+      {/* Image header */}
+      <div className="relative aspect-[16/10] overflow-hidden">
+        <Image
+          src={d.image}
+          alt={d.imageAlt}
+          fill
+          className="object-cover transition-transform duration-700 group-hover:scale-[1.06]"
+          sizes="(max-width: 768px) 100vw, 33vw"
+        />
+        {/* Bottom fade so the eyebrow chip below it reads cleanly */}
         <div
-          className="absolute top-4 right-4 px-2.5 py-1 text-xs font-medium"
+          aria-hidden="true"
+          className="absolute inset-0 pointer-events-none"
           style={{
-            backgroundColor: "var(--accent-gold)",
-            color: "var(--bg-deep)",
-            fontFamily: "var(--font-montserrat, sans-serif)",
-            borderRadius: "4px",
+            background:
+              "linear-gradient(180deg, rgba(15,61,46,0) 50%, rgba(15,61,46,0.35) 100%)",
           }}
-        >
-          {d.badge}
-        </div>
-      )}
-
-      <div className="mb-5" style={{ color: "var(--accent-gold)" }}>
-        <Icon />
+        />
+        {d.badge && (
+          <div
+            className="absolute top-4 left-4 inline-flex items-center gap-1.5 px-3 py-1.5 text-[11px] uppercase"
+            style={{
+              backgroundColor: "var(--accent-gold)",
+              color: "var(--bg-deep)",
+              fontFamily: "var(--font-montserrat, sans-serif)",
+              fontWeight: 700,
+              letterSpacing: "0.12em",
+              borderRadius: 999,
+              boxShadow: "0 6px 18px rgba(0,0,0,0.25)",
+            }}
+          >
+            <span
+              className="w-1.5 h-1.5 rounded-full"
+              style={{ backgroundColor: "var(--bg-deep)" }}
+              aria-hidden="true"
+            />
+            {d.badge}
+          </div>
+        )}
       </div>
 
-      <h3
-        className="mb-2"
-        style={{
-          fontFamily: "var(--font-playfair, Georgia, serif)",
-          fontWeight: 600,
-          fontSize: "1.5rem",
-          color: "var(--ink)",
-        }}
-      >
-        {d.title}
-      </h3>
-      <p
-        className="mb-6 text-sm"
-        style={{
-          color: "var(--ink-muted)",
-          lineHeight: 1.6,
-          fontFamily: "var(--font-montserrat, sans-serif)",
-        }}
-      >
-        {d.tagline}
-      </p>
+      {/* Content */}
+      <div className="flex flex-col flex-1 p-7 lg:p-8">
+        <span
+          className="text-[10px] uppercase mb-3"
+          style={{
+            color: "var(--accent-gold)",
+            fontFamily: "var(--font-montserrat, sans-serif)",
+            letterSpacing: "0.22em",
+            fontWeight: 700,
+          }}
+        >
+          {d.eyebrow}
+        </span>
 
-      {d.bullets && (
+        <h3
+          className="mb-3"
+          style={{
+            fontFamily: "var(--font-playfair, Georgia, serif)",
+            fontWeight: 600,
+            fontSize: "1.85rem",
+            color: "var(--ink)",
+            lineHeight: 1.1,
+            letterSpacing: "-0.01em",
+          }}
+        >
+          {d.title}
+        </h3>
+
+        <p
+          className="mb-6 text-[15px]"
+          style={{
+            color: "var(--ink-muted)",
+            lineHeight: 1.6,
+            fontFamily: "var(--font-montserrat, sans-serif)",
+          }}
+        >
+          {d.tagline}
+        </p>
+
         <ul className="flex-1 mb-7 space-y-2.5">
           {d.bullets.map((bullet) => (
             <li
               key={bullet}
-              className="flex items-start gap-3 text-sm"
+              className="flex items-start gap-2.5 text-[14px]"
               style={{
                 color: "var(--ink-muted)",
                 fontFamily: "var(--font-montserrat, sans-serif)",
               }}
             >
-              <span
-                className="mt-0.5 shrink-0 font-bold"
-                style={{ color: "var(--accent-gold)" }}
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 14 14"
+                className="mt-0.5 shrink-0"
                 aria-hidden="true"
               >
-                —
-              </span>
+                <circle
+                  cx="7"
+                  cy="7"
+                  r="7"
+                  fill="var(--accent-gold)"
+                  opacity="0.18"
+                />
+                <path
+                  d="M4 7l2 2 4-4"
+                  stroke="var(--accent-gold)"
+                  strokeWidth="1.6"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  fill="none"
+                />
+              </svg>
               {bullet}
             </li>
           ))}
         </ul>
-      )}
 
-      {d.pricingTable && (
-        <div
-          className="flex-1 mb-7 overflow-hidden"
-          style={{ border: "1px solid var(--line)", borderRadius: "4px" }}
+        <Link
+          href={d.cta.href}
+          className="inline-flex items-center gap-2 self-start text-[14px] transition-all group/link"
+          style={{
+            color: "var(--bg-deep)",
+            fontFamily: "var(--font-montserrat, sans-serif)",
+            fontWeight: 600,
+            backgroundColor: "var(--accent-gold)",
+            padding: "10px 18px",
+            borderRadius: 999,
+            boxShadow:
+              "0 6px 16px rgba(212,160,23,0.32), inset 0 1px 0 rgba(255,255,255,0.28)",
+          }}
         >
-          <table
-            className="w-full text-xs"
-            style={{ fontFamily: "var(--font-montserrat, sans-serif)" }}
+          {d.cta.label}
+          <span
+            className="transition-transform group-hover/link:translate-x-1"
+            aria-hidden="true"
           >
-            <thead>
-              <tr style={{ backgroundColor: "rgba(201,162,75,0.1)" }}>
-                <th
-                  className="text-left px-3 py-2 font-medium"
-                  style={{ color: "var(--ink-muted)" }}
-                >
-                  Tier
-                </th>
-                <th
-                  className="text-left px-3 py-2 font-medium"
-                  style={{ color: "var(--ink-muted)" }}
-                >
-                  Rate
-                </th>
-                <th
-                  className="text-left px-3 py-2 font-medium hidden sm:table-cell"
-                  style={{ color: "var(--ink-muted)" }}
-                >
-                  Inclusions
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {d.pricingTable.map((row, i) => (
-                <tr
-                  key={row.tier}
-                  style={{ borderTop: i > 0 ? "1px solid var(--line)" : "none" }}
-                >
-                  <td
-                    className="px-3 py-2.5 font-medium"
-                    style={{ color: "var(--ink)" }}
-                  >
-                    {row.tier}
-                  </td>
-                  <td
-                    className="px-3 py-2.5 tabular-nums font-medium"
-                    style={{ color: "var(--accent-gold)" }}
-                  >
-                    {row.rate}
-                    <span className="text-[10px]">/sq ft</span>
-                  </td>
-                  <td
-                    className="px-3 py-2.5 text-[10px] hidden sm:table-cell"
-                    style={{ color: "var(--ink-muted)" }}
-                  >
-                    {row.notes}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
-
-      <Link
-        href={d.cta.href}
-        className="text-sm font-medium transition-colors hover:opacity-70 flex items-center gap-1 group/link"
-        style={{
-          color: "var(--accent-gold)",
-          fontFamily: "var(--font-montserrat, sans-serif)",
-          fontWeight: 500,
-        }}
-      >
-        {d.cta.label}
-        <span
-          className="transition-transform group-hover/link:translate-x-1"
-          aria-hidden="true"
-        >
-          →
-        </span>
-      </Link>
+            →
+          </span>
+        </Link>
+      </div>
     </motion.div>
   );
 }

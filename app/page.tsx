@@ -37,34 +37,49 @@ export default function Home() {
         {/* Stats strip */}
         <StatStrip />
 
-        {/* What we do */}
+        {/* What we do — dark canvas with cream floating cards */}
         <section
           id="plots"
-          className="py-16 lg:py-32"
-          style={{ backgroundColor: "var(--bg-cream)" }}
+          className="relative py-20 lg:py-32 overflow-hidden"
+          style={{
+            backgroundColor: "var(--bg-deep)",
+            background: `
+              radial-gradient(ellipse 50% 40% at 15% 15%, rgba(212,160,23,0.10), transparent 60%),
+              radial-gradient(ellipse 60% 50% at 90% 85%, rgba(212,160,23,0.08), transparent 60%),
+              linear-gradient(180deg, #0F3D2E 0%, #0C3527 100%)
+            `,
+          }}
           aria-label="Our services"
         >
-          <div className="max-w-7xl mx-auto px-6 lg:px-10">
-            <div className="mb-12">
+          {/* Faint dot grid texture */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 opacity-[0.04] pointer-events-none"
+            style={{
+              backgroundImage:
+                "radial-gradient(rgba(255,255,255,0.6) 1px, transparent 1px)",
+              backgroundSize: "28px 28px",
+            }}
+          />
+
+          <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
+            <div className="mb-14 max-w-3xl">
               <SectionHeader
                 eyebrow="What we do"
                 title="Three doors. One trusted partner."
                 subtitle="Whether you're buying your first plot, building your home, or moving on from an old one — we're the same team end-to-end."
+                titleDark
+                subtitleDark
               />
             </div>
 
             <div
               id="construction"
-              className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x border"
-              style={{ borderColor: "var(--line)" }}
+              className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-7"
             >
-              <div className="[border-color:var(--line)]">
-                <OfferingCard type="plots" animationDelay={0} />
-              </div>
-              <div className="[border-color:var(--line)]">
-                <OfferingCard type="construction" animationDelay={0.12} />
-              </div>
-              <div id="resale" className="[border-color:var(--line)]">
+              <OfferingCard type="plots" animationDelay={0} />
+              <OfferingCard type="construction" animationDelay={0.12} />
+              <div id="resale" className="contents">
                 <OfferingCard type="resale" animationDelay={0.24} />
               </div>
             </div>
