@@ -89,16 +89,40 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-14 mb-16">
           {/* Col 1 — Brand */}
           <div>
-            <PGPLogo variant="stacked" darkMode={true} />
+            <div
+              className="inline-flex items-center justify-center"
+              style={{
+                backgroundColor: "var(--bg-cream)",
+                padding: "14px 18px",
+                borderRadius: 18,
+                border: "1px solid rgba(212,160,23,0.4)",
+                boxShadow: "0 10px 28px rgba(0,0,0,0.28)",
+              }}
+            >
+              <PGPLogo variant="full" height={120} />
+            </div>
             <p
-              className="mt-5 text-sm max-w-[28ch]"
-              style={{ color: "rgba(246,241,231,0.55)", fontFamily: "var(--font-montserrat, sans-serif)", lineHeight: 1.65 }}
+              className="mt-6 text-sm max-w-[30ch]"
+              style={{
+                color: "rgba(246,241,231,0.55)",
+                fontFamily: "var(--font-montserrat, sans-serif)",
+                lineHeight: 1.65,
+              }}
             >
               {siteConfig.tagline}
             </p>
-            <div className="flex items-center gap-4 mt-6">
+            <div className="flex items-center gap-3 mt-6">
               {Object.entries(siteConfig.social).map(([type, href]) => (
-                <SocialIcon key={type} type={type} href={href} />
+                <span
+                  key={type}
+                  className="inline-flex w-9 h-9 items-center justify-center rounded-full"
+                  style={{
+                    backgroundColor: "rgba(248,245,239,0.06)",
+                    border: "1px solid rgba(212,160,23,0.2)",
+                  }}
+                >
+                  <SocialIcon type={type} href={href} />
+                </span>
               ))}
             </div>
           </div>

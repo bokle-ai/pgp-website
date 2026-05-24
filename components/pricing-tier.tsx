@@ -14,7 +14,8 @@ const tiers = {
   standard: {
     name: "Standard",
     rate: "₹1,850",
-    label: null,
+    label: null as string | null,
+    blurb: "The honest baseline — turnkey construction at builder rates.",
     features: [
       "Foundation to handover (turnkey)",
       "RCC frame structure",
@@ -30,6 +31,7 @@ const tiers = {
     name: "Premium",
     rate: "₹2,450",
     label: "Most popular",
+    blurb: "Our most-asked tier. Strong finishes, no compromise on essentials.",
     features: [
       "Everything in Standard, plus:",
       "Vitrified flooring throughout",
@@ -44,7 +46,8 @@ const tiers = {
   luxury: {
     name: "Luxury",
     rate: "₹3,200",
-    label: null,
+    label: null as string | null,
+    blurb: "Everything imported, smart, and tailored to how you actually live.",
     features: [
       "Everything in Premium, plus:",
       "Imported tile / wood flooring",
@@ -65,106 +68,150 @@ export function PricingTier({ tier, animationDelay = 0 }: PricingTierProps) {
 
   return (
     <motion.div
-      className="relative flex flex-col p-5 sm:p-8"
+      className="relative flex flex-col h-full overflow-hidden"
       style={{
-        border: isFeatured ? "2px solid var(--accent-gold)" : "1px solid var(--line)",
-        backgroundColor: isFeatured ? "var(--bg-deep)" : "white",
-        borderRadius: 0,
+        backgroundColor: isFeatured ? "var(--bg-deep)" : "var(--bg-cream)",
+        borderRadius: 24,
+        border: isFeatured
+          ? "1px solid rgba(212,160,23,0.55)"
+          : "1px solid rgba(15,61,46,0.08)",
+        boxShadow: isFeatured
+          ? "0 24px 60px rgba(15,61,46,0.4), 0 0 0 1px rgba(212,160,23,0.1)"
+          : "0 14px 36px rgba(15,61,46,0.08)",
+        transform: isFeatured ? "translateY(-8px)" : "translateY(0)",
       }}
-      initial={prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 32 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={prefersReduced ? { opacity: 1, y: isFeatured ? -8 : 0 } : { opacity: 0, y: 32 }}
+      whileInView={{ opacity: 1, y: isFeatured ? -8 : 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.7, delay: animationDelay, ease: EASE }}
-      whileHover={
-        prefersReduced || isFeatured
-          ? {}
-          : { y: -4, transition: { duration: 0.2 } }
-      }
+      whileHover={prefersReduced ? {} : { y: isFeatured ? -14 : -6 }}
     >
       {t.label && (
         <div
-          className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3 py-1 text-xs font-medium whitespace-nowrap"
+          className="absolute top-5 right-5 inline-flex items-center gap-1.5 px-3 py-1.5 text-[11px] uppercase"
           style={{
             backgroundColor: "var(--accent-gold)",
             color: "var(--bg-deep)",
             fontFamily: "var(--font-montserrat, sans-serif)",
-            borderRadius: "4px",
+            fontWeight: 700,
+            letterSpacing: "0.14em",
+            borderRadius: 999,
+            boxShadow: "0 6px 18px rgba(212,160,23,0.4)",
           }}
         >
+          <span
+            className="w-1.5 h-1.5 rounded-full"
+            style={{ backgroundColor: "var(--bg-deep)" }}
+            aria-hidden="true"
+          />
           {t.label}
         </div>
       )}
 
-      <div
-        className="text-xs uppercase tracking-widest mb-2"
-        style={{
-          color: isFeatured ? "var(--accent-gold)" : "var(--ink-muted)",
-          fontFamily: "var(--font-montserrat, sans-serif)",
-          letterSpacing: "0.18em",
-        }}
-      >
-        {t.name}
-      </div>
-
-      <div className="mb-1 flex items-end gap-1">
+      <div className="p-8 lg:p-10 flex flex-col flex-1">
         <span
-          className="tabular-nums"
+          className="text-[10px] uppercase mb-4"
           style={{
-            fontFamily: "var(--font-playfair, Georgia, serif)",
-            fontWeight: 600,
-            fontSize: "clamp(1.75rem, 5vw, 2.5rem)",
-            color: isFeatured ? "var(--bg-cream)" : "var(--ink)",
-            lineHeight: 1,
+            color: "var(--accent-gold)",
+            fontFamily: "var(--font-montserrat, sans-serif)",
+            letterSpacing: "0.24em",
+            fontWeight: 700,
           }}
         >
-          {t.rate}
+          {t.name}
         </span>
-      </div>
-      <div
-        className="text-xs mb-8"
-        style={{
-          color: isFeatured ? "rgba(246,241,231,0.55)" : "var(--ink-faint)",
-          fontFamily: "var(--font-montserrat, sans-serif)",
-        }}
-      >
-        / sq ft starting
-      </div>
 
-      <ul className="flex-1 space-y-3 mb-8">
-        {t.features.map((feature) => (
-          <li
-            key={feature}
-            className="flex items-start gap-3 text-sm"
+        <div className="mb-2 flex items-baseline gap-1.5">
+          <span
+            className="tabular-nums"
             style={{
-              color: isFeatured ? "rgba(246,241,231,0.8)" : "var(--ink-muted)",
+              fontFamily: "var(--font-playfair, Georgia, serif)",
+              fontWeight: 600,
+              fontSize: "clamp(2rem, 5vw, 3rem)",
+              color: isFeatured ? "var(--bg-cream)" : "var(--ink)",
+              lineHeight: 1,
+              letterSpacing: "-0.02em",
+            }}
+          >
+            {t.rate}
+          </span>
+          <span
+            className="text-sm"
+            style={{
+              color: isFeatured ? "rgba(246,241,231,0.6)" : "var(--ink-faint)",
               fontFamily: "var(--font-montserrat, sans-serif)",
             }}
           >
-            <Check
-              size={14}
-              className="shrink-0 mt-0.5"
-              style={{ color: "var(--accent-gold)" }}
-              aria-hidden="true"
-            />
-            {feature}
-          </li>
-        ))}
-      </ul>
+            / sq ft
+          </span>
+        </div>
 
-      <Link
-        href="/contact?type=construction"
-        className="flex items-center justify-center h-11 text-sm font-medium transition-opacity hover:opacity-90"
-        style={{
-          backgroundColor: isFeatured ? "var(--accent-gold)" : "transparent",
-          color: isFeatured ? "var(--bg-deep)" : "var(--accent-gold)",
-          border: isFeatured ? "none" : "1px solid var(--accent-gold)",
-          fontFamily: "var(--font-montserrat, sans-serif)",
-          fontWeight: 500,
-          borderRadius: "6px",
-        }}
-      >
-        Request a detailed quote
-      </Link>
+        <p
+          className="mb-7 text-[14px]"
+          style={{
+            color: isFeatured ? "rgba(246,241,231,0.75)" : "var(--ink-muted)",
+            fontFamily: "var(--font-montserrat, sans-serif)",
+            lineHeight: 1.6,
+          }}
+        >
+          {t.blurb}
+        </p>
+
+        <div
+          className="h-px w-full mb-6"
+          style={{
+            backgroundColor: isFeatured
+              ? "rgba(212,160,23,0.2)"
+              : "rgba(15,61,46,0.08)",
+          }}
+          aria-hidden="true"
+        />
+
+        <ul className="flex-1 space-y-3 mb-8">
+          {t.features.map((feature) => (
+            <li
+              key={feature}
+              className="flex items-start gap-2.5 text-[13.5px]"
+              style={{
+                color: isFeatured ? "rgba(246,241,231,0.85)" : "var(--ink-muted)",
+                fontFamily: "var(--font-montserrat, sans-serif)",
+              }}
+            >
+              <Check
+                size={14}
+                className="shrink-0 mt-1"
+                style={{ color: "var(--accent-gold)" }}
+                aria-hidden="true"
+              />
+              {feature}
+            </li>
+          ))}
+        </ul>
+
+        <Link
+          href="/contact?type=construction"
+          className="inline-flex items-center justify-center gap-2 text-[14px] transition-all hover:brightness-110 active:scale-[0.98]"
+          style={{
+            background: isFeatured
+              ? "linear-gradient(135deg, var(--accent-gold) 0%, #E0B43F 100%)"
+              : "transparent",
+            color: isFeatured ? "var(--bg-deep)" : "var(--bg-deep)",
+            border: isFeatured
+              ? "none"
+              : "1.5px solid var(--bg-deep)",
+            fontFamily: "var(--font-montserrat, sans-serif)",
+            fontWeight: 600,
+            padding: "13px 22px",
+            borderRadius: 999,
+            boxShadow: isFeatured
+              ? "0 8px 22px rgba(212,160,23,0.4), inset 0 1px 0 rgba(255,255,255,0.3)"
+              : "none",
+          }}
+        >
+          Request detailed quote
+          <span aria-hidden="true">→</span>
+        </Link>
+      </div>
     </motion.div>
   );
 }

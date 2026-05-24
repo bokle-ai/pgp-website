@@ -31,60 +31,71 @@ export function ProcessTimeline() {
 
   return (
     <>
-      {/* Desktop horizontal timeline */}
-      <div className="hidden lg:grid grid-cols-4 relative">
-        {/* Animated connecting line */}
+      {/* Desktop horizontal cards */}
+      <div className="hidden lg:grid grid-cols-4 gap-6 relative">
+        {/* Animated dotted connecting line through card centres */}
         <motion.div
-          className="absolute top-6 left-[12.5%] right-[12.5%] h-px"
+          className="absolute top-20 left-[12.5%] right-[12.5%] h-px pointer-events-none"
           initial={prefersReduced ? { scaleX: 1 } : { scaleX: 0, originX: 0 }}
           whileInView={{ scaleX: 1 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 1.4, delay: 0.2, ease: EASE }}
-          style={{ backgroundColor: "var(--accent-gold)", opacity: 0.45 }}
+          style={{
+            backgroundImage:
+              "repeating-linear-gradient(to right, rgba(212,160,23,0.5) 0 6px, transparent 6px 12px)",
+          }}
           aria-hidden="true"
         />
 
         {steps.map((step, i) => (
           <motion.div
             key={step.number}
-            className="relative pt-14 pr-8"
+            className="relative flex flex-col p-7"
+            style={{
+              backgroundColor: "var(--bg-cream)",
+              borderRadius: 20,
+              border: "1px solid rgba(212,160,23,0.16)",
+              boxShadow: "0 10px 30px rgba(15,61,46,0.06)",
+            }}
             initial={prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.65, delay: 0.3 + i * 0.18, ease: EASE }}
+            transition={{ duration: 0.65, delay: 0.3 + i * 0.15, ease: EASE }}
+            whileHover={prefersReduced ? {} : { y: -4 }}
           >
-            <motion.div
-              className="absolute top-0 left-0 w-12 h-12 rounded-full flex items-center justify-center text-sm font-medium tabular-nums"
+            <div
+              className="w-14 h-14 rounded-full flex items-center justify-center mb-5 text-sm tabular-nums"
               style={{
-                backgroundColor: "var(--accent-gold)",
+                background:
+                  "linear-gradient(135deg, var(--accent-gold) 0%, #E0B43F 100%)",
                 color: "var(--bg-deep)",
                 fontFamily: "var(--font-montserrat, sans-serif)",
-                fontWeight: 500,
+                fontWeight: 700,
+                letterSpacing: "0.06em",
+                boxShadow:
+                  "0 6px 18px rgba(212,160,23,0.4), inset 0 1px 0 rgba(255,255,255,0.4)",
               }}
-              initial={prefersReduced ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.6 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.5, delay: 0.35 + i * 0.18, ease: EASE }}
               aria-hidden="true"
             >
               {step.number}
-            </motion.div>
+            </div>
             <h3
               className="mb-2"
               style={{
                 fontFamily: "var(--font-playfair, Georgia, serif)",
                 fontWeight: 600,
-                fontSize: "1.25rem",
+                fontSize: "1.35rem",
                 color: "var(--ink)",
+                letterSpacing: "-0.01em",
               }}
             >
               {step.title}
             </h3>
             <p
-              className="text-sm"
+              className="text-[14px]"
               style={{
                 color: "var(--ink-muted)",
-                lineHeight: 1.65,
+                lineHeight: 1.6,
                 fontFamily: "var(--font-montserrat, sans-serif)",
               }}
             >
@@ -95,54 +106,51 @@ export function ProcessTimeline() {
       </div>
 
       {/* Mobile vertical */}
-      <div className="lg:hidden space-y-0">
+      <div className="lg:hidden space-y-5">
         {steps.map((step, i) => (
           <motion.div
             key={step.number}
-            className="flex gap-5"
+            className="flex gap-5 p-6"
+            style={{
+              backgroundColor: "var(--bg-cream)",
+              borderRadius: 18,
+              border: "1px solid rgba(212,160,23,0.16)",
+            }}
             initial={prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.65, delay: i * 0.15, ease: EASE }}
+            transition={{ duration: 0.65, delay: i * 0.12, ease: EASE }}
           >
-            <div className="flex flex-col items-center">
-              <div
-                className="w-10 h-10 rounded-full flex items-center justify-center text-sm font-medium shrink-0"
-                style={{
-                  backgroundColor: "var(--accent-gold)",
-                  color: "var(--bg-deep)",
-                  fontFamily: "var(--font-montserrat, sans-serif)",
-                  fontWeight: 500,
-                }}
-                aria-hidden="true"
-              >
-                {step.number}
-              </div>
-              {i < steps.length - 1 && (
-                <div
-                  className="flex-1 w-px mt-2 min-h-[48px]"
-                  style={{ backgroundColor: "var(--line)" }}
-                  aria-hidden="true"
-                />
-              )}
+            <div
+              className="shrink-0 w-12 h-12 rounded-full flex items-center justify-center text-sm tabular-nums"
+              style={{
+                background:
+                  "linear-gradient(135deg, var(--accent-gold) 0%, #E0B43F 100%)",
+                color: "var(--bg-deep)",
+                fontFamily: "var(--font-montserrat, sans-serif)",
+                fontWeight: 700,
+              }}
+              aria-hidden="true"
+            >
+              {step.number}
             </div>
-            <div className="pb-8">
+            <div className="flex-1">
               <h3
                 className="mb-1.5"
                 style={{
                   fontFamily: "var(--font-playfair, Georgia, serif)",
                   fontWeight: 600,
-                  fontSize: "1.125rem",
+                  fontSize: "1.15rem",
                   color: "var(--ink)",
                 }}
               >
                 {step.title}
               </h3>
               <p
-                className="text-sm"
+                className="text-[14px]"
                 style={{
                   color: "var(--ink-muted)",
-                  lineHeight: 1.65,
+                  lineHeight: 1.6,
                   fontFamily: "var(--font-montserrat, sans-serif)",
                 }}
               >

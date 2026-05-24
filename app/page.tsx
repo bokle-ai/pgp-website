@@ -1,7 +1,6 @@
 import { UtilityBar } from "@/components/utility-bar";
 import { Nav } from "@/components/nav";
 import { Hero } from "@/components/hero";
-import { StatStrip } from "@/components/stat-strip";
 import { ProjectCard } from "@/components/project-card";
 import { PricingTier } from "@/components/pricing-tier";
 import { TestimonialCard } from "@/components/testimonial-card";
@@ -31,11 +30,8 @@ export default function Home() {
       <UtilityBar />
       <Nav />
       <main id="main-content">
-        {/* Hero */}
+        {/* Hero (already includes the 4-stat trust strip) */}
         <Hero />
-
-        {/* Stats strip */}
-        <StatStrip />
 
         {/* What we do — dark canvas with cream floating cards */}
         <section
@@ -160,15 +156,32 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Construction pricing */}
+        {/* Construction pricing — dark canvas, cream tier cards floating */}
         <section
           id="construction-pricing"
-          className="py-16 lg:py-32"
-          style={{ backgroundColor: "white" }}
+          className="relative py-20 lg:py-32 overflow-hidden"
+          style={{
+            backgroundColor: "var(--bg-deep)",
+            background: `
+              radial-gradient(ellipse 50% 40% at 85% 20%, rgba(212,160,23,0.12), transparent 60%),
+              radial-gradient(ellipse 50% 50% at 10% 85%, rgba(212,160,23,0.08), transparent 60%),
+              linear-gradient(180deg, #0F3D2E 0%, #0C3527 100%)
+            `,
+          }}
           aria-label="Construction packages"
         >
-          <div className="max-w-7xl mx-auto px-6 lg:px-10">
-            <div className="mb-14">
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 opacity-[0.04] pointer-events-none"
+            style={{
+              backgroundImage:
+                "radial-gradient(rgba(255,255,255,0.6) 1px, transparent 1px)",
+              backgroundSize: "28px 28px",
+            }}
+          />
+
+          <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
+            <div className="mb-16 max-w-3xl">
               <SectionHeader
                 eyebrow="Build with us"
                 title={
@@ -178,23 +191,22 @@ export default function Home() {
                   </>
                 }
                 subtitle="Most builders quote you a number then surprise you with extras. We don't. Pick a tier — what's listed is what you pay."
+                titleDark
+                subtitleDark
               />
             </div>
 
-            <div
-              className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-px"
-              style={{ background: "var(--line)" }}
-            >
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-7 items-start">
               {(["standard", "premium", "luxury"] as const).map((tier, i) => (
                 <PricingTier key={tier} tier={tier} animationDelay={i * 0.14} />
               ))}
             </div>
 
-            <ScrollReveal className="mt-6 text-center" delay={0.2}>
+            <ScrollReveal className="mt-10 text-center" delay={0.2}>
               <p
-                className="text-xs"
+                className="text-xs max-w-2xl mx-auto"
                 style={{
-                  color: "var(--ink-faint)",
+                  color: "rgba(246,241,231,0.55)",
                   fontFamily: "var(--font-montserrat, sans-serif)",
                   lineHeight: 1.6,
                 }}
@@ -238,17 +250,39 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Testimonials */}
+        {/* Testimonials — dark canvas, cream cards floating */}
         <section
-          className="py-16 lg:py-32"
-          style={{ backgroundColor: "var(--bg-cream)" }}
+          className="relative py-20 lg:py-32 overflow-hidden"
+          style={{
+            backgroundColor: "var(--bg-deep)",
+            background: `
+              radial-gradient(ellipse 50% 40% at 10% 20%, rgba(212,160,23,0.10), transparent 60%),
+              radial-gradient(ellipse 50% 50% at 90% 80%, rgba(212,160,23,0.08), transparent 60%),
+              linear-gradient(180deg, #0F3D2E 0%, #0C3527 100%)
+            `,
+          }}
           aria-label="Customer testimonials"
         >
-          <div className="max-w-7xl mx-auto px-6 lg:px-10">
-            <div className="mb-12">
-              <SectionHeader title="From the families who built here." />
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 opacity-[0.04] pointer-events-none"
+            style={{
+              backgroundImage:
+                "radial-gradient(rgba(255,255,255,0.6) 1px, transparent 1px)",
+              backgroundSize: "28px 28px",
+            }}
+          />
+
+          <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
+            <div className="mb-14 max-w-3xl">
+              <SectionHeader
+                eyebrow="In their words"
+                title="From the families who built here."
+                titleDark
+                subtitleDark
+              />
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-7">
               {testimonials.map((t, i) => (
                 <TestimonialCard
                   key={t.id}
