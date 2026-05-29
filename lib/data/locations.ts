@@ -31,11 +31,9 @@ export const locations: Location[] = [
       startingPrice: "₹9 Lakhs",
       distanceFromChennai: "~100 km",
     },
-    image:
-      "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=900&h=600&fit=crop",
-    mapImage:
-      "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&h=500&fit=crop",
-    imageAlt: "Residential plots in Papanthangal, Cheyyar Taluk",
+    image: "/images/brand/location-papanthangal.webp",
+    mapImage: "/images/brand/project-sulaman-nagar.webp",
+    imageAlt: "Village street in Papanthangal, Cheyyar Taluk",
   },
   {
     slug: "perumpallam",
@@ -52,11 +50,9 @@ export const locations: Location[] = [
       startingPrice: "₹4 Lakhs",
       distanceFromChennai: "~100 km",
     },
-    image:
-      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&h=600&fit=crop",
-    mapImage:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=500&fit=crop",
-    imageAlt: "Plots in Perumpallam, Cheyyar Taluk",
+    image: "/images/brand/location-perumpallam.webp",
+    mapImage: "/images/brand/project-vetrivel-nagar.webp",
+    imageAlt: "Open plotted layout in Perumpallam, near Cheyyar town",
   },
   {
     slug: "cheyyar",
@@ -73,10 +69,8 @@ export const locations: Location[] = [
       startingPrice: "₹5 Lakhs",
       distanceFromChennai: "~100 km",
     },
-    image:
-      "https://images.unsplash.com/photo-1416331108676-a22ccb276e35?w=900&h=600&fit=crop",
-    mapImage:
-      "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&h=500&fit=crop",
-    imageAlt: "Open plots in Cheyyar area with compounded layouts",
+    image: "/images/brand/location-cheyyar.webp",
+    mapImage: "/images/brand/project-brindavanan-sengadu.webp",
+    imageAlt: "Cheyyar town with river, paddy fields and temple gopuram",
   },
 ];

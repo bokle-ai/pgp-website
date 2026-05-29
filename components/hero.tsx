@@ -262,8 +262,8 @@ export function Hero() {
                 }}
               />
               <Image
-                src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=700&h=875&fit=crop"
-                alt="Aerial view of a plotted residential layout with marked plots and roads"
+                src="/images/brand/hero-aerial-plots.webp"
+                alt="Aerial drone view of a freshly plotted DTCP layout in rural Tamil Nadu at golden hour"
                 fill
                 className="object-cover"
                 priority
@@ -290,11 +290,11 @@ export function Hero() {
                 }}
               />
               <Image
-                src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=400&fit=crop"
-                alt="Young family reviewing property documents at a site visit"
+                src="/images/brand/hero-family-handover.webp"
+                alt="A South Indian family standing on their newly bought plot of land at golden hour"
                 fill
                 className="object-cover"
-                sizes="(max-width: 1024px) 0px, 20vw"
+                sizes="(max-width: 1024px) 0px, 22vw"
               />
             </motion.div>
 

@@ -266,8 +266,8 @@ export function ServiceRows() {
         index="01"
         title="Plots"
         heading="DTCP-approved land in Chennai's fastest-growing corridors."
-        image="https://images.unsplash.com/photo-1628744448840-55bdb2497bd4?w=1200&h=900&fit=crop"
-        imageAlt="Aerial view of a plotted residential layout"
+        image="/images/brand/offering-plots.webp"
+        imageAlt="DTCP-approved plotted layout at dawn with palms"
         imageLeft={true}
         bullets={[
           "Sizes from 600 to 2,400 sq ft. Starting at ₹1,650 / sq ft.",
@@ -283,8 +283,8 @@ export function ServiceRows() {
         index="02"
         title="Construction"
         heading="Turnkey homes. Transparent per-sqft pricing."
-        image="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1200&h=900&fit=crop"
-        imageAlt="Construction site with skilled workers building a home"
+        image="/images/brand/offering-construction.webp"
+        imageAlt="Masons laying terracotta tiles on a mid-construction Tamil home"
         imageLeft={false}
         featured
         badge="Most asked for"
@@ -302,8 +302,8 @@ export function ServiceRows() {
         index="03"
         title="Resale"
         heading="Already own land? We'll find the right buyer."
-        image="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&h=900&fit=crop"
-        imageAlt="Family discussing property documents at a meeting"
+        image="/images/brand/offering-resale.webp"
+        imageAlt="Two pairs of hands meeting over a DTCP layout plan with a gold-sealed document"
         imageLeft={true}
         bullets={[
           "A verified buyer network built over a decade in Chennai.",
