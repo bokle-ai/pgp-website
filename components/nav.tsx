@@ -23,39 +23,8 @@ const navLinks = [
   { label: "Contact", href: "/contact" },
 ];
 
-function LogoMark({ size = 40 }: { size?: number }) {
-  return (
-    <div className="flex items-center gap-2.5 shrink-0">
-      {/* Emblem — clean crop of the golden pin/lotus icon only */}
-      <PGPLogo variant="icon" size={size} />
-      {/* Sora wordmark — one font, no serif, reads as one brand */}
-      <div style={{ lineHeight: 1.15 }}>
-        <div
-          style={{
-            fontFamily: "var(--font-heading)",
-            fontWeight: 700,
-            fontSize: size > 36 ? "1rem" : "0.9rem",
-            color: "var(--bg-deep)",
-            letterSpacing: "-0.02em",
-          }}
-        >
-          Prime Golden
-        </div>
-        <div
-          style={{
-            fontFamily: "var(--font-body)",
-            fontWeight: 700,
-            fontSize: "0.55rem",
-            color: "var(--accent-gold)",
-            letterSpacing: "0.22em",
-            textTransform: "uppercase",
-          }}
-        >
-          Properties
-        </div>
-      </div>
-    </div>
-  );
+function LogoMark({ size = 48 }: { size?: number }) {
+  return <PGPLogo variant="icon" size={size} />;
 }
 
 export function Nav() {
@@ -216,7 +185,7 @@ export function Nav() {
               <SheetContent side="right" className="w-72" style={{ backgroundColor: "var(--bg-cream)" }}>
                 <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
                 <div className="pt-6 px-2">
-                  <LogoMark size={40} />
+                  <LogoMark size={52} />
 
                   <nav className="mt-10 flex flex-col gap-1" aria-label="Mobile navigation">
                     {navLinks.map((link, i) => (
