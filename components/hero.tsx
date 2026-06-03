@@ -43,7 +43,7 @@ export function Hero() {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-[92vh] flex items-center pt-56 lg:pt-64 pb-20 lg:pb-28 overflow-hidden"
+      className="relative min-h-[92vh] flex items-center pt-40 lg:pt-48 pb-20 lg:pb-28 overflow-hidden"
       aria-label="Hero"
       style={{
         backgroundColor: "var(--bg-deep)",
@@ -89,15 +89,14 @@ export function Hero() {
                 Land that turns
                 <br />
                 into{" "}
-                <em
+                <span
                   style={{
                     color: "var(--accent-gold)",
-                    fontStyle: "italic",
-                    fontWeight: 400,
+                    fontWeight: 700,
                   }}
                 >
                   legacy.
-                </em>
+                </span>
               </motion.h1>
 
               <motion.p
@@ -111,7 +110,7 @@ export function Hero() {
                 }}
               >
                 DTCP-approved plots, turnkey construction at honest rates, and
-                trusted resale — across Cheyyar Taluk, a quiet 100&nbsp;km south-west
+                trusted resale across Cheyyar Taluk, a quiet 100&nbsp;km south-west
                 of Chennai. One corridor, run end-to-end.
               </motion.p>
 
@@ -155,9 +154,16 @@ export function Hero() {
                 </Link>
               </motion.div>
 
-              {/* Trust strip — the stats speak for themselves, no label needed */}
+              {/* Trust strip */}
               <motion.div
-                {...motionProps(0.4)}
+                {...(prefersReduced ? {} : {
+                  initial: "hidden",
+                  animate: "visible",
+                  variants: {
+                    hidden: {},
+                    visible: { transition: { staggerChildren: 0.1, delayChildren: 0.5 } },
+                  },
+                })}
                 className="pt-8"
                 style={{ borderTop: "1px solid rgba(248,245,239,0.08)" }}
               >
@@ -168,13 +174,20 @@ export function Hero() {
                     { num: "6", label: "Active projects" },
                     { num: "100%", label: "DTCP approved" },
                   ].map((stat) => (
-                    <div key={stat.label} className="flex items-baseline gap-2">
+                    <motion.div
+                      key={stat.label}
+                      className="flex items-baseline gap-2"
+                      variants={prefersReduced ? {} : {
+                        hidden: { opacity: 0, y: 16 },
+                        visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: EASE } },
+                      }}
+                    >
                       <span
                         className="text-2xl"
                         style={{
-                          color: "var(--bg-cream)",
-                          fontFamily: "var(--font-playfair, Georgia, serif)",
-                          fontWeight: 600,
+                          color: "var(--accent-gold)",
+                          fontFamily: "var(--font-display)",
+                          fontWeight: 700,
                         }}
                       >
                         {stat.num}
@@ -183,12 +196,12 @@ export function Hero() {
                         className="text-xs"
                         style={{
                           color: "rgba(248,245,239,0.6)",
-                          fontFamily: "var(--font-montserrat, sans-serif)",
+                          fontFamily: "var(--font-body)",
                         }}
                       >
                         {stat.label}
                       </span>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               </motion.div>

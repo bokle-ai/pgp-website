@@ -14,12 +14,13 @@ const tiers = {
   standard: {
     name: "Standard",
     rate: "₹1,850",
+    unit: "/ sq ft",
     label: null as string | null,
-    blurb: "The honest baseline — turnkey construction at builder rates.",
+    blurb: "The honest baseline. Turnkey construction at builder rates.",
     features: [
       "Foundation to handover (turnkey)",
       "RCC frame structure",
-      "Standard MS doors & windows",
+      "Standard MS doors and windows",
       "Ceramic flooring (vitrified in living)",
       "Standard sanitaryware (Cera / Hindware)",
       "Single-coat exterior emulsion",
@@ -30,6 +31,7 @@ const tiers = {
   premium: {
     name: "Premium",
     rate: "₹2,450",
+    unit: "/ sq ft",
     label: "Most popular",
     blurb: "Our most-asked tier. Strong finishes, no compromise on essentials.",
     features: [
@@ -46,6 +48,7 @@ const tiers = {
   luxury: {
     name: "Luxury",
     rate: "₹3,200",
+    unit: "/ sq ft",
     label: null as string | null,
     blurb: "Everything imported, smart, and tailored to how you actually live.",
     features: [
@@ -53,8 +56,8 @@ const tiers = {
       "Imported tile / wood flooring",
       "Modular kitchen (chef-grade)",
       "Smart home automation",
-      "Landscaped garden + driveway",
-      "Solar + rainwater harvesting",
+      "Landscaped garden and driveway",
+      "Solar and rainwater harvesting",
       "Custom interior consultation",
       "10-year structural warranty",
     ],
@@ -70,67 +73,76 @@ export function PricingTier({ tier, animationDelay = 0 }: PricingTierProps) {
     <motion.div
       className="relative flex flex-col h-full overflow-hidden"
       style={{
-        backgroundColor: isFeatured ? "var(--bg-deep)" : "var(--bg-cream)",
+        backgroundColor: isFeatured ? "var(--bg-deep)" : "rgba(248,245,239,0.6)",
         borderRadius: 24,
         border: isFeatured
-          ? "1px solid rgba(212,160,23,0.55)"
+          ? "1px solid rgba(212,160,23,0.5)"
           : "1px solid rgba(15,61,46,0.08)",
         boxShadow: isFeatured
-          ? "0 24px 60px rgba(15,61,46,0.4), 0 0 0 1px rgba(212,160,23,0.1)"
-          : "0 14px 36px rgba(15,61,46,0.08)",
-        transform: isFeatured ? "translateY(-8px)" : "translateY(0)",
+          ? "0 32px 72px rgba(15,61,46,0.45), 0 0 0 1px rgba(212,160,23,0.12)"
+          : "0 8px 32px rgba(15,61,46,0.07)",
       }}
-      initial={prefersReduced ? { opacity: 1, y: isFeatured ? -8 : 0 } : { opacity: 0, y: 32 }}
-      whileInView={{ opacity: 1, y: isFeatured ? -8 : 0 }}
+      initial={prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 36 }}
+      whileInView={{ opacity: 1, y: isFeatured ? -12 : 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.7, delay: animationDelay, ease: EASE }}
-      whileHover={prefersReduced ? {} : { y: isFeatured ? -14 : -6 }}
+      whileHover={prefersReduced ? {} : {
+        y: isFeatured ? -20 : -8,
+        boxShadow: isFeatured
+          ? "0 40px 80px rgba(15,61,46,0.5), 0 0 0 1px rgba(212,160,23,0.18)"
+          : "0 16px 48px rgba(15,61,46,0.12)",
+      }}
     >
+      {/* Top accent bar on featured */}
+      {isFeatured && (
+        <div
+          className="absolute top-0 left-0 right-0 h-1"
+          style={{
+            background: "linear-gradient(90deg, var(--accent-gold), #E0B43F, var(--accent-gold))",
+          }}
+          aria-hidden="true"
+        />
+      )}
+
       {t.label && (
         <div
-          className="absolute top-5 right-5 inline-flex items-center gap-1.5 px-3 py-1.5 text-[11px] uppercase"
+          className="absolute top-5 right-5 inline-flex items-center gap-1.5 px-3 py-1 text-[10px] uppercase"
           style={{
             backgroundColor: "var(--accent-gold)",
             color: "var(--bg-deep)",
-            fontFamily: "var(--font-montserrat, sans-serif)",
+            fontFamily: "var(--font-body)",
             fontWeight: 700,
             letterSpacing: "0.14em",
             borderRadius: 999,
-            boxShadow: "0 6px 18px rgba(212,160,23,0.4)",
+            boxShadow: "0 4px 12px rgba(212,160,23,0.4)",
           }}
         >
-          <span
-            className="w-1.5 h-1.5 rounded-full"
-            style={{ backgroundColor: "var(--bg-deep)" }}
-            aria-hidden="true"
-          />
           {t.label}
         </div>
       )}
 
-      <div className="p-8 lg:p-10 flex flex-col flex-1">
+      <div className="p-8 lg:p-10 flex flex-col flex-1 pt-10">
         <span
-          className="text-[10px] uppercase mb-4"
+          className="text-[10px] uppercase mb-4 tracking-widest"
           style={{
             color: "var(--accent-gold)",
-            fontFamily: "var(--font-montserrat, sans-serif)",
-            letterSpacing: "0.24em",
+            fontFamily: "var(--font-body)",
             fontWeight: 700,
           }}
         >
           {t.name}
         </span>
 
-        <div className="mb-2 flex items-baseline gap-1.5">
+        <div className="mb-1 flex items-baseline gap-2">
           <span
             className="tabular-nums"
             style={{
-              fontFamily: "var(--font-playfair, Georgia, serif)",
-              fontWeight: 600,
-              fontSize: "clamp(2rem, 5vw, 3rem)",
+              fontFamily: "var(--font-heading)",
+              fontWeight: 700,
+              fontSize: "clamp(2.2rem, 4vw, 3rem)",
               color: isFeatured ? "var(--bg-cream)" : "var(--ink)",
               lineHeight: 1,
-              letterSpacing: "-0.02em",
+              letterSpacing: "-0.03em",
             }}
           >
             {t.rate}
@@ -138,20 +150,19 @@ export function PricingTier({ tier, animationDelay = 0 }: PricingTierProps) {
           <span
             className="text-sm"
             style={{
-              color: isFeatured ? "rgba(246,241,231,0.6)" : "var(--ink-faint)",
-              fontFamily: "var(--font-montserrat, sans-serif)",
+              color: isFeatured ? "rgba(246,241,231,0.5)" : "var(--ink-faint)",
+              fontFamily: "var(--font-body)",
             }}
           >
-            / sq ft
+            {t.unit}
           </span>
         </div>
 
         <p
-          className="mb-7 text-[14px]"
+          className="mb-7 text-[13.5px] leading-relaxed"
           style={{
-            color: isFeatured ? "rgba(246,241,231,0.75)" : "var(--ink-muted)",
-            fontFamily: "var(--font-montserrat, sans-serif)",
-            lineHeight: 1.6,
+            color: isFeatured ? "rgba(246,241,231,0.65)" : "var(--ink-muted)",
+            fontFamily: "var(--font-body)",
           }}
         >
           {t.blurb}
@@ -161,25 +172,26 @@ export function PricingTier({ tier, animationDelay = 0 }: PricingTierProps) {
           className="h-px w-full mb-6"
           style={{
             backgroundColor: isFeatured
-              ? "rgba(212,160,23,0.2)"
-              : "rgba(15,61,46,0.08)",
+              ? "rgba(212,160,23,0.18)"
+              : "rgba(15,61,46,0.07)",
           }}
           aria-hidden="true"
         />
 
-        <ul className="flex-1 space-y-3 mb-8">
+        <ul className="flex-1 space-y-2.5 mb-8">
           {t.features.map((feature) => (
             <li
               key={feature}
-              className="flex items-start gap-2.5 text-[13.5px]"
+              className="flex items-start gap-2.5 text-[13px]"
               style={{
-                color: isFeatured ? "rgba(246,241,231,0.85)" : "var(--ink-muted)",
-                fontFamily: "var(--font-montserrat, sans-serif)",
+                color: isFeatured ? "rgba(246,241,231,0.8)" : "var(--ink-muted)",
+                fontFamily: "var(--font-body)",
+                lineHeight: 1.5,
               }}
             >
               <Check
                 size={14}
-                className="shrink-0 mt-1"
+                className="shrink-0 mt-0.5"
                 style={{ color: "var(--accent-gold)" }}
                 aria-hidden="true"
               />
@@ -196,10 +208,8 @@ export function PricingTier({ tier, animationDelay = 0 }: PricingTierProps) {
               ? "linear-gradient(135deg, var(--accent-gold) 0%, #E0B43F 100%)"
               : "transparent",
             color: isFeatured ? "var(--bg-deep)" : "var(--bg-deep)",
-            border: isFeatured
-              ? "none"
-              : "1.5px solid var(--bg-deep)",
-            fontFamily: "var(--font-montserrat, sans-serif)",
+            border: isFeatured ? "none" : "1.5px solid rgba(15,61,46,0.25)",
+            fontFamily: "var(--font-body)",
             fontWeight: 600,
             padding: "13px 22px",
             borderRadius: 999,
@@ -208,7 +218,7 @@ export function PricingTier({ tier, animationDelay = 0 }: PricingTierProps) {
               : "none",
           }}
         >
-          Request detailed quote
+          Request a quote
           <span aria-hidden="true">→</span>
         </Link>
       </div>

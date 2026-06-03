@@ -89,14 +89,13 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-14 mb-16">
           {/* Col 1 — Brand */}
           <div>
+            {/* Logo needs a light bg since the PNG has dark ink text */}
             <div
               className="inline-flex items-center justify-center"
               style={{
-                backgroundColor: "var(--bg-cream)",
-                padding: "14px 18px",
-                borderRadius: 18,
-                border: "1px solid rgba(212,160,23,0.4)",
-                boxShadow: "0 10px 28px rgba(0,0,0,0.28)",
+                backgroundColor: "rgba(248,245,239,0.96)",
+                padding: "10px 12px",
+                borderRadius: 14,
               }}
             >
               <PGPLogo variant="full" height={120} />

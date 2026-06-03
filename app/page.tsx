@@ -32,28 +32,20 @@ export default function Home() {
         {/* Hero (already includes the 4-stat trust strip) */}
         <Hero />
 
-        {/* What we do — dark canvas with cream floating cards */}
+        {/* What we do — light cream section */}
         <section
           id="plots"
           className="relative py-20 lg:py-32 overflow-hidden"
-          style={{
-            backgroundColor: "var(--bg-deep)",
-            background: `
-              radial-gradient(ellipse 50% 40% at 15% 15%, rgba(212,160,23,0.10), transparent 60%),
-              radial-gradient(ellipse 60% 50% at 90% 85%, rgba(212,160,23,0.08), transparent 60%),
-              linear-gradient(180deg, #0F3D2E 0%, #0C3527 100%)
-            `,
-          }}
+          style={{ backgroundColor: "var(--bg-cream)" }}
           aria-label="Our services"
         >
-          {/* Faint dot grid texture */}
+          {/* Subtle warm radial glow */}
           <div
             aria-hidden="true"
-            className="absolute inset-0 opacity-[0.04] pointer-events-none"
+            className="absolute inset-0 pointer-events-none"
             style={{
-              backgroundImage:
-                "radial-gradient(rgba(255,255,255,0.6) 1px, transparent 1px)",
-              backgroundSize: "28px 28px",
+              background:
+                "radial-gradient(ellipse 70% 60% at 50% 0%, rgba(212,160,23,0.06), transparent 70%)",
             }}
           />
 
@@ -62,9 +54,7 @@ export default function Home() {
               <SectionHeader
                 eyebrow="What we do"
                 title="Three doors. One trusted partner."
-                subtitle="Whether you're buying your first plot, building your home, or moving on from an old one — we're the same team end-to-end."
-                titleDark
-                subtitleDark
+                subtitle="Whether you're buying your first plot, building your home, or moving on from an old one, we're the same team end-to-end."
               />
             </div>
 
@@ -73,9 +63,9 @@ export default function Home() {
               className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-7"
             >
               <OfferingCard type="plots" animationDelay={0} />
-              <OfferingCard type="construction" animationDelay={0.12} />
+              <OfferingCard type="construction" animationDelay={0.14} />
               <div id="resale" className="contents">
-                <OfferingCard type="resale" animationDelay={0.24} />
+                <OfferingCard type="resale" animationDelay={0.28} />
               </div>
             </div>
           </div>
@@ -120,7 +110,7 @@ export default function Home() {
                 <ProjectCard
                   key={project.slug}
                   project={project}
-                  animationDelay={i * 0.1}
+                  animationDelay={i * 0.08}
                 />
               ))}
             </div>
@@ -128,15 +118,18 @@ export default function Home() {
             <ScrollReveal className="mt-12 text-center" delay={0.2}>
               <Link
                 href="/projects"
-                className="inline-flex items-center gap-2 text-sm font-medium transition-opacity hover:opacity-70 group"
+                className="inline-flex items-center gap-2 px-6 py-3 text-sm transition-all hover:brightness-105 active:scale-[0.98]"
                 style={{
-                  color: "var(--accent-gold)",
-                  fontFamily: "var(--font-montserrat, sans-serif)",
-                  fontWeight: 500,
+                  color: "var(--bg-deep)",
+                  fontFamily: "var(--font-body)",
+                  fontWeight: 600,
+                  backgroundColor: "var(--accent-gold)",
+                  borderRadius: 999,
+                  boxShadow: "0 6px 18px rgba(212,160,23,0.28)",
                 }}
               >
                 View all projects
-                <span className="transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
+                <span aria-hidden="true">→</span>
               </Link>
             </ScrollReveal>
           </div>
@@ -176,7 +169,7 @@ export default function Home() {
                     <br className="hidden lg:block" /> No surprises.
                   </>
                 }
-                subtitle="Most builders quote you a number then surprise you with extras. We don't. Pick a tier — what's listed is what you pay."
+                subtitle="Most builders quote you a number then surprise you with extras. We don't. Pick a tier. What's listed is what you pay."
                 titleDark
                 subtitleDark
               />
@@ -236,26 +229,18 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Testimonials — dark canvas, cream cards floating */}
+        {/* Testimonials — light cream, white cards */}
         <section
           className="relative py-20 lg:py-32 overflow-hidden"
-          style={{
-            backgroundColor: "var(--bg-deep)",
-            background: `
-              radial-gradient(ellipse 50% 40% at 10% 20%, rgba(212,160,23,0.10), transparent 60%),
-              radial-gradient(ellipse 50% 50% at 90% 80%, rgba(212,160,23,0.08), transparent 60%),
-              linear-gradient(180deg, #0F3D2E 0%, #0C3527 100%)
-            `,
-          }}
+          style={{ backgroundColor: "var(--bg-cream)" }}
           aria-label="Customer testimonials"
         >
           <div
             aria-hidden="true"
-            className="absolute inset-0 opacity-[0.04] pointer-events-none"
+            className="absolute inset-0 pointer-events-none"
             style={{
-              backgroundImage:
-                "radial-gradient(rgba(255,255,255,0.6) 1px, transparent 1px)",
-              backgroundSize: "28px 28px",
+              background:
+                "radial-gradient(ellipse 80% 50% at 50% 100%, rgba(212,160,23,0.06), transparent 70%)",
             }}
           />
 
@@ -264,8 +249,6 @@ export default function Home() {
               <SectionHeader
                 eyebrow="In their words"
                 title="From the families who built here."
-                titleDark
-                subtitleDark
               />
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-7">
@@ -273,7 +256,7 @@ export default function Home() {
                 <TestimonialCard
                   key={t.id}
                   testimonial={t}
-                  animationDelay={i * 0.12}
+                  animationDelay={i * 0.14}
                 />
               ))}
             </div>
@@ -312,7 +295,7 @@ export default function Home() {
               <SectionHeader
                 goldRule
                 title="Come see the land."
-                subtitle="A site visit takes 90 minutes. We'll pick you up from the nearest railway station. Saturday and Sunday slots fill fastest — book early."
+                subtitle="A site visit takes 90 minutes. We'll pick you up from the nearest railway station. Saturday and Sunday slots fill fastest, book early."
                 titleDark
                 subtitleDark
               />

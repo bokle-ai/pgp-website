@@ -15,7 +15,7 @@ const data = {
     title: "Plots",
     eyebrow: "DTCP & CMDA approved",
     tagline:
-      "Cleared, ready-to-build plots in the Cheyyar corridor — sizes from 600 to 2,400 sq ft, starting at ₹4 Lakhs.",
+      "Cleared, ready-to-build plots in the Cheyyar corridor. Sizes from 600 to 2,400 sq ft, starting at ₹4 Lakhs.",
     bullets: [
       "Clear titles, full legal due diligence",
       "Plot sizes 600 – 2,400 sq ft",
@@ -30,11 +30,11 @@ const data = {
     title: "Construction",
     eyebrow: "Turnkey · transparent rates",
     tagline:
-      "Per-sq-ft pricing from foundation to handover. What's listed is what you pay — no surprise extras.",
+      "Per-sq-ft pricing from foundation to handover. What's listed is what you pay, no surprise extras.",
     bullets: [
       "Standard from ₹1,850 / sq ft",
-      "Premium ₹2,450 — vitrified, modular kitchen",
-      "Luxury ₹3,200 — imported finishes, smart home",
+      "Premium ₹2,450: vitrified floors, modular kitchen",
+      "Luxury ₹3,200: imported finishes, smart home",
     ],
     image: "/images/brand/offering-construction.webp",
     imageAlt: "Home under construction with PGP",
@@ -66,10 +66,10 @@ export function OfferingCard({ type, animationDelay = 0 }: OfferingCardProps) {
     <motion.div
       className="group relative flex flex-col h-full overflow-hidden"
       style={{
-        backgroundColor: "var(--bg-cream)",
+        backgroundColor: "white",
         borderRadius: 24,
-        border: "1px solid rgba(212,160,23,0.18)",
-        boxShadow: "0 18px 48px rgba(0,0,0,0.25)",
+        border: "1px solid rgba(15,61,46,0.07)",
+        boxShadow: "0 8px 32px rgba(15,61,46,0.08), 0 2px 8px rgba(15,61,46,0.04)",
       }}
       initial={
         prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 32 }
@@ -77,7 +77,7 @@ export function OfferingCard({ type, animationDelay = 0 }: OfferingCardProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.7, delay: animationDelay, ease: EASE }}
-      whileHover={prefersReduced ? {} : { y: -6 }}
+      whileHover={prefersReduced ? {} : { y: -8, scale: 1.015, boxShadow: "0 20px 48px rgba(15,61,46,0.14), 0 4px 12px rgba(15,61,46,0.06)" }}
     >
       {/* Image header */}
       <div className="relative aspect-[16/10] overflow-hidden">

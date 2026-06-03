@@ -2,27 +2,15 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { MapPin } from "lucide-react";
+import { MapPin, ArrowRight } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { EASE } from "@/lib/animation";
 import type { Project } from "@/lib/data/projects";
 
 const statusConfig = {
-  available: {
-    label: "Available",
-    bg: "rgba(46,125,91,0.92)",
-    color: "#fff",
-  },
-  "few-left": {
-    label: "Few Left",
-    bg: "rgba(184,134,11,0.92)",
-    color: "#fff",
-  },
-  "sold-out": {
-    label: "Sold Out",
-    bg: "rgba(139,58,58,0.9)",
-    color: "#fff",
-  },
+  available: { label: "Available", dot: "#2E7D5B" },
+  "few-left": { label: "Few Left", dot: "#D4A017" },
+  "sold-out": { label: "Sold Out", dot: "#8B3A3A" },
 };
 
 export function ProjectCard({
@@ -39,59 +27,69 @@ export function ProjectCard({
     <motion.article
       className="group relative flex flex-col overflow-hidden h-full"
       style={{
-        backgroundColor: "var(--bg-cream)",
-        borderRadius: 22,
-        border: "1px solid rgba(15,61,46,0.10)",
-        boxShadow: "0 10px 32px rgba(15,61,46,0.08)",
+        backgroundColor: "white",
+        borderRadius: 20,
+        border: "1px solid rgba(15,61,46,0.08)",
+        boxShadow: "0 4px 24px rgba(15,61,46,0.07)",
       }}
-      initial={prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 28 }}
+      initial={prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 32 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.65, delay: animationDelay, ease: EASE }}
-      whileHover={prefersReduced ? {} : { y: -4 }}
+      whileHover={prefersReduced ? {} : {
+        y: -8,
+        boxShadow: "0 20px 48px rgba(15,61,46,0.14)",
+      }}
     >
-      {/* Image */}
-      <div className="relative aspect-[4/3] overflow-hidden">
+      {/* Image — wider aspect */}
+      <div className="relative aspect-[16/10] overflow-hidden">
         <Image
           src={project.image}
-          alt={`${project.name} — plotted layout in ${project.location}`}
+          alt={`${project.name} plotted layout in ${project.location}`}
           fill
-          className="object-cover transition-transform duration-700 group-hover:scale-[1.06]"
+          className="object-cover transition-transform duration-700 group-hover:scale-[1.07]"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
-        {/* status badge */}
+
+        {/* Dark gradient for bottom badges */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: "linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.45) 100%)",
+          }}
+        />
+
+        {/* Status — top left */}
         <div
           className="absolute top-3.5 left-3.5 inline-flex items-center gap-1.5 px-3 py-1.5 text-[11px]"
           style={{
-            backgroundColor: status.bg,
-            color: status.color,
-            fontFamily: "var(--font-montserrat, sans-serif)",
+            backgroundColor: "rgba(255,255,255,0.92)",
+            color: "var(--ink)",
+            fontFamily: "var(--font-body)",
             fontWeight: 600,
-            letterSpacing: "0.08em",
+            letterSpacing: "0.06em",
             borderRadius: 999,
-            backdropFilter: "blur(6px)",
-            WebkitBackdropFilter: "blur(6px)",
-            boxShadow: "0 4px 12px rgba(0,0,0,0.18)",
+            backdropFilter: "blur(8px)",
           }}
         >
           <span
-            className="w-1.5 h-1.5 rounded-full bg-current"
+            className="w-1.5 h-1.5 rounded-full shrink-0"
+            style={{ backgroundColor: status.dot }}
             aria-hidden="true"
           />
           {status.label}
         </div>
-        {/* price tile */}
+
+        {/* Price — bottom right over image */}
         <div
-          className="absolute bottom-3.5 right-3.5 px-3 py-1.5 text-sm tabular-nums"
+          className="absolute bottom-3.5 right-3.5 px-3.5 py-1.5 tabular-nums text-sm"
           style={{
-            backgroundColor: "rgba(15,61,46,0.88)",
-            color: "var(--accent-gold)",
-            fontFamily: "var(--font-montserrat, sans-serif)",
+            backgroundColor: "var(--accent-gold)",
+            color: "var(--bg-deep)",
+            fontFamily: "var(--font-body)",
             fontWeight: 700,
             borderRadius: 10,
-            backdropFilter: "blur(6px)",
-            WebkitBackdropFilter: "blur(6px)",
-            border: "1px solid rgba(212,160,23,0.35)",
           }}
         >
           ₹{project.priceInLakhs} L
@@ -100,83 +98,83 @@ export function ProjectCard({
 
       {/* Content */}
       <div className="p-5 lg:p-6 flex flex-col gap-3 flex-1">
+        {/* Location */}
         <div
           className="inline-flex items-center gap-1.5 text-[11px] uppercase"
           style={{
             color: "var(--accent-gold)",
-            fontFamily: "var(--font-montserrat, sans-serif)",
+            fontFamily: "var(--font-body)",
             fontWeight: 700,
-            letterSpacing: "0.12em",
+            letterSpacing: "0.14em",
           }}
         >
           <MapPin size={11} aria-hidden="true" />
           {project.location}
         </div>
 
+        {/* Name */}
         <h3
-          className="transition-colors group-hover:text-[var(--accent-gold)]"
           style={{
-            fontFamily: "var(--font-playfair, Georgia, serif)",
-            fontWeight: 600,
-            fontSize: "1.4rem",
+            fontFamily: "var(--font-heading)",
+            fontWeight: 700,
+            fontSize: "1.35rem",
             color: "var(--ink)",
-            lineHeight: 1.15,
-            letterSpacing: "-0.01em",
+            lineHeight: 1.2,
+            letterSpacing: "-0.02em",
           }}
         >
           {project.name}
         </h3>
 
-        <p
-          className="text-[13px]"
-          style={{
-            color: "var(--ink-muted)",
-            fontFamily: "var(--font-montserrat, sans-serif)",
-          }}
-        >
-          Plot size: <span style={{ color: "var(--ink)", fontWeight: 500 }}>{project.sizes}</span>
-        </p>
-
-        <div
-          className="flex flex-wrap gap-x-3 gap-y-1 text-[11px]"
-          style={{
-            color: "var(--ink-faint)",
-            fontFamily: "var(--font-montserrat, sans-serif)",
-            fontWeight: 600,
-            letterSpacing: "0.05em",
-            textTransform: "uppercase",
-          }}
-        >
-          <span>{project.approval} Approved</span>
-          {project.amenities.slice(0, 1).map((a) => (
-            <span key={a} className="flex items-center gap-2">
-              <span aria-hidden="true" style={{ color: "var(--accent-gold)" }}>·</span>
-              {a}
-            </span>
-          ))}
+        {/* Size + approval */}
+        <div className="flex items-center gap-3 flex-wrap">
+          <span
+            className="text-[12px] px-2.5 py-1 rounded-full"
+            style={{
+              backgroundColor: "rgba(15,61,46,0.06)",
+              color: "var(--ink-muted)",
+              fontFamily: "var(--font-body)",
+              fontWeight: 500,
+            }}
+          >
+            {project.sizes}
+          </span>
+          <span
+            className="text-[12px] px-2.5 py-1 rounded-full"
+            style={{
+              backgroundColor: "rgba(212,160,23,0.1)",
+              color: "var(--bg-deep)",
+              fontFamily: "var(--font-body)",
+              fontWeight: 600,
+            }}
+          >
+            {project.approval} Approved
+          </span>
         </div>
 
+        {/* CTA */}
         <Link
           href={`/projects/${project.slug}`}
-          className="mt-auto inline-flex items-center justify-between text-[13px] transition-all hover:brightness-110 active:scale-[0.98]"
+          className="mt-auto inline-flex items-center justify-between text-[13.5px] transition-all group/cta"
           style={{
             color: "var(--bg-deep)",
-            fontFamily: "var(--font-montserrat, sans-serif)",
+            fontFamily: "var(--font-body)",
             fontWeight: 600,
-            backgroundColor: "var(--accent-gold)",
-            padding: "10px 16px",
+            backgroundColor: "var(--bg-cream)",
+            padding: "11px 18px",
             borderRadius: 999,
-            boxShadow:
-              "0 4px 14px rgba(212,160,23,0.28), inset 0 1px 0 rgba(255,255,255,0.28)",
+            border: "1.5px solid rgba(15,61,46,0.12)",
           }}
         >
           View project
-          <span
-            className="transition-transform group-hover:translate-x-1"
+          <motion.span
+            className="inline-flex"
+            animate={prefersReduced ? {} : undefined}
+            whileHover={prefersReduced ? {} : { x: 3 }}
             aria-hidden="true"
           >
-            →
-          </span>
+            <ArrowRight size={15} />
+          </motion.span>
         </Link>
       </div>
     </motion.article>

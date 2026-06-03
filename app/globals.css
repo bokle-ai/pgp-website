@@ -24,6 +24,15 @@
   --radius: 0.375rem;
   --primary: var(--accent-gold);
   --primary-foreground: var(--bg-deep);
+
+  /* Type system — Sora for display/headings, Plus Jakarta Sans for body/UI.
+     The legacy `--font-playfair` / `--font-montserrat` names are kept as
+     aliases so every component that still references them picks up the new
+     fonts with zero churn. Sora replaces the old serif headings. */
+  --font-heading: var(--font-display, "Sora", system-ui, sans-serif);
+  --font-body: var(--font-sans, "Plus Jakarta Sans", system-ui, sans-serif);
+  --font-playfair: var(--font-heading);
+  --font-montserrat: var(--font-body);
 }
 
 body {
@@ -34,8 +43,14 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-playfair, Georgia, serif);
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+  font-weight: 600;
 }
+
+/* Utility classes so new sections can opt into the type system cleanly */
+.font-display { font-family: var(--font-heading); }
+.font-body { font-family: var(--font-body); }
 
 /* Focus ring */
 :focus-visible {

@@ -12,7 +12,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "karthik-divya",
     quote:
-      "We looked at five plot promoters before PGP. The difference was the second site visit — they sent a structural engineer to walk soil with us, no extra charge. Three years later, our home is built, and we still call them when we need anything.",
+      "We looked at five plot promoters before PGP. The difference was the second site visit. They sent a structural engineer to walk soil with us, no extra charge. Three years later, our home is built, and we still call them when we need anything.",
     name: "Karthik & Divya",
     project: "PGP Aurum",
     location: "Maraimalai Nagar",
@@ -22,7 +22,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "ravichandran",
     quote:
-      "I'm in Singapore. Bought the plot in Tambaram on a video call. Every doc was emailed before they asked for a rupee. Construction starts next month — they're sending weekly drone footage.",
+      "I'm in Singapore. Bought the plot in Tambaram on a video call. Every doc was emailed before they asked for a rupee. Construction starts next month and they're sending weekly drone footage.",
     name: "Ravichandran S.",
     project: "PGP Heritage",
     location: "Tambaram",

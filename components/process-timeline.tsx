@@ -12,7 +12,7 @@ const steps = [
   {
     number: "02",
     title: "Site Visit",
-    body: "Walk the layout with our local team. Soil, neighbourhood, infrastructure, paperwork — all transparent.",
+    body: "Walk the layout with our local team. Soil, neighbourhood, infrastructure, paperwork. All fully transparent.",
   },
   {
     number: "03",

@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Montserrat } from "next/font/google";
+import { Sora, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { OrganizationSchema } from "@/components/json-ld";
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+// Display / headings — Sora: geometric, confident, modern. No serifs.
+const sora = Sora({
+  variable: "--font-display",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
+  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 });
 
-const montserrat = Montserrat({
-  variable: "--font-montserrat",
+// Body / UI — Plus Jakarta Sans: clean, friendly, highly legible.
+const jakarta = Plus_Jakarta_Sans({
+  variable: "--font-sans",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
   display: "swap",
@@ -52,7 +53,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${playfair.variable} ${montserrat.variable}`}>
+    <html lang="en" className={`${sora.variable} ${jakarta.variable}`}>
       <head>
         {/* Opt out of LLM training and image-model scraping. Honoured by
             content-aware crawlers; pairs with the AI-bot blocks in robots.txt. */}
@@ -60,7 +61,7 @@ export default function RootLayout({
         <meta name="googlebot" content="noai, noimageai" />
         <OrganizationSchema />
       </head>
-      <body style={{ fontFamily: "var(--font-montserrat, 'Helvetica Neue', sans-serif)" }}>
+      <body style={{ fontFamily: "var(--font-sans, 'Helvetica Neue', sans-serif)" }}>
         <a href="#main-content" className="skip-to-main">
           Skip to main content
         </a>
