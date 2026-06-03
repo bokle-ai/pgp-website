@@ -75,37 +75,11 @@ export function Hero() {
                 ? {}
                 : { initial: "hidden", animate: "visible", variants: stagger })}
             >
-              <motion.div
-                {...motionProps(0)}
-                className="inline-flex items-center gap-2 px-3 py-1.5 mb-7 rounded-full"
-                style={{
-                  border: "1px solid rgba(212,160,23,0.32)",
-                  backgroundColor: "rgba(212,160,23,0.08)",
-                }}
-              >
-                <span
-                  className="w-1.5 h-1.5 rounded-full"
-                  style={{ backgroundColor: "var(--accent-gold)" }}
-                  aria-hidden="true"
-                />
-                <span
-                  className="text-[11px] uppercase"
-                  style={{
-                    color: "var(--accent-gold)",
-                    letterSpacing: "0.18em",
-                    fontFamily: "var(--font-montserrat, sans-serif)",
-                    fontWeight: 600,
-                  }}
-                >
-                  Est. 2013 · Chennai Outskirts · 310+ Families
-                </span>
-              </motion.div>
-
               <motion.h1
-                {...motionProps(0.08)}
+                {...motionProps(0)}
                 className="font-display leading-[1.02] tracking-tight mb-7"
                 style={{
-                  fontSize: "clamp(2.4rem, 5.2vw + 1rem, 6rem)",
+                  fontSize: "clamp(2.4rem, 5.2vw + 1rem, 5.6rem)",
                   fontFamily: "var(--font-playfair, Georgia, serif)",
                   fontWeight: 600,
                   letterSpacing: "-0.025em",
@@ -127,17 +101,18 @@ export function Hero() {
               </motion.h1>
 
               <motion.p
-                {...motionProps(0.18)}
+                {...motionProps(0.12)}
                 className="text-base lg:text-lg mb-10 max-w-[54ch]"
                 style={{
                   color: "rgba(248,245,239,0.78)",
                   lineHeight: 1.65,
                   fontFamily: "var(--font-montserrat, sans-serif)",
+                  fontWeight: 400,
                 }}
               >
                 DTCP-approved plots, turnkey construction at honest rates, and
-                trusted resale — across Cheyyar Taluk, a quiet 100&nbsp;km south-west of Chennai.
-                Three village corridors, one quietly relentless team.
+                trusted resale — across Cheyyar Taluk, a quiet 100&nbsp;km south-west
+                of Chennai. One corridor, run end-to-end.
               </motion.p>
 
               <motion.div
@@ -180,24 +155,13 @@ export function Hero() {
                 </Link>
               </motion.div>
 
-              {/* Social proof / trust strip */}
+              {/* Trust strip — the stats speak for themselves, no label needed */}
               <motion.div
                 {...motionProps(0.4)}
                 className="pt-8"
                 style={{ borderTop: "1px solid rgba(248,245,239,0.08)" }}
               >
-                <p
-                  className="text-[11px] uppercase mb-4"
-                  style={{
-                    color: "rgba(248,245,239,0.55)",
-                    letterSpacing: "0.22em",
-                    fontFamily: "var(--font-montserrat, sans-serif)",
-                    fontWeight: 600,
-                  }}
-                >
-                  Trusted across the Chennai outskirts since 2013
-                </p>
-                <div className="flex flex-wrap items-center gap-x-7 gap-y-3">
+                <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
                   {[
                     { num: "310+", label: "Families housed" },
                     { num: "12+", label: "Years operating" },

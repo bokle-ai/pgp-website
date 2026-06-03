@@ -62,13 +62,23 @@ export function Nav() {
       }}
     >
       <div
-        className="max-w-7xl mx-auto px-5 lg:px-10 relative flex items-center"
+        className="max-w-7xl mx-auto px-5 lg:px-10 relative flex items-center justify-between"
         style={{
           paddingTop: scrolled ? "10px" : "14px",
           paddingBottom: scrolled ? "10px" : "14px",
           transition: "padding 0.3s ease",
         }}
       >
+        {/* Centered logo — absolutely positioned so left/right sections lay out naturally
+            around it without ever colliding. */}
+        <Link
+          href="/"
+          aria-label="Prime Golden Properties home"
+          className="hidden lg:block absolute left-1/2 -translate-x-1/2 pointer-events-auto"
+        >
+          <PGPLogo variant="full" height={logoHeight} />
+        </Link>
+
         {/* Mobile: small logo on left, hamburger on right */}
         <Link
           href="/"
@@ -78,9 +88,9 @@ export function Nav() {
           <PGPLogo variant="full" height={scrolled ? 52 : 68} />
         </Link>
 
-        {/* Desktop: LEFT nav links */}
+        {/* Desktop: LEFT nav links (Plots / Construction / Resale) */}
         <nav
-          className="hidden lg:flex items-center gap-8 flex-1 justify-end"
+          className="hidden lg:flex items-center gap-7"
           aria-label="Main navigation (left)"
         >
           {mounted &&
@@ -93,7 +103,7 @@ export function Nav() {
               >
                 <Link
                   href={link.href}
-                  className="group relative text-[17px] transition-colors"
+                  className="group relative text-[16px] transition-colors"
                   style={{
                     color: "var(--bg-deep)",
                     fontFamily: "var(--font-montserrat, sans-serif)",
@@ -114,53 +124,42 @@ export function Nav() {
             ))}
         </nav>
 
-        {/* Desktop: CENTRED transparent logo */}
-        <Link
-          href="/"
-          aria-label="Prime Golden Properties home"
-          className="hidden lg:block mx-6 xl:mx-10 shrink-0"
-        >
-          <PGPLogo variant="full" height={logoHeight} />
-        </Link>
-
-        {/* Desktop: RIGHT nav links */}
-        <nav
-          className="hidden lg:flex items-center gap-8 flex-1 justify-start"
-          aria-label="Main navigation (right)"
-        >
-          {mounted &&
-            navLinksRight.map((link, i) => (
-              <motion.div
-                key={link.label}
-                initial={{ opacity: 0, y: -6 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.35, delay: 0.15 + i * 0.05, ease: EASE }}
-              >
-                <Link
-                  href={link.href}
-                  className="group relative text-[17px] transition-colors"
-                  style={{
-                    color: "var(--bg-deep)",
-                    fontFamily: "var(--font-montserrat, sans-serif)",
-                    fontWeight: 500,
-                    letterSpacing: "0.005em",
-                  }}
+        {/* Desktop: RIGHT nav links (Locations / About / Contact) + Schedule CTA inline */}
+        <div className="hidden lg:flex items-center gap-7">
+          <nav className="flex items-center gap-7" aria-label="Main navigation (right)">
+            {mounted &&
+              navLinksRight.map((link, i) => (
+                <motion.div
+                  key={link.label}
+                  initial={{ opacity: 0, y: -6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.35, delay: 0.15 + i * 0.05, ease: EASE }}
                 >
-                  <span className="transition-colors group-hover:text-[var(--accent-gold)]">
-                    {link.label}
-                  </span>
-                  <span
-                    className="absolute left-0 right-0 -bottom-1.5 h-px scale-x-0 group-hover:scale-x-100 transition-transform origin-center"
-                    style={{ backgroundColor: "var(--accent-gold)" }}
-                    aria-hidden="true"
-                  />
-                </Link>
-              </motion.div>
-            ))}
-        </nav>
+                  <Link
+                    href={link.href}
+                    className="group relative text-[16px] transition-colors"
+                    style={{
+                      color: "var(--bg-deep)",
+                      fontFamily: "var(--font-montserrat, sans-serif)",
+                      fontWeight: 500,
+                      letterSpacing: "0.005em",
+                    }}
+                  >
+                    <span className="transition-colors group-hover:text-[var(--accent-gold)]">
+                      {link.label}
+                    </span>
+                    <span
+                      className="absolute left-0 right-0 -bottom-1.5 h-px scale-x-0 group-hover:scale-x-100 transition-transform origin-center"
+                      style={{ backgroundColor: "var(--accent-gold)" }}
+                      aria-hidden="true"
+                    />
+                  </Link>
+                </motion.div>
+              ))}
+          </nav>
 
-        {/* Right edge: Schedule CTA + mobile hamburger (absolutely positioned) */}
-        <div className="absolute right-5 lg:right-10 top-1/2 -translate-y-1/2 flex items-center gap-3">
+          {/* Schedule CTA — inline with right nav so it's always to the right of "Contact",
+              never overlapping it. */}
           {mounted && (
             <motion.div
               initial={{ opacity: 0, scale: 0.92 }}
@@ -169,15 +168,15 @@ export function Nav() {
             >
               <Link
                 href="/#site-visit"
-                className="hidden lg:inline-flex items-center text-[15px] transition-all active:scale-[0.98] hover:brightness-110"
+                className="inline-flex items-center text-[14px] transition-all active:scale-[0.98] hover:brightness-110 whitespace-nowrap"
                 style={{
                   background:
                     "linear-gradient(135deg, var(--accent-gold) 0%, #E0B43F 100%)",
                   color: "var(--bg-deep)",
                   fontFamily: "var(--font-montserrat, sans-serif)",
                   fontWeight: 600,
-                  letterSpacing: "0.02em",
-                  padding: scrolled ? "9px 18px" : "11px 22px",
+                  letterSpacing: "0.01em",
+                  padding: scrolled ? "8px 16px" : "10px 20px",
                   borderRadius: "999px",
                   boxShadow:
                     "0 6px 18px rgba(212,160,23,0.32), inset 0 1px 0 rgba(255,255,255,0.28)",
@@ -188,7 +187,10 @@ export function Nav() {
               </Link>
             </motion.div>
           )}
+        </div>
 
+        {/* Mobile-only right-side hamburger */}
+        <div className="lg:hidden flex items-center">
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
               <button
