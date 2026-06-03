@@ -263,7 +263,7 @@ export function Hero() {
               />
               <Image
                 src="/images/brand/hero-aerial-plots.webp"
-                alt="Aerial drone view of a freshly plotted DTCP layout in rural Tamil Nadu at golden hour"
+                alt="Aerial view of a Prime Golden plotted layout in Cheyyar"
                 fill
                 className="object-cover"
                 priority
@@ -291,7 +291,7 @@ export function Hero() {
               />
               <Image
                 src="/images/brand/hero-family-handover.webp"
-                alt="A South Indian family standing on their newly bought plot of land at golden hour"
+                alt="A family on their plot at Cheyyar"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 0px, 22vw"

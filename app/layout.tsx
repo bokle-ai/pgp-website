@@ -54,6 +54,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${playfair.variable} ${montserrat.variable}`}>
       <head>
+        {/* Opt out of LLM training and image-model scraping. Honoured by
+            content-aware crawlers; pairs with the AI-bot blocks in robots.txt. */}
+        <meta name="robots" content="noai, noimageai" />
+        <meta name="googlebot" content="noai, noimageai" />
         <OrganizationSchema />
       </head>
       <body style={{ fontFamily: "var(--font-montserrat, 'Helvetica Neue', sans-serif)" }}>

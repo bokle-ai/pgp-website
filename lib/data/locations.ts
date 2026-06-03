@@ -33,7 +33,7 @@ export const locations: Location[] = [
     },
     image: "/images/brand/location-papanthangal.webp",
     mapImage: "/images/brand/project-sulaman-nagar.webp",
-    imageAlt: "Village street in Papanthangal, Cheyyar Taluk",
+    imageAlt: "Papanthangal village",
   },
   {
     slug: "perumpallam",
@@ -52,7 +52,7 @@ export const locations: Location[] = [
     },
     image: "/images/brand/location-perumpallam.webp",
     mapImage: "/images/brand/project-vetrivel-nagar.webp",
-    imageAlt: "Open plotted layout in Perumpallam, near Cheyyar town",
+    imageAlt: "Perumpallam plotted layout",
   },
   {
     slug: "cheyyar",
@@ -71,6 +71,6 @@ export const locations: Location[] = [
     },
     image: "/images/brand/location-cheyyar.webp",
     mapImage: "/images/brand/project-brindavanan-sengadu.webp",
-    imageAlt: "Cheyyar town with river, paddy fields and temple gopuram",
+    imageAlt: "Cheyyar town",
   },
 ];
