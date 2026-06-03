@@ -72,7 +72,7 @@ export function Nav() {
       >
         {/* ── LEFT: Logo ──────────────────────────────── */}
         <Link href="/" aria-label="Prime Golden Properties home">
-          <LogoMark size={38} />
+          <LogoMark size={64} />
         </Link>
 
         {/* ── CENTER: Nav links with sliding pill ─────── */}
