@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { EASE } from "@/lib/animation";
 import { PGPLogo } from "./pgp-logo";
 import { siteConfig } from "@/lib/data/site";
+import Image from "next/image";
 import {
   Sheet,
   SheetContent,
@@ -23,8 +24,20 @@ const navLinks = [
   { label: "Contact", href: "/contact" },
 ];
 
-function LogoMark({ size = 48 }: { size?: number }) {
-  return <PGPLogo variant="icon" size={size} />;
+// Horizontal lockup — generated PNG: emblem icon + PRIME GOLDEN / PROPERTIES
+// 712×240px source → rendered at nav-appropriate height with auto width
+function LogoMark({ height = 48 }: { height?: number }) {
+  const w = Math.round(712 * (height / 240));
+  return (
+    <Image
+      src="/logo-h.png"
+      alt="Prime Golden Properties"
+      width={712}
+      height={240}
+      priority
+      style={{ width: w, height, objectFit: "contain", display: "block" }}
+    />
+  );
 }
 
 export function Nav() {
@@ -72,7 +85,7 @@ export function Nav() {
       >
         {/* ── LEFT: Logo ──────────────────────────────── */}
         <Link href="/" aria-label="Prime Golden Properties home">
-          <LogoMark size={64} />
+          <LogoMark height={44} />
         </Link>
 
         {/* ── CENTER: Nav links with sliding pill ─────── */}
@@ -185,7 +198,7 @@ export function Nav() {
               <SheetContent side="right" className="w-72" style={{ backgroundColor: "var(--bg-cream)" }}>
                 <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
                 <div className="pt-6 px-2">
-                  <LogoMark size={52} />
+                  <LogoMark height={52} />
 
                   <nav className="mt-10 flex flex-col gap-1" aria-label="Mobile navigation">
                     {navLinks.map((link, i) => (
