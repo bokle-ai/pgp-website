@@ -27,19 +27,13 @@ export const faqs: FAQ[] = [
     id: "construction",
     question: "Do you handle construction if I buy a plot from you?",
     answer:
-      "Yes, and this is a core differentiator. PGP's construction division handles end-to-end turnkey home construction on any plot you purchase from us, at fixed per-sq-ft rates (Standard ₹1,850, Premium ₹2,450, Luxury ₹3,200). We also take construction projects on plots purchased elsewhere, subject to a site inspection. The same team that sells you the plot manages the construction, so there's continuity on legal and site knowledge.",
+      "Yes, and this is a core differentiator. PGP's construction division handles end-to-end turnkey home construction on any plot you purchase from us, at fixed per-sq-ft rates (Standard ₹2,200, Premium ₹2,500). We also take construction projects on plots purchased elsewhere, subject to a site inspection. The same team that sells you the plot manages the construction, so there's continuity on legal and site knowledge.",
   },
   {
     id: "documents",
     question: "What documents do I need to verify before buying?",
     answer:
       "The essential chain: parent document (original sale deed tracing title back at least 30 years), encumbrance certificate (EC) from sub-registrar's office for the full chain period, patta (ownership record), DTCP/CMDA approval copy, layout plan with plot number, and the approved survey sketch. PGP prepares a full due diligence folder for every project and shares it before any advance is collected. We also recommend appointing your own advocate. We can refer one if needed.",
-  },
-  {
-    id: "resale",
-    question: "How does PGP help with reselling later?",
-    answer:
-      "If you purchased a plot from any PGP layout, you get lifetime listing access. We market your resale to our active buyer network at a flat 1.5% commission (below the 2-2.5% market rate). We handle valuation, buyer verification, and all documentation. For plots not originally from PGP, we offer the same service at 2% commission. We've completed 85+ resale transactions since 2020.",
   },
   {
     id: "nri",

@@ -6,14 +6,14 @@ import { motion, useReducedMotion } from "framer-motion";
 import { EASE } from "@/lib/animation";
 
 interface PricingTierProps {
-  tier: "standard" | "premium" | "luxury";
+  tier: "standard" | "premium";
   animationDelay?: number;
 }
 
 const tiers = {
   standard: {
     name: "Standard",
-    rate: "₹1,850",
+    rate: "₹2,200",
     unit: "/ sq ft",
     label: null as string | null,
     blurb: "The honest baseline. Turnkey construction at builder rates.",
@@ -30,7 +30,7 @@ const tiers = {
   },
   premium: {
     name: "Premium",
-    rate: "₹2,450",
+    rate: "₹2,500",
     unit: "/ sq ft",
     label: "Most popular",
     blurb: "Our most-asked tier. Strong finishes, no compromise on essentials.",
@@ -43,23 +43,6 @@ const tiers = {
       "Aluminium / UPVC windows",
       "Designer false ceiling in living",
       "5-year structural warranty",
-    ],
-  },
-  luxury: {
-    name: "Luxury",
-    rate: "₹3,200",
-    unit: "/ sq ft",
-    label: null as string | null,
-    blurb: "Everything imported, smart, and tailored to how you actually live.",
-    features: [
-      "Everything in Premium, plus:",
-      "Imported tile / wood flooring",
-      "Modular kitchen (chef-grade)",
-      "Smart home automation",
-      "Landscaped garden and driveway",
-      "Solar and rainwater harvesting",
-      "Custom interior consultation",
-      "10-year structural warranty",
     ],
   },
 };

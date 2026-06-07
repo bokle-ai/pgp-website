@@ -6,7 +6,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { EASE } from "@/lib/animation";
 
 interface OfferingCardProps {
-  type: "plots" | "construction" | "resale";
+  type: "plots" | "construction";
   animationDelay?: number;
 }
 
@@ -32,29 +32,14 @@ const data = {
     tagline:
       "Per-sq-ft pricing from foundation to handover. What's listed is what you pay, no surprise extras.",
     bullets: [
-      "Standard from ₹1,850 / sq ft",
-      "Premium ₹2,450: vitrified floors, modular kitchen",
-      "Luxury ₹3,200: imported finishes, smart home",
+      "Standard from ₹2,200 / sq ft",
+      "Premium ₹2,500: vitrified floors, modular kitchen",
+      "Turnkey, foundation to handover",
     ],
     image: "/images/brand/offering-construction.webp",
     imageAlt: "Home under construction with PGP",
     cta: { label: "Get a construction quote", href: "/#construction-pricing" },
     badge: "Most asked for",
-  },
-  resale: {
-    title: "Resale",
-    eyebrow: "Buyer network · end-to-end",
-    tagline:
-      "Already own land in the Chennai outskirts? We'll find the right buyer and run the paperwork.",
-    bullets: [
-      "Verified buyer network",
-      "Professional listing & valuation",
-      "Documentation handled end-to-end",
-    ],
-    image: "/images/brand/offering-resale.webp",
-    imageAlt: "Closing a PGP sale agreement",
-    cta: { label: "List your property", href: "/contact?type=resale" },
-    badge: null as string | null,
   },
 };
 

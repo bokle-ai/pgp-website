@@ -21,16 +21,16 @@ const jakarta = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "Prime Golden Properties | DTCP Plots, Construction & Resale in Chennai",
+    default: "Prime Golden Properties | DTCP Plots & Construction in Chennai",
     template: "%s | Prime Golden Properties",
   },
   description:
-    "DTCP-approved plots, turnkey construction at honest rates, and trusted resale across Chennai's southern and western corridors, Maraimalai Nagar, Kundrathur, and Tambaram.",
+    "DTCP-approved plots and turnkey construction at honest rates across Chennai's southern and western corridors, Maraimalai Nagar, Kundrathur, and Tambaram.",
   metadataBase: new URL("https://www.primegoldenproperties.com"),
   openGraph: {
     title: "Prime Golden Properties, Land that turns into legacy.",
     description:
-      "DTCP-approved plots, turnkey construction, and trusted resale across Maraimalai Nagar, Kundrathur, and Tambaram.",
+      "DTCP-approved plots and turnkey construction across Maraimalai Nagar, Kundrathur, and Tambaram.",
     type: "website",
     locale: "en_IN",
     siteName: "Prime Golden Properties",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Prime Golden Properties, Land that turns into legacy.",
-    description: "DTCP-approved plots, construction, and resale across Chennai's growth corridors.",
+    description: "DTCP-approved plots and construction across Chennai's growth corridors.",
   },
   robots: {
     index: true,

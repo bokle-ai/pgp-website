@@ -53,20 +53,17 @@ export default function Home() {
             <div className="mb-14 max-w-3xl">
               <SectionHeader
                 eyebrow="What we do"
-                title="Three doors. One trusted partner."
-                subtitle="Whether you're buying your first plot, building your home, or moving on from an old one, we're the same team end-to-end."
+                title="Two doors. One trusted partner."
+                subtitle="Whether you're buying your first plot or building your home on it, we're the same team end-to-end."
               />
             </div>
 
             <div
               id="construction"
-              className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-7"
+              className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-7 max-w-4xl mx-auto"
             >
               <OfferingCard type="plots" animationDelay={0} />
               <OfferingCard type="construction" animationDelay={0.14} />
-              <div id="resale" className="contents">
-                <OfferingCard type="resale" animationDelay={0.28} />
-              </div>
             </div>
           </div>
         </section>
@@ -175,8 +172,8 @@ export default function Home() {
               />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-7 items-start">
-              {(["standard", "premium", "luxury"] as const).map((tier, i) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-7 items-start max-w-4xl mx-auto">
+              {(["standard", "premium"] as const).map((tier, i) => (
                 <PricingTier key={tier} tier={tier} animationDelay={i * 0.14} />
               ))}
             </div>

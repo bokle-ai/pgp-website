@@ -19,7 +19,7 @@ const pillars = [
   {
     icon: "🤝",
     title: "One team, end-to-end.",
-    body: "Plot, construction, resale, handled by people who know your project.",
+    body: "Plot and construction, handled by people who know your project.",
   },
   {
     icon: "💰",

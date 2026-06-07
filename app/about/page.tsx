@@ -13,7 +13,7 @@ import Link from "next/link";
 const milestones = [
   { year: "2013", title: "First layout sold", body: "One plotted layout in Maraimalai Nagar. Every buyer walked through the full documentation before a single rupee of advance was collected." },
   { year: "2016", title: "Construction division launched", body: "Buyers kept asking us to build on the plots. We launched a turnkey construction arm, fixed per-sq-ft rates, no hidden extras." },
-  { year: "2019", title: "Resale network formalised", body: "310+ plot owners needed a trusted channel to sell. We built a verified buyer network and a flat-fee resale process." },
+  { year: "2019", title: "310+ families housed", body: "A decade in, more than 310 families had bought and built with us, entirely on referrals and repeat buyers." },
   { year: "2023", title: "Cheyyar corridor opened", body: "Expanded to a 100 km radius, Cheyyar Taluk. Affordable plots in a quiet, growing area with strong infrastructure investment." },
   { year: "Now", title: "6 active projects, 3 corridors", body: "Same team. Same principle. Every project starts with complete due diligence, published before the first site visit." },
 ];
@@ -22,7 +22,7 @@ const values = [
   { icon: "📍", title: "Local only", body: "Three corridors, run end-to-end. We know the soil, the registrar, and the neighbourhood, you won't get that from a pan-India platform." },
   { icon: "📄", title: "Documents first", body: "We share the full due diligence folder, parent doc, EC, patta, approval copies, before collecting any advance. Every time." },
   { icon: "💰", title: "Published prices", body: "Construction rates on this website are the rates you pay. No quote-then-upcharge. No hidden government charges sprung on registration day." },
-  { icon: "🤝", title: "One team end-to-end", body: "The person who sold you the plot is the same person who manages your construction and handles your resale. Continuity is the product." },
+  { icon: "🤝", title: "One team end-to-end", body: "The person who sold you the plot is the same person who manages your construction. Continuity is the product." },
 ];
 
 export default function AboutPage() {

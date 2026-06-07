@@ -110,9 +110,9 @@ export function Hero() {
                   fontWeight: 400,
                 }}
               >
-                DTCP-approved plots, turnkey construction at honest rates, and
-                trusted resale across Cheyyar Taluk, a quiet 100&nbsp;km south-west
-                of Chennai. One corridor, run end-to-end.
+                DTCP-approved plots and turnkey construction at honest rates
+                across Cheyyar Taluk, a quiet 100&nbsp;km south-west of Chennai.
+                One corridor, run end-to-end.
               </motion.p>
 
               <motion.div

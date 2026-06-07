@@ -5,7 +5,6 @@ import { siteConfig } from "@/lib/data/site";
 const serviceLinks = [
   { label: "Plots", href: "/#plots" },
   { label: "Construction", href: "/#construction" },
-  { label: "Resale", href: "/#resale" },
   { label: "NRI Services", href: "/contact?type=nri" },
   { label: "Home Loans", href: "/contact?type=loan" },
   { label: "About", href: "/about" },
