@@ -66,7 +66,7 @@ export function Nav() {
       }}
     >
       <motion.div
-        className="mx-auto flex items-center justify-between rounded-full"
+        className="nav-glow mx-auto flex items-center justify-between rounded-full"
         animate={{ maxWidth: scrolled ? 980 : 1140 }}
         transition={{ duration: 0.4, ease: EASE }}
         style={{

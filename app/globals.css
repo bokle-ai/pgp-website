@@ -118,10 +118,87 @@ h1, h2, h3, h4, h5, h6 {
 ::-webkit-scrollbar-track { background: var(--bg-cream); }
 ::-webkit-scrollbar-thumb { background: var(--line); border-radius: 3px; }
 
+/* ── Nav: running golden glow border ── */
+@property --pgp-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes pgp-border-run {
+  to { --pgp-angle: 360deg; }
+}
+.nav-glow {
+  position: relative;
+  isolation: isolate;
+}
+/* The travelling light: a masked conic-gradient ring hugging the pill edge */
+.nav-glow::before {
+  content: "";
+  position: absolute;
+  inset: -1.5px;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(
+    from var(--pgp-angle),
+    transparent 0deg,
+    rgba(242, 199, 92, 0) 50deg,
+    rgba(242, 199, 92, 0.85) 90deg,
+    var(--accent-gold) 110deg,
+    rgba(242, 199, 92, 0.85) 130deg,
+    transparent 175deg,
+    transparent 360deg
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+          mask-composite: exclude;
+  animation: pgp-border-run 5.5s linear infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+/* Soft static halo so the gold reads even between sweeps */
+.nav-glow::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 0 22px 0 rgba(212, 160, 23, 0.18);
+  pointer-events: none;
+  z-index: -2;
+}
+
+/* ── Testimonials: seamless auto-scroll marquee ── */
+.pgp-marquee {
+  width: 100%;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+}
+.pgp-marquee-track {
+  display: flex;
+  align-items: stretch;
+  width: max-content;
+  animation: pgp-marquee 50s linear infinite;
+}
+.pgp-marquee:hover .pgp-marquee-track {
+  animation-play-state: paused;
+}
+.pgp-marquee-item {
+  flex: 0 0 auto;
+  width: 360px;
+  margin-right: 1.75rem;
+}
+@keyframes pgp-marquee {
+  to { transform: translateX(-50%); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+  /* Let users who opt out simply scroll the testimonials by hand */
+  .pgp-marquee { overflow-x: auto; }
+  .pgp-marquee-track { animation: none !important; transform: none !important; }
 }

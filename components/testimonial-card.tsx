@@ -7,11 +7,23 @@ import type { Testimonial } from "@/lib/data/testimonials";
 export function TestimonialCard({
   testimonial,
   animationDelay = 0,
+  disableReveal = false,
 }: {
   testimonial: Testimonial;
   animationDelay?: number;
+  /** Skip the scroll-into-view entrance (used inside the auto-scroll marquee). */
+  disableReveal?: boolean;
 }) {
   const prefersReduced = useReducedMotion();
+  const revealProps =
+    disableReveal || prefersReduced
+      ? { initial: { opacity: 1, y: 0 } }
+      : {
+          initial: { opacity: 0, y: 24 },
+          whileInView: { opacity: 1, y: 0 },
+          viewport: { once: true, margin: "-50px" },
+          transition: { duration: 0.65, delay: animationDelay, ease: EASE },
+        };
 
   return (
     <motion.article
@@ -23,10 +35,7 @@ export function TestimonialCard({
         boxShadow: "0 8px 32px rgba(15,61,46,0.08), 0 2px 8px rgba(15,61,46,0.04)",
         padding: "36px 32px 32px",
       }}
-      initial={prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.65, delay: animationDelay, ease: EASE }}
+      {...revealProps}
       whileHover={prefersReduced ? {} : { y: -8, scale: 1.015 }}
     >
       {/* Big gold opening quote */}

@@ -3,7 +3,7 @@ import { Nav } from "@/components/nav";
 import { Hero } from "@/components/hero";
 import { ProjectCard } from "@/components/project-card";
 import { PricingTier } from "@/components/pricing-tier";
-import { TestimonialCard } from "@/components/testimonial-card";
+import { TestimonialMarquee } from "@/components/testimonial-marquee";
 import { FAQAccordion } from "@/components/faq-accordion";
 import { VisitForm } from "@/components/visit-form";
 import { Footer } from "@/components/footer";
@@ -249,15 +249,10 @@ export default function Home() {
                 subtitle="Real buyers, real plots, real homes. These aren't testimonials we wrote, they're messages we received."
               />
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-7">
-              {testimonials.map((t, i) => (
-                <TestimonialCard
-                  key={t.id}
-                  testimonial={t}
-                  animationDelay={i * 0.14}
-                />
-              ))}
-            </div>
+          </div>
+          {/* Full-bleed auto-scrolling marquee */}
+          <div className="relative">
+            <TestimonialMarquee testimonials={testimonials} />
           </div>
         </section>
 
