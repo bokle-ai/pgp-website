@@ -3,7 +3,7 @@ import { faqs } from "@/lib/data/faqs";
 
 const BASE_URL = "https://www.primegoldenproperties.in";
 
-/** Organization + LocalBusiness schema — included on every page via layout */
+/** Organization + LocalBusiness schema, included on every page via layout */
 export function OrganizationSchema() {
   const schema = {
     "@context": "https://schema.org",
@@ -15,7 +15,7 @@ export function OrganizationSchema() {
         url: BASE_URL,
         logo: {
           "@type": "ImageObject",
-          url: `${BASE_URL}/logo.png`,
+          url: `${BASE_URL}/logo-h.png`,
         },
         contactPoint: {
           "@type": "ContactPoint",
@@ -79,7 +79,7 @@ export function OrganizationSchema() {
   );
 }
 
-/** FAQ schema — used on home page FAQ section */
+/** FAQ schema, used on home page FAQ section */
 export function FAQSchema() {
   const schema = {
     "@context": "https://schema.org",
@@ -122,7 +122,7 @@ export function LocationSchema({
   const schema = {
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
-    name: `Prime Golden Properties — ${name}`,
+    name: `Prime Golden Properties, ${name}`,
     url: `${BASE_URL}/locations/${slug}`,
     description: `DTCP-approved residential plots and turnkey construction in ${name}, Chennai outskirts. Starting at ${startingPrice}.`,
     address: {

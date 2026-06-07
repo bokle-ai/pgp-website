@@ -13,8 +13,8 @@ export type MapProject = {
   amenities: string[];
 };
 
-// All 6 projects are villages within Cheyyar Taluk, Tiruvannamalai district —
-// ~95–105 km SW of Chennai. Coordinates are micro-offsets around Cheyyar town
+// All 6 projects are villages within Cheyyar Taluk, Tiruvannamalai district ,
+// ~95-105 km SW of Chennai. Coordinates are micro-offsets around Cheyyar town
 // (12.662 N, 79.543 E) so beacons fan out instead of stacking on the same pin.
 export const MAP_PROJECTS: MapProject[] = [
   {
@@ -115,7 +115,7 @@ export const CORRIDORS = [
   },
 ];
 
-// Geographic centre of the project cluster — used to draw a single
+// Geographic centre of the project cluster, used to draw a single
 // distance arc from Chennai to the area.
 export const CLUSTER_CENTER = { lat: 12.658, lng: 79.540 };
 

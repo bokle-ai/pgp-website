@@ -41,7 +41,7 @@ export function ProjectCard({
         boxShadow: "0 20px 48px rgba(15,61,46,0.14)",
       }}
     >
-      {/* Image — wider aspect */}
+      {/* Image, wider aspect */}
       <div className="relative aspect-[16/10] overflow-hidden">
         <Image
           src={project.image}
@@ -60,7 +60,7 @@ export function ProjectCard({
           }}
         />
 
-        {/* Status — top left */}
+        {/* Status, top left */}
         <div
           className="absolute top-3.5 left-3.5 inline-flex items-center gap-1.5 px-3 py-1.5 text-[11px]"
           style={{
@@ -81,7 +81,7 @@ export function ProjectCard({
           {status.label}
         </div>
 
-        {/* Price — bottom right over image */}
+        {/* Price, bottom right over image */}
         <div
           className="absolute bottom-3.5 right-3.5 px-3.5 py-1.5 tabular-nums text-sm"
           style={{

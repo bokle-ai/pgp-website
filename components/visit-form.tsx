@@ -40,7 +40,7 @@ export function VisitForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "YOUR_KEY_HERE",
-          subject: `Site Visit Request — ${data.name} — ${data.location}`,
+          subject: `Site Visit Request, ${data.name}, ${data.location}`,
           from_name: "PGP Website",
           name: data.name,
           phone: data.phone,

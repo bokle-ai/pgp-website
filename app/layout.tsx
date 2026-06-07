@@ -3,7 +3,7 @@ import { Sora, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { OrganizationSchema } from "@/components/json-ld";
 
-// Display / headings — Sora: geometric, confident, modern. No serifs.
+// Display / headings, Sora: geometric, confident, modern. No serifs.
 const sora = Sora({
   variable: "--font-display",
   subsets: ["latin"],
@@ -11,7 +11,7 @@ const sora = Sora({
   display: "swap",
 });
 
-// Body / UI — Plus Jakarta Sans: clean, friendly, highly legible.
+// Body / UI, Plus Jakarta Sans: clean, friendly, highly legible.
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-sans",
   subsets: ["latin"],
@@ -25,10 +25,10 @@ export const metadata: Metadata = {
     template: "%s | Prime Golden Properties",
   },
   description:
-    "DTCP-approved plots, turnkey construction at honest rates, and trusted resale across Chennai's southern and western corridors — Maraimalai Nagar, Kundrathur, and Tambaram.",
+    "DTCP-approved plots, turnkey construction at honest rates, and trusted resale across Chennai's southern and western corridors, Maraimalai Nagar, Kundrathur, and Tambaram.",
   metadataBase: new URL("https://www.primegoldenproperties.com"),
   openGraph: {
-    title: "Prime Golden Properties — Land that turns into legacy.",
+    title: "Prime Golden Properties, Land that turns into legacy.",
     description:
       "DTCP-approved plots, turnkey construction, and trusted resale across Maraimalai Nagar, Kundrathur, and Tambaram.",
     type: "website",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Prime Golden Properties — Land that turns into legacy.",
+    title: "Prime Golden Properties, Land that turns into legacy.",
     description: "DTCP-approved plots, construction, and resale across Chennai's growth corridors.",
   },
   robots: {

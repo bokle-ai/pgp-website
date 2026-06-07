@@ -24,16 +24,17 @@ const navLinks = [
   { label: "Contact", href: "/contact" },
 ];
 
-// Horizontal lockup — generated PNG: emblem icon + PRIME GOLDEN / PROPERTIES
+// Horizontal lockup, generated PNG: emblem icon + PRIME GOLDEN / PROPERTIES
 // 712×240px source → rendered at nav-appropriate height with auto width
 function LogoMark({ height = 48 }: { height?: number }) {
-  const w = Math.round(712 * (height / 240));
+  // New horizontal lockup is 1528 × 339 (transparent PNG)
+  const w = Math.round(1528 * (height / 339));
   return (
     <Image
       src="/logo-h.png"
       alt="Prime Golden Properties"
-      width={712}
-      height={240}
+      width={1528}
+      height={339}
       priority
       style={{ width: w, height, objectFit: "contain", display: "block" }}
     />
@@ -114,7 +115,7 @@ export function Nav() {
                   position: "relative",
                 }}
               >
-                {/* Sliding background pill — shared layoutId animates between links */}
+                {/* Sliding background pill, shared layoutId animates between links */}
                 <AnimatePresence>
                   {hovered === link.label && (
                     <motion.span

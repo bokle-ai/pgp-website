@@ -28,7 +28,7 @@ const TRAINING_BOTS = [
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
-      // Regular crawlers — search engines are welcome.
+      // Regular crawlers, search engines are welcome.
       {
         userAgent: "*",
         allow: "/",

@@ -91,7 +91,7 @@ export default async function LocationPage({
               className="text-xs uppercase tracking-widest mb-3 font-medium"
               style={{ color: "var(--accent-gold)", fontFamily: "var(--font-montserrat, sans-serif)", letterSpacing: "0.18em" }}
             >
-              {location.number} — Location guide
+              {location.number}, Location guide
             </div>
             <h1
               className="mb-3"

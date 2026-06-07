@@ -87,19 +87,11 @@ export function Footer() {
     >
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 pt-20 pb-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-14 mb-16">
-          {/* Col 1 — Brand */}
+          {/* Col 1, Brand */}
           <div>
-            {/* Logo needs a light bg since the PNG has dark ink text */}
-            <div
-              className="inline-flex items-center justify-center"
-              style={{
-                backgroundColor: "rgba(248,245,239,0.96)",
-                padding: "10px 12px",
-                borderRadius: 14,
-              }}
-            >
-              <PGPLogo variant="full" height={120} />
-            </div>
+            {/* Cream monochrome logo sits directly on the dark footer, no box */}
+            <PGPLogo variant="horizontal" height={56} darkMode />
+
             <p
               className="mt-6 text-sm max-w-[30ch]"
               style={{
@@ -126,7 +118,7 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Col 2 — Services */}
+          {/* Col 2, Services */}
           <div>
             <h3 className="text-[10px] uppercase mb-5" style={headingStyle}>
               Services
@@ -146,7 +138,7 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Col 3 — Locations */}
+          {/* Col 3, Locations */}
           <div>
             <h3 className="text-[10px] uppercase mb-5" style={headingStyle}>
               Locations
@@ -169,7 +161,7 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Col 4 — Contact */}
+          {/* Col 4, Contact */}
           <div>
             <h3 className="text-[10px] uppercase mb-5" style={headingStyle}>
               Contact

@@ -18,7 +18,7 @@ const data = {
       "Cleared, ready-to-build plots in the Cheyyar corridor. Sizes from 600 to 2,400 sq ft, starting at ₹4 Lakhs.",
     bullets: [
       "Clear titles, full legal due diligence",
-      "Plot sizes 600 – 2,400 sq ft",
+      "Plot sizes 600 - 2,400 sq ft",
       "Site visits 7 days a week",
     ],
     image: "/images/brand/offering-plots.webp",

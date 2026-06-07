@@ -21,7 +21,7 @@ export const faqs: FAQ[] = [
     id: "home-loan",
     question: "Can I get a home loan on these plots?",
     answer:
-      "Yes, DTCP and CMDA approved plots are eligible for plot purchase loans from most nationalised and private banks, including SBI, HDFC, ICICI, and Axis. Loan-to-value is typically 70–75% of the guideline value for plot loans, with tenures up to 15 years. If you're also constructing, a composite plot and construction loan is available. We work with tie-up DSAs at SBI and HDFC who can pre-process your application before your site visit.",
+      "Yes, DTCP and CMDA approved plots are eligible for plot purchase loans from most nationalised and private banks, including SBI, HDFC, ICICI, and Axis. Loan-to-value is typically 70-75% of the guideline value for plot loans, with tenures up to 15 years. If you're also constructing, a composite plot and construction loan is available. We work with tie-up DSAs at SBI and HDFC who can pre-process your application before your site visit.",
   },
   {
     id: "construction",
@@ -39,7 +39,7 @@ export const faqs: FAQ[] = [
     id: "resale",
     question: "How does PGP help with reselling later?",
     answer:
-      "If you purchased a plot from any PGP layout, you get lifetime listing access. We market your resale to our active buyer network at a flat 1.5% commission (below the 2–2.5% market rate). We handle valuation, buyer verification, and all documentation. For plots not originally from PGP, we offer the same service at 2% commission. We've completed 85+ resale transactions since 2020.",
+      "If you purchased a plot from any PGP layout, you get lifetime listing access. We market your resale to our active buyer network at a flat 1.5% commission (below the 2-2.5% market rate). We handle valuation, buyer verification, and all documentation. For plots not originally from PGP, we offer the same service at 2% commission. We've completed 85+ resale transactions since 2020.",
   },
   {
     id: "nri",
@@ -51,6 +51,6 @@ export const faqs: FAQ[] = [
     id: "built-up-carpet",
     question: "What's the difference between built-up area and carpet area?",
     answer:
-      "Carpet area is the actual usable floor space inside the walls, where you'd lay carpet. Built-up area includes carpet area plus the thickness of all walls (typically adding 10–15%). Super built-up area (common in apartments) further includes proportional common areas like lobbies and staircases. This doesn't apply to independent home construction. For PGP construction quotes, we price on built-up area, which is clearly defined in the agreement. We provide a room-by-room floor plan with dimensions before you sign.",
+      "Carpet area is the actual usable floor space inside the walls, where you'd lay carpet. Built-up area includes carpet area plus the thickness of all walls (typically adding 10-15%). Super built-up area (common in apartments) further includes proportional common areas like lobbies and staircases. This doesn't apply to independent home construction. For PGP construction quotes, we price on built-up area, which is clearly defined in the agreement. We provide a room-by-room floor plan with dimensions before you sign.",
   },
 ];

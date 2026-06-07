@@ -3,7 +3,7 @@ export const siteConfig = {
   shortName: "PGP",
   tagline: "Land that turns into legacy.",
   description:
-    "DTCP-approved plots across Papanthangal, Perumpallam, and Cheyyar — turnkey construction at honest rates and trusted resale across Tamil Nadu.",
+    "DTCP-approved plots across Papanthangal, Perumpallam, and Cheyyar, turnkey construction at honest rates and trusted resale across Tamil Nadu.",
   phone: "+91 98765 43210",
   phonePlain: "9876543210",
   whatsapp: "919876543210",
@@ -11,7 +11,7 @@ export const siteConfig = {
   address: "No. 12, GST Road, Maraimalai Nagar, Chengalpattu District, Tamil Nadu 603209",
   rera: "TN/01/Building/0123/2024",
   foundedYear: "2013",
-  workingHours: "Mon–Sat: 9 AM – 6 PM  ·  Sunday: 10 AM – 4 PM",
+  workingHours: "Mon-Sat: 9 AM - 6 PM  ·  Sunday: 10 AM - 4 PM",
   social: {
     instagram: "https://instagram.com/primegoldenproperties",
     facebook: "https://facebook.com/primegoldenproperties",

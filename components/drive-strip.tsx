@@ -40,7 +40,7 @@ const roadVariants = {
   hidden: { scaleX: 0, originX: 0 },
   visible: {
     scaleX: 1,
-    transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 1.2, ease: EASE },
   },
 };
 
@@ -317,7 +317,7 @@ export function DriveStrip() {
                 ))}
               </div>
 
-              {/* Card footer — starting price */}
+              {/* Card footer, starting price */}
               <div
                 className="px-6 py-3 flex items-center justify-between"
                 style={{ borderTop: `1px solid ${corridor.borderColor}` }}

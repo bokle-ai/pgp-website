@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { EASE } from "@/lib/animation";
+import { CountUp } from "@/components/count-up";
 import { useRef } from "react";
 
 const fadeUp = {
@@ -68,7 +69,7 @@ export function Hero() {
 
       <div className="max-w-7xl mx-auto px-6 lg:px-10 w-full relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-10 gap-y-14 items-center">
-          {/* LEFT — copy */}
+          {/* LEFT, copy */}
           <div className="lg:col-span-7">
             <motion.div
               {...(prefersReduced
@@ -169,10 +170,10 @@ export function Hero() {
               >
                 <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
                   {[
-                    { num: "310+", label: "Families housed" },
-                    { num: "12+", label: "Years operating" },
-                    { num: "6", label: "Active projects" },
-                    { num: "100%", label: "DTCP approved" },
+                    { value: 310, suffix: "+", label: "Families housed" },
+                    { value: 12, suffix: "+", label: "Years operating" },
+                    { value: 6, suffix: "", label: "Active projects" },
+                    { value: 100, suffix: "%", label: "DTCP approved" },
                   ].map((stat) => (
                     <motion.div
                       key={stat.label}
@@ -182,16 +183,16 @@ export function Hero() {
                         visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: EASE } },
                       }}
                     >
-                      <span
+                      <CountUp
+                        value={stat.value}
+                        suffix={stat.suffix}
                         className="text-2xl"
                         style={{
                           color: "var(--accent-gold)",
                           fontFamily: "var(--font-display)",
                           fontWeight: 800,
                         }}
-                      >
-                        {stat.num}
-                      </span>
+                      />
                       <span
                         className="text-xs"
                         style={{
@@ -208,7 +209,7 @@ export function Hero() {
             </motion.div>
           </div>
 
-          {/* RIGHT — image collage */}
+          {/* RIGHT, image collage */}
           <div className="lg:col-span-5 relative h-[480px] lg:h-[600px] hidden md:block">
             {/* Soft golden glow behind the visuals */}
             <div
@@ -220,7 +221,7 @@ export function Hero() {
               }}
             />
 
-            {/* Large image — aerial plots */}
+            {/* Large image, aerial plots */}
             <motion.div
               style={{ y: parallaxY }}
               className="absolute right-0 top-0 w-[78%] aspect-[4/5] rounded-2xl overflow-hidden img-warm"
@@ -248,7 +249,7 @@ export function Hero() {
               />
             </motion.div>
 
-            {/* Smaller image — family site visit */}
+            {/* Smaller image, family site visit */}
             <motion.div
               className="absolute left-0 bottom-12 w-[54%] aspect-square rounded-2xl overflow-hidden img-warm"
               style={{ zIndex: 2 }}
@@ -275,7 +276,7 @@ export function Hero() {
               />
             </motion.div>
 
-            {/* Floating inventory card — works on dark bg */}
+            {/* Floating inventory card, works on dark bg */}
             <motion.div
               className="absolute right-4 bottom-6 z-20 px-5 py-4 rounded-xl"
               style={{

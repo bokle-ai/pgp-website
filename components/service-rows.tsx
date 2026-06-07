@@ -140,7 +140,7 @@ function Row(props: RowProps) {
                 style={{ color: "var(--accent-gold)" }}
                 aria-hidden="true"
               >
-                —
+                •
               </span>
               {b}
             </li>
@@ -271,7 +271,7 @@ export function ServiceRows() {
         imageLeft={true}
         bullets={[
           "Sizes from 600 to 2,400 sq ft. Starting at ₹1,650 / sq ft.",
-          "Clear titles. Patta, EC, parent docs — verified before you sign.",
+          "Clear titles. Patta, EC, parent docs, verified before you sign.",
           "Site visits seven days a week. NRI video walkthroughs on request.",
         ]}
         ctaLabel="View available plots"

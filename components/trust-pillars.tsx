@@ -14,12 +14,12 @@ const pillars = [
   {
     icon: "📜",
     title: "Clear titles, every time.",
-    body: "DTCP / CMDA approval, patta, EC, parent docs — verified before you sign.",
+    body: "DTCP / CMDA approval, patta, EC, parent docs, verified before you sign.",
   },
   {
     icon: "🤝",
     title: "One team, end-to-end.",
-    body: "Plot, construction, resale — handled by people who know your project.",
+    body: "Plot, construction, resale, handled by people who know your project.",
   },
   {
     icon: "💰",
@@ -92,7 +92,7 @@ export function TrustPillars() {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
-      {/* Left — heritage statement */}
+      {/* Left, heritage statement */}
       <motion.div
         className="lg:col-span-5"
         initial={prefersReduced ? "visible" : "hidden"}
@@ -183,7 +183,7 @@ export function TrustPillars() {
         </motion.div>
       </motion.div>
 
-      {/* Right — pillar grid */}
+      {/* Right, pillar grid */}
       <motion.div
         className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-5"
         variants={container}

@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!project) return {};
   return {
     title: `${project.name} | Prime Golden Properties`,
-    description: `${project.approval} approved plotted layout in ${project.location}. ${project.sizes} plots starting ₹${project.priceInLakhs} Lakhs — ready to construct.`,
+    description: `${project.approval} approved plotted layout in ${project.location}. ${project.sizes} plots starting ₹${project.priceInLakhs} Lakhs, ready to construct.`,
   };
 }
 
@@ -88,7 +88,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                   <ul className="grid grid-cols-2 gap-2">
                     {project.amenities.map((a) => (
                       <li key={a} className="flex items-center gap-2 text-sm" style={{ color: "var(--ink-muted)", fontFamily: "var(--font-montserrat, sans-serif)" }}>
-                        <span style={{ color: "var(--accent-gold)" }} aria-hidden="true">—</span> {a}
+                        <span style={{ color: "var(--accent-gold)" }} aria-hidden="true">•</span> {a}
                       </li>
                     ))}
                   </ul>

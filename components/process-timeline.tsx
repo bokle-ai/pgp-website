@@ -7,7 +7,7 @@ const steps = [
   {
     number: "01",
     title: "Discover",
-    body: "Tell us your budget, location preference, and goal. We'll shortlist 2–3 projects.",
+    body: "Tell us your budget, location preference, and goal. We'll shortlist 2-3 projects.",
   },
   {
     number: "02",

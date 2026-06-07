@@ -32,7 +32,7 @@ export default function Home() {
         {/* Hero (already includes the 4-stat trust strip) */}
         <Hero />
 
-        {/* What we do — light cream section */}
+        {/* What we do, light cream section */}
         <section
           id="plots"
           className="relative py-20 lg:py-32 overflow-hidden"
@@ -71,7 +71,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Drive Strip — replaces the Tamil Nadu map */}
+        {/* Drive Strip, replaces the Tamil Nadu map */}
         <section
           id="locations"
           style={{ backgroundColor: "white" }}
@@ -135,7 +135,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Construction pricing — dark canvas, cream tier cards floating */}
+        {/* Construction pricing, dark canvas, cream tier cards floating */}
         <section
           id="construction-pricing"
           className="relative py-20 lg:py-32 overflow-hidden"
@@ -229,7 +229,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Testimonials — light cream, white cards */}
+        {/* Testimonials, light cream, white cards */}
         <section
           className="relative py-20 lg:py-32 overflow-hidden"
           style={{ backgroundColor: "var(--bg-cream)" }}
@@ -249,7 +249,7 @@ export default function Home() {
               <SectionHeader
                 eyebrow="In their words"
                 title="From the families who built here."
-                subtitle="Real buyers, real plots, real homes. These aren't testimonials we wrote — they're messages we received."
+                subtitle="Real buyers, real plots, real homes. These aren't testimonials we wrote, they're messages we received."
               />
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-7">
@@ -276,7 +276,7 @@ export default function Home() {
               <SectionHeader
                 eyebrow="Things people ask"
                 title="Common questions, answered."
-                subtitle="From stamp duty to soil quality — the questions we get most, answered honestly."
+                subtitle="From stamp duty to soil quality, the questions we get most, answered honestly."
               />
             </div>
             <ScrollReveal delay={0.15}>

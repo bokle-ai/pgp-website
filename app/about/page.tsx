@@ -12,15 +12,15 @@ import Link from "next/link";
 
 const milestones = [
   { year: "2013", title: "First layout sold", body: "One plotted layout in Maraimalai Nagar. Every buyer walked through the full documentation before a single rupee of advance was collected." },
-  { year: "2016", title: "Construction division launched", body: "Buyers kept asking us to build on the plots. We launched a turnkey construction arm — fixed per-sq-ft rates, no hidden extras." },
+  { year: "2016", title: "Construction division launched", body: "Buyers kept asking us to build on the plots. We launched a turnkey construction arm, fixed per-sq-ft rates, no hidden extras." },
   { year: "2019", title: "Resale network formalised", body: "310+ plot owners needed a trusted channel to sell. We built a verified buyer network and a flat-fee resale process." },
-  { year: "2023", title: "Cheyyar corridor opened", body: "Expanded to a 100 km radius — Cheyyar Taluk. Affordable plots in a quiet, growing area with strong infrastructure investment." },
+  { year: "2023", title: "Cheyyar corridor opened", body: "Expanded to a 100 km radius, Cheyyar Taluk. Affordable plots in a quiet, growing area with strong infrastructure investment." },
   { year: "Now", title: "6 active projects, 3 corridors", body: "Same team. Same principle. Every project starts with complete due diligence, published before the first site visit." },
 ];
 
 const values = [
-  { icon: "📍", title: "Local only", body: "Three corridors, run end-to-end. We know the soil, the registrar, and the neighbourhood — you won't get that from a pan-India platform." },
-  { icon: "📄", title: "Documents first", body: "We share the full due diligence folder — parent doc, EC, patta, approval copies — before collecting any advance. Every time." },
+  { icon: "📍", title: "Local only", body: "Three corridors, run end-to-end. We know the soil, the registrar, and the neighbourhood, you won't get that from a pan-India platform." },
+  { icon: "📄", title: "Documents first", body: "We share the full due diligence folder, parent doc, EC, patta, approval copies, before collecting any advance. Every time." },
   { icon: "💰", title: "Published prices", body: "Construction rates on this website are the rates you pay. No quote-then-upcharge. No hidden government charges sprung on registration day." },
   { icon: "🤝", title: "One team end-to-end", body: "The person who sold you the plot is the same person who manages your construction and handles your resale. Continuity is the product." },
 ];
@@ -165,7 +165,7 @@ export default function AboutPage() {
                     The year we walked the first buyer through their plot docs before taking a rupee.
                   </p>
                   <p className="mt-4 text-sm" style={{ color: "var(--ink-muted)", fontFamily: "var(--font-body)", lineHeight: 1.7 }}>
-                    That one decision — documents before advance — became the company&apos;s operating principle.
+                    That one decision, documents before advance, became the company&apos;s operating principle.
                     Every project since has worked the same way.
                   </p>
                 </ScrollReveal>
@@ -174,9 +174,9 @@ export default function AboutPage() {
               <div className="lg:col-span-7 space-y-5">
                 {[
                   `Prime Golden Properties was founded in ${siteConfig.foundedYear} by a young entrepreneur who grew up watching Chennai's southern corridors transform from agricultural land into the city's most promising residential belts.`,
-                  "The founding insight was simple: the families buying plots in Maraimalai Nagar, Kundrathur, and Tambaram weren't looking for a salesperson. They were looking for a local partner — someone who knew the soil, the approvals, the registrar's office, and the neighbourhood.",
+                  "The founding insight was simple: the families buying plots in Maraimalai Nagar, Kundrathur, and Tambaram weren't looking for a salesperson. They were looking for a local partner, someone who knew the soil, the approvals, the registrar's office, and the neighbourhood.",
                   "We started with one plotted layout in Maraimalai Nagar. We sold it by doing the one thing most promoters wouldn't: we walked every buyer through the full documentation before collecting a single rupee of advance.",
-                  "Twelve years on, that principle is still the product. Every PGP project is backed by complete legal due diligence, published before the first site visit. Our construction team uses the same rates for every client — published on this website.",
+                  "Twelve years on, that principle is still the product. Every PGP project is backed by complete legal due diligence, published before the first site visit. Our construction team uses the same rates for every client, published on this website.",
                   "We don't cover every corridor in Tamil Nadu. We cover three, and we know them the way you know your own street.",
                 ].map((para, i) => (
                   <ScrollReveal key={i} delay={i * 0.07}>
