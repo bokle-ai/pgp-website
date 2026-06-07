@@ -71,10 +71,10 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Scroll-driven 2D map: TN wide → corridor → Cheyyar Taluk */}
+        {/* Scroll-driven 2D map: white bg breaks the cream-cream-cream run */}
         <section
           id="locations"
-          style={{ backgroundColor: "var(--bg-cream)" }}
+          style={{ backgroundColor: "white" }}
           aria-label="Where we build — scroll-driven map"
         >
           <ProjectMapScroll />
@@ -249,6 +249,7 @@ export default function Home() {
               <SectionHeader
                 eyebrow="In their words"
                 title="From the families who built here."
+                subtitle="Real buyers, real plots, real homes. These aren't testimonials we wrote — they're messages we received."
               />
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-7">
@@ -275,6 +276,7 @@ export default function Home() {
               <SectionHeader
                 eyebrow="Things people ask"
                 title="Common questions, answered."
+                subtitle="From stamp duty to soil quality — the questions we get most, answered honestly."
               />
             </div>
             <ScrollReveal delay={0.15}>

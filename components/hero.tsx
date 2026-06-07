@@ -81,8 +81,8 @@ export function Hero() {
                 style={{
                   fontSize: "clamp(2.4rem, 5.2vw + 1rem, 5.6rem)",
                   fontFamily: "var(--font-playfair, Georgia, serif)",
-                  fontWeight: 600,
-                  letterSpacing: "-0.025em",
+                  fontWeight: 700,
+                  letterSpacing: "-0.03em",
                   color: "var(--bg-cream)",
                 }}
               >
@@ -187,7 +187,7 @@ export function Hero() {
                         style={{
                           color: "var(--accent-gold)",
                           fontFamily: "var(--font-display)",
-                          fontWeight: 700,
+                          fontWeight: 800,
                         }}
                       >
                         {stat.num}

@@ -155,15 +155,14 @@ export function ProjectCard({
         {/* CTA */}
         <Link
           href={`/projects/${project.slug}`}
-          className="mt-auto inline-flex items-center justify-between text-[13.5px] transition-all group/cta"
+          className="mt-auto inline-flex items-center justify-between text-[13.5px] transition-all hover:brightness-110 active:scale-[0.98] group/cta"
           style={{
-            color: "var(--bg-deep)",
+            color: "var(--bg-cream)",
             fontFamily: "var(--font-body)",
             fontWeight: 600,
-            backgroundColor: "var(--bg-cream)",
+            backgroundColor: "var(--bg-deep)",
             padding: "11px 18px",
             borderRadius: 999,
-            border: "1.5px solid rgba(15,61,46,0.12)",
           }}
         >
           View project
