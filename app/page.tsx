@@ -13,7 +13,7 @@ import { SectionHeader } from "@/components/section-header";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { TrustPillars } from "@/components/trust-pillars";
 import { ProcessTimeline } from "@/components/process-timeline";
-import { ProjectMapScroll } from "@/components/map/ProjectMapScroll";
+import { DriveStrip } from "@/components/drive-strip";
 import { OfferingCard } from "@/components/offering-card";
 import { FAQSchema } from "@/components/json-ld";
 import { projects } from "@/lib/data/projects";
@@ -71,13 +71,13 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Scroll-driven 2D map: white bg breaks the cream-cream-cream run */}
+        {/* Drive Strip — replaces the Tamil Nadu map */}
         <section
           id="locations"
           style={{ backgroundColor: "white" }}
-          aria-label="Where we build — scroll-driven map"
+          aria-label="Where we build"
         >
-          <ProjectMapScroll />
+          <DriveStrip />
         </section>
 
         {/* Projects grid */}
