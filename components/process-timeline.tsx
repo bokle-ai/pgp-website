@@ -1,165 +1,176 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { useRef } from "react";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useSpring,
+} from "framer-motion";
 import { EASE } from "@/lib/animation";
 
 const steps = [
   {
     number: "01",
     title: "Discover",
-    body: "Tell us your budget, location preference, and goal. We'll shortlist 2-3 projects.",
+    meta: "A quick call or WhatsApp",
+    body: "Tell us your budget, location preference, and goal. We shortlist two or three projects that actually fit, so you don't waste a Sunday on the wrong plot.",
   },
   {
     number: "02",
-    title: "Site Visit",
-    body: "Walk the layout with our local team. Soil, neighbourhood, infrastructure, paperwork. All fully transparent.",
+    title: "Site visit",
+    meta: "About 90 minutes on the land",
+    body: "Walk the layout with our local team. Soil, neighbourhood, road access, water, paperwork, all out in the open. We pick you up from the nearest railway station.",
   },
   {
     number: "03",
     title: "Documentation",
-    body: "DTCP / CMDA / patta / EC verified. Sale agreement drafted. Stamp duty and registration calculated upfront.",
+    meta: "Before any advance changes hands",
+    body: "DTCP / CMDA approval, patta, EC and parent documents verified and shared. Sale agreement drafted, with stamp duty and registration calculated upfront.",
   },
   {
     number: "04",
-    title: "Registration & Handover",
-    body: "Sub-registrar appointment, registration, and physical handover. We're with you on the day.",
+    title: "Registration & handover",
+    meta: "Possession day",
+    body: "Sub-registrar appointment, registration, and the physical handover of your plot. The same team that started with you is standing there on the day.",
   },
 ];
 
 export function ProcessTimeline() {
-  const prefersReduced = useReducedMotion();
+  const reduce = useReducedMotion();
+  const ref = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start 75%", "end 65%"],
+  });
+  const fill = useSpring(scrollYProgress, {
+    stiffness: 80,
+    damping: 26,
+    restDelta: 0.001,
+  });
+
+  const SPINE_X = 14; // px from container left to spine/marker centre
 
   return (
-    <>
-      {/* Desktop horizontal cards */}
-      <div className="hidden lg:grid grid-cols-4 gap-6 relative">
-        {/* Animated dotted connecting line through card centres */}
-        <motion.div
-          className="absolute top-20 left-[12.5%] right-[12.5%] h-px pointer-events-none"
-          initial={prefersReduced ? { scaleX: 1 } : { scaleX: 0, originX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 1.4, delay: 0.2, ease: EASE }}
-          style={{
-            backgroundImage:
-              "repeating-linear-gradient(to right, rgba(212,160,23,0.5) 0 6px, transparent 6px 12px)",
-          }}
-          aria-hidden="true"
-        />
+    <div ref={ref} className="relative max-w-3xl">
+      {/* Spine: faint track + gold fill that grows with scroll (the "route") */}
+      <div
+        aria-hidden="true"
+        className="absolute"
+        style={{
+          left: SPINE_X,
+          top: 8,
+          bottom: 8,
+          width: 2,
+          transform: "translateX(-50%)",
+          backgroundColor: "rgba(15,61,46,0.12)",
+        }}
+      />
+      <motion.div
+        aria-hidden="true"
+        className="absolute origin-top"
+        style={{
+          left: SPINE_X,
+          top: 8,
+          bottom: 8,
+          width: 2,
+          transform: "translateX(-50%)",
+          backgroundColor: "var(--accent-gold)",
+          scaleY: reduce ? 1 : fill,
+        }}
+      />
 
-        {steps.map((step, i) => (
+      <div className="flex flex-col gap-12 lg:gap-16">
+        {steps.map((s, i) => (
           <motion.div
-            key={step.number}
-            className="relative flex flex-col p-7"
-            style={{
-              backgroundColor: "var(--bg-cream)",
-              borderRadius: 20,
-              border: "1px solid rgba(212,160,23,0.16)",
-              boxShadow: "0 10px 30px rgba(15,61,46,0.06)",
-            }}
-            initial={prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+            key={s.number}
+            className="relative grid grid-cols-[36px_1fr] gap-x-5 lg:gap-x-8"
+            initial={reduce ? { opacity: 1 } : { opacity: 0, y: 26 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.65, delay: 0.3 + i * 0.15, ease: EASE }}
-            whileHover={prefersReduced ? {} : { y: -4 }}
+            viewport={{ once: true, margin: "-90px" }}
+            transition={{ duration: 0.6, delay: i * 0.05, ease: EASE }}
           >
-            <div
-              className="w-14 h-14 rounded-full flex items-center justify-center mb-5 text-sm tabular-nums"
-              style={{
-                background:
-                  "linear-gradient(135deg, var(--accent-gold) 0%, #E0B43F 100%)",
-                color: "var(--bg-deep)",
-                fontFamily: "var(--font-montserrat, sans-serif)",
-                fontWeight: 700,
-                letterSpacing: "0.06em",
-                boxShadow:
-                  "0 6px 18px rgba(212,160,23,0.4), inset 0 1px 0 rgba(255,255,255,0.4)",
-              }}
-              aria-hidden="true"
-            >
-              {step.number}
-            </div>
-            <h3
-              className="mb-2"
-              style={{
-                fontFamily: "var(--font-playfair, Georgia, serif)",
-                fontWeight: 600,
-                fontSize: "1.35rem",
-                color: "var(--ink)",
-                letterSpacing: "-0.01em",
-              }}
-            >
-              {step.title}
-            </h3>
-            <p
-              className="text-[14px]"
-              style={{
-                color: "var(--ink-muted)",
-                lineHeight: 1.6,
-                fontFamily: "var(--font-montserrat, sans-serif)",
-              }}
-            >
-              {step.body}
-            </p>
-          </motion.div>
-        ))}
-      </div>
-
-      {/* Mobile vertical */}
-      <div className="lg:hidden space-y-5">
-        {steps.map((step, i) => (
-          <motion.div
-            key={step.number}
-            className="flex gap-5 p-6"
-            style={{
-              backgroundColor: "var(--bg-cream)",
-              borderRadius: 18,
-              border: "1px solid rgba(212,160,23,0.16)",
-            }}
-            initial={prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.65, delay: i * 0.12, ease: EASE }}
-          >
-            <div
-              className="shrink-0 w-12 h-12 rounded-full flex items-center justify-center text-sm tabular-nums"
-              style={{
-                background:
-                  "linear-gradient(135deg, var(--accent-gold) 0%, #E0B43F 100%)",
-                color: "var(--bg-deep)",
-                fontFamily: "var(--font-montserrat, sans-serif)",
-                fontWeight: 700,
-              }}
-              aria-hidden="true"
-            >
-              {step.number}
-            </div>
-            <div className="flex-1">
-              <h3
-                className="mb-1.5"
+            {/* Diamond milestone marker (echoes the logo's plot-diamonds) */}
+            <div className="relative">
+              <span
+                aria-hidden="true"
+                className="absolute"
                 style={{
-                  fontFamily: "var(--font-playfair, Georgia, serif)",
-                  fontWeight: 600,
-                  fontSize: "1.15rem",
-                  color: "var(--ink)",
+                  left: SPINE_X,
+                  top: 10,
+                  width: 15,
+                  height: 15,
+                  transform: "translateX(-50%) rotate(45deg)",
+                  backgroundColor: "var(--accent-gold)",
+                  boxShadow: "0 0 0 5px #fff",
                 }}
-              >
-                {step.title}
-              </h3>
+              />
+            </div>
+
+            {/* Step content */}
+            <div className="pb-1">
+              <div className="flex items-baseline gap-3 lg:gap-4">
+                <span
+                  style={{
+                    fontFamily: "var(--font-heading)",
+                    fontWeight: 700,
+                    fontSize: "clamp(2rem, 4vw, 2.9rem)",
+                    color: "var(--gold-ink)",
+                    lineHeight: 1,
+                    letterSpacing: "-0.03em",
+                  }}
+                >
+                  {s.number}
+                </span>
+                <h3
+                  style={{
+                    fontFamily: "var(--font-heading)",
+                    fontWeight: 600,
+                    fontSize: "clamp(1.3rem, 2vw, 1.7rem)",
+                    color: "var(--ink)",
+                    letterSpacing: "-0.01em",
+                    lineHeight: 1.1,
+                  }}
+                >
+                  {s.title}
+                </h3>
+              </div>
+
               <p
-                className="text-[14px]"
+                className="mt-3 max-w-[54ch] text-[15px]"
                 style={{
                   color: "var(--ink-muted)",
-                  lineHeight: 1.6,
-                  fontFamily: "var(--font-montserrat, sans-serif)",
+                  lineHeight: 1.65,
+                  fontFamily: "var(--font-body)",
                 }}
               >
-                {step.body}
+                {s.body}
+              </p>
+
+              <p
+                className="mt-3 inline-flex items-center gap-2 text-[13px]"
+                style={{
+                  color: "var(--gold-ink)",
+                  fontFamily: "var(--font-body)",
+                  fontWeight: 600,
+                }}
+              >
+                <span
+                  aria-hidden="true"
+                  style={{
+                    width: 5,
+                    height: 5,
+                    borderRadius: "50%",
+                    backgroundColor: "var(--accent-gold)",
+                  }}
+                />
+                {s.meta}
               </p>
             </div>
           </motion.div>
         ))}
       </div>
-    </>
+    </div>
   );
 }
