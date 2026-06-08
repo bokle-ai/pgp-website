@@ -2,334 +2,230 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { EASE } from "@/lib/animation";
+import { motion, useReducedMotion } from "framer-motion";
 import { CountUp } from "@/components/count-up";
-import { useRef } from "react";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-};
+const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
-const stagger = {
-  visible: { transition: { staggerChildren: 0.12 } },
-};
+const ledger = [
+  { value: 310, suffix: "+", label: "Families housed" },
+  { value: 12, suffix: " yrs", label: "On the ground" },
+  { value: 6, suffix: "", label: "Live projects" },
+  { value: 100, suffix: "%", label: "DTCP approved" },
+];
 
 export function Hero() {
-  const prefersReduced = useReducedMotion();
-  const heroRef = useRef<HTMLElement>(null);
+  const reduce = useReducedMotion();
 
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  });
-
-  const parallaxY = useTransform(
-    scrollYProgress,
-    [0, 1],
-    prefersReduced ? ["0%", "0%"] : ["0%", "-8%"]
-  );
-
-  const motionProps = (delay: number) =>
-    prefersReduced
+  // Orchestrated single page-load. Each element rises in sequence.
+  const rise = (delay: number) =>
+    reduce
       ? {}
       : {
-          initial: "hidden",
-          animate: "visible",
-          variants: fadeUp,
-          transition: { duration: 0.6, delay, ease: EASE },
+          initial: { opacity: 0, y: 26 },
+          animate: { opacity: 1, y: 0 },
+          transition: { duration: 0.85, delay, ease: EASE },
         };
 
   return (
     <section
-      ref={heroRef}
-      className="relative min-h-[92vh] flex items-center pt-40 lg:pt-48 pb-20 lg:pb-28 overflow-hidden"
+      className="relative flex flex-col justify-end overflow-hidden"
       aria-label="Hero"
-      style={{
-        backgroundColor: "var(--bg-deep)",
-        // Two soft golden glows in opposite corners + base gradient
-        background: `
-          radial-gradient(ellipse 60% 50% at 85% 20%, rgba(212,160,23,0.18), transparent 60%),
-          radial-gradient(ellipse 50% 60% at 10% 80%, rgba(212,160,23,0.10), transparent 60%),
-          linear-gradient(180deg, #0F3D2E 0%, #0C3527 100%)
-        `,
-      }}
+      style={{ minHeight: "100svh", backgroundColor: "#082819" }}
     >
-      {/* Subtle grain / dot texture */}
+      {/* ── Full-bleed land photograph (the photo IS the hero) ── */}
+      <motion.div
+        className="absolute inset-0"
+        initial={reduce ? { opacity: 1 } : { scale: 1.09, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 1.6, ease: EASE }}
+      >
+        <Image
+          src="/images/brand/hero-aerial-plots.webp"
+          alt="Aerial view of a Prime Golden plotted layout at Cheyyar, palm-lined roads under a sunset sky"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+          style={{ objectPosition: "center 38%" }}
+        />
+      </motion.div>
+
+      {/* ── Editorial scrims: keep the photo readable, anchor the text ── */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 opacity-[0.04] pointer-events-none"
+        className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage:
-            "radial-gradient(rgba(255,255,255,0.6) 1px, transparent 1px)",
-          backgroundSize: "26px 26px",
+          background:
+            "linear-gradient(180deg, rgba(6,32,22,0.45) 0%, rgba(6,32,22,0.10) 30%, rgba(6,32,22,0.45) 64%, rgba(6,32,22,0.94) 100%)",
+        }}
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(90deg, rgba(6,32,22,0.82) 0%, rgba(6,32,22,0.30) 42%, transparent 72%)",
         }}
       />
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 w-full relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-10 gap-y-14 items-center">
-          {/* LEFT, copy */}
-          <div className="lg:col-span-7">
-            <motion.div
-              {...(prefersReduced
-                ? {}
-                : { initial: "hidden", animate: "visible", variants: stagger })}
-            >
-              <motion.h1
-                {...motionProps(0)}
-                className="font-display leading-[1.02] tracking-tight mb-7"
-                style={{
-                  fontSize: "clamp(2.4rem, 5.2vw + 1rem, 5.6rem)",
-                  fontFamily: "var(--font-playfair, Georgia, serif)",
-                  fontWeight: 700,
-                  letterSpacing: "-0.03em",
-                  color: "var(--bg-cream)",
-                }}
-              >
-                Land that turns
-                <br />
-                into{" "}
-                <span
-                  style={{
-                    color: "var(--accent-gold)",
-                    fontWeight: 700,
-                  }}
-                >
-                  legacy.
-                </span>
-              </motion.h1>
-
-              <motion.p
-                {...motionProps(0.12)}
-                className="text-base lg:text-lg mb-10 max-w-[54ch]"
-                style={{
-                  color: "rgba(248,245,239,0.78)",
-                  lineHeight: 1.65,
-                  fontFamily: "var(--font-montserrat, sans-serif)",
-                  fontWeight: 400,
-                }}
-              >
-                DTCP-approved plots and turnkey construction at honest rates
-                across Cheyyar Taluk, a quiet 100&nbsp;km south-west of Chennai.
-                One corridor, run end-to-end.
-              </motion.p>
-
-              <motion.div
-                {...motionProps(0.28)}
-                className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 mb-12"
-              >
-                <Link
-                  href="/#site-visit"
-                  className="inline-flex items-center justify-center px-8 h-[56px] text-[15px] transition-all hover:brightness-110 active:scale-[0.98]"
-                  style={{
-                    background:
-                      "linear-gradient(135deg, var(--accent-gold) 0%, #E0B43F 100%)",
-                    color: "var(--bg-deep)",
-                    fontFamily: "var(--font-montserrat, sans-serif)",
-                    fontWeight: 600,
-                    borderRadius: "999px",
-                    boxShadow:
-                      "0 12px 32px rgba(212,160,23,0.35), inset 0 1px 0 rgba(255,255,255,0.3)",
-                  }}
-                >
-                  Schedule a Site Visit
-                </Link>
-                <Link
-                  href="/#plots"
-                  className="group inline-flex items-center text-[15px] transition-colors"
-                  style={{
-                    color: "rgba(248,245,239,0.88)",
-                    fontFamily: "var(--font-montserrat, sans-serif)",
-                    fontWeight: 500,
-                  }}
-                >
-                  Or browse available plots
-                  <span
-                    className="ml-2 transition-transform group-hover:translate-x-1"
-                    style={{ color: "var(--accent-gold)" }}
-                    aria-hidden="true"
-                  >
-                    →
-                  </span>
-                </Link>
-              </motion.div>
-
-              {/* Trust strip */}
-              <motion.div
-                {...(prefersReduced ? {} : {
-                  initial: "hidden",
-                  animate: "visible",
-                  variants: {
-                    hidden: {},
-                    visible: { transition: { staggerChildren: 0.1, delayChildren: 0.5 } },
-                  },
-                })}
-                className="pt-8"
-                style={{ borderTop: "1px solid rgba(248,245,239,0.08)" }}
-              >
-                <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
-                  {[
-                    { value: 310, suffix: "+", label: "Families housed" },
-                    { value: 12, suffix: "+", label: "Years operating" },
-                    { value: 6, suffix: "", label: "Active projects" },
-                    { value: 100, suffix: "%", label: "DTCP approved" },
-                  ].map((stat) => (
-                    <motion.div
-                      key={stat.label}
-                      className="flex items-baseline gap-2"
-                      variants={prefersReduced ? {} : {
-                        hidden: { opacity: 0, y: 16 },
-                        visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: EASE } },
-                      }}
-                    >
-                      <CountUp
-                        value={stat.value}
-                        suffix={stat.suffix}
-                        className="text-2xl"
-                        style={{
-                          color: "var(--accent-gold)",
-                          fontFamily: "var(--font-display)",
-                          fontWeight: 800,
-                        }}
-                      />
-                      <span
-                        className="text-xs"
-                        style={{
-                          color: "rgba(248,245,239,0.6)",
-                          fontFamily: "var(--font-body)",
-                        }}
-                      >
-                        {stat.label}
-                      </span>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-            </motion.div>
-          </div>
-
-          {/* RIGHT, image collage */}
-          <div className="lg:col-span-5 relative h-[480px] lg:h-[600px] hidden md:block">
-            {/* Soft golden glow behind the visuals */}
-            <div
+      {/* ── Cartographic coordinate tag (land/survey POV, not a generic kicker) ── */}
+      <motion.div
+        {...rise(0.35)}
+        className="absolute left-0 right-0 z-10"
+        style={{ top: "clamp(7rem, 14vh, 11rem)" }}
+      >
+        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+          <span
+            className="inline-flex items-center gap-2.5 text-[11px] sm:text-xs"
+            style={{
+              color: "rgba(248,245,239,0.82)",
+              fontFamily: "var(--font-body)",
+              letterSpacing: "0.14em",
+              fontVariantNumeric: "tabular-nums",
+              textShadow: "0 1px 12px rgba(6,32,22,0.6)",
+            }}
+          >
+            <span
               aria-hidden="true"
-              className="absolute -inset-12 rounded-full pointer-events-none"
               style={{
-                background:
-                  "radial-gradient(circle, rgba(212,160,23,0.16) 0%, transparent 60%)",
+                width: 7,
+                height: 7,
+                borderRadius: "50%",
+                border: "1.5px solid var(--accent-gold)",
+                display: "inline-block",
               }}
             />
+            12.68&deg;N&nbsp;&nbsp;79.54&deg;E&nbsp;&nbsp;&middot;&nbsp;&nbsp;CHEYYAR&nbsp;TALUK, TAMIL&nbsp;NADU
+          </span>
+        </div>
+      </motion.div>
 
-            {/* Large image, aerial plots */}
-            <motion.div
-              style={{ y: parallaxY }}
-              className="absolute right-0 top-0 w-[78%] aspect-[4/5] rounded-2xl overflow-hidden img-warm"
-              initial={
-                prefersReduced ? {} : { opacity: 0, scale: 0.96 }
-              }
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.9, delay: 0.3, ease: EASE }}
-            >
-              <div
-                className="absolute inset-0 z-10 pointer-events-none"
-                style={{
-                  boxShadow:
-                    "inset 0 0 0 1px rgba(212,160,23,0.22), 0 24px 64px rgba(0,0,0,0.45)",
-                  borderRadius: "1rem",
-                }}
-              />
-              <Image
-                src="/images/brand/hero-aerial-plots.webp"
-                alt="Aerial view of a Prime Golden plotted layout in Cheyyar"
-                fill
-                className="object-cover"
-                priority
-                sizes="(max-width: 1024px) 0px, 35vw"
-              />
-            </motion.div>
+      {/* ── Headline + CTA + ledger, bottom-anchored ── */}
+      <div className="relative z-10 w-full">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10 pt-44 pb-9 lg:pb-12">
+          <h1
+            className="font-display"
+            style={{
+              fontFamily: "var(--font-heading)",
+              fontWeight: 700,
+              fontSize: "clamp(2.9rem, 8vw + 0.5rem, 7rem)",
+              lineHeight: 0.98,
+              letterSpacing: "-0.035em",
+              color: "var(--bg-cream)",
+              textShadow: "0 2px 30px rgba(6,32,22,0.45)",
+              maxWidth: "16ch",
+            }}
+          >
+            <motion.span className="block" {...rise(0.45)}>
+              Land that turns
+            </motion.span>
+            <motion.span className="block" {...rise(0.6)}>
+              into{" "}
+              <span style={{ color: "var(--accent-gold)" }}>legacy.</span>
+            </motion.span>
+          </h1>
 
-            {/* Smaller image, family site visit */}
-            <motion.div
-              className="absolute left-0 bottom-12 w-[54%] aspect-square rounded-2xl overflow-hidden img-warm"
-              style={{ zIndex: 2 }}
-              initial={
-                prefersReduced ? {} : { opacity: 0, scale: 0.96 }
-              }
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.9, delay: 0.45, ease: EASE }}
-            >
-              <div
-                className="absolute inset-0 z-10 pointer-events-none"
-                style={{
-                  boxShadow:
-                    "inset 0 0 0 1px rgba(212,160,23,0.2), 0 18px 48px rgba(0,0,0,0.4)",
-                  borderRadius: "1rem",
-                }}
-              />
-              <Image
-                src="/images/brand/hero-family-handover.webp"
-                alt="A family on their plot at Cheyyar"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 0px, 22vw"
-              />
-            </motion.div>
+          <motion.p
+            {...rise(0.78)}
+            className="mt-7 text-base lg:text-lg"
+            style={{
+              color: "rgba(248,245,239,0.86)",
+              lineHeight: 1.6,
+              fontFamily: "var(--font-body)",
+              maxWidth: "46ch",
+              textShadow: "0 1px 16px rgba(6,32,22,0.5)",
+            }}
+          >
+            DTCP-approved plots and turnkey construction, ~100&nbsp;km south-west
+            of Chennai. One corridor, run end-to-end.
+          </motion.p>
 
-            {/* Floating inventory card, works on dark bg */}
-            <motion.div
-              className="absolute right-4 bottom-6 z-20 px-5 py-4 rounded-xl"
+          <motion.div
+            {...rise(0.92)}
+            className="mt-9 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-7"
+          >
+            <Link
+              href="/#site-visit"
+              className="inline-flex items-center justify-center px-8 h-[58px] text-[15px] transition-transform active:scale-[0.98] hover:-translate-y-0.5"
               style={{
-                backgroundColor: "rgba(12,53,39,0.95)",
-                border: "1px solid rgba(212,160,23,0.5)",
-                backdropFilter: "blur(10px)",
-                WebkitBackdropFilter: "blur(10px)",
-                minWidth: "220px",
-                boxShadow: "0 12px 32px rgba(0,0,0,0.4)",
+                backgroundColor: "var(--accent-gold)",
+                color: "#1A1305",
+                fontFamily: "var(--font-body)",
+                fontWeight: 700,
+                borderRadius: 2,
+                letterSpacing: "0.01em",
               }}
-              initial={
-                prefersReduced ? {} : { opacity: 0, y: 16 }
-              }
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.75, ease: EASE }}
             >
-              <div className="flex items-center gap-2 mb-1.5">
-                <motion.span
-                  className="w-2 h-2 rounded-full"
-                  style={{ backgroundColor: "var(--accent-gold)" }}
-                  animate={
-                    prefersReduced ? {} : { opacity: [1, 0.3, 1] }
-                  }
-                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                  aria-hidden="true"
-                />
-                <span
-                  className="text-[10px] uppercase tracking-wider"
-                  style={{
-                    color: "var(--accent-gold)",
-                    fontFamily: "var(--font-montserrat, sans-serif)",
-                    letterSpacing: "0.16em",
-                    fontWeight: 700,
-                  }}
-                >
-                  Live inventory
-                </span>
-              </div>
-              <p
-                className="text-sm"
+              Book a site visit
+            </Link>
+            <Link
+              href="/#plots"
+              className="group inline-flex items-center gap-2 text-[15px]"
+              style={{
+                color: "var(--bg-cream)",
+                fontFamily: "var(--font-body)",
+                fontWeight: 500,
+              }}
+            >
+              <span
                 style={{
-                  color: "var(--bg-cream)",
-                  fontFamily: "var(--font-montserrat, sans-serif)",
-                  fontWeight: 500,
-                  lineHeight: 1.4,
+                  borderBottom: "1px solid rgba(248,245,239,0.4)",
+                  paddingBottom: 2,
                 }}
               >
-                Plots available across
-                <br />
-                6 active projects
-              </p>
-            </motion.div>
-          </div>
+                Browse available plots
+              </span>
+              <span
+                aria-hidden="true"
+                className="transition-transform group-hover:translate-x-1"
+                style={{ color: "var(--accent-gold)" }}
+              >
+                &rarr;
+              </span>
+            </Link>
+          </motion.div>
+
+          {/* ── Ledger: understated proof, hairline-ruled. No glass cards. ── */}
+          <motion.dl
+            {...rise(1.08)}
+            className="mt-12 lg:mt-16 grid grid-cols-2 sm:grid-cols-4 gap-y-7"
+            style={{ borderTop: "1px solid rgba(248,245,239,0.18)", paddingTop: 24 }}
+          >
+            {ledger.map((s, i) => (
+              <div
+                key={s.label}
+                style={
+                  i === 0
+                    ? undefined
+                    : { paddingLeft: "clamp(1rem, 4vw, 2.5rem)" }
+                }
+                className={i > 0 ? "sm:border-l sm:border-white/15" : undefined}
+              >
+                <dt
+                  style={{
+                    fontFamily: "var(--font-heading)",
+                    fontWeight: 700,
+                    fontSize: "clamp(1.75rem, 3vw, 2.5rem)",
+                    color: "var(--bg-cream)",
+                    lineHeight: 1,
+                    letterSpacing: "-0.02em",
+                  }}
+                >
+                  <CountUp value={s.value} suffix={s.suffix} />
+                </dt>
+                <dd
+                  className="mt-2 text-[12px] sm:text-[13px]"
+                  style={{
+                    color: "rgba(248,245,239,0.66)",
+                    fontFamily: "var(--font-body)",
+                  }}
+                >
+                  {s.label}
+                </dd>
+              </div>
+            ))}
+          </motion.dl>
         </div>
       </div>
     </section>
