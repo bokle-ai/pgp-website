@@ -63,21 +63,6 @@ export function DriveStrip() {
     <div ref={ref}>
       {/* ── Section header ── */}
       <div className="max-w-7xl mx-auto px-6 lg:px-10 pt-20 lg:pt-28 pb-14">
-        <motion.div
-          initial={prefersReduced ? false : { opacity: 0, x: -20 }}
-          animate={inView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.5, ease: EASE }}
-          className="flex items-center gap-3 mb-4"
-        >
-          <div className="h-px w-8 shrink-0" style={{ backgroundColor: "var(--accent-gold)" }} />
-          <span
-            className="text-xs uppercase tracking-[0.18em] font-medium"
-            style={{ color: "var(--gold-ink)", fontFamily: "var(--font-body)" }}
-          >
-            Where we build
-          </span>
-        </motion.div>
-
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
           <motion.h2
             initial={prefersReduced ? false : { opacity: 0, y: 20 }}
@@ -92,8 +77,8 @@ export function DriveStrip() {
               letterSpacing: "-0.03em",
             }}
           >
-            One quiet pocket.{" "}
-            <span style={{ color: "var(--gold-ink)", fontStyle: "italic" }}>Three villages.</span>
+            One corridor,{" "}
+            <span style={{ color: "var(--gold-ink)", fontStyle: "italic" }}>known by heart.</span>
           </motion.h2>
 
           <motion.p
