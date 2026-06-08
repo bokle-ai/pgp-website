@@ -72,7 +72,7 @@ export function DriveStrip() {
           <div className="h-px w-8 shrink-0" style={{ backgroundColor: "var(--accent-gold)" }} />
           <span
             className="text-xs uppercase tracking-[0.18em] font-medium"
-            style={{ color: "var(--accent-gold)", fontFamily: "var(--font-body)" }}
+            style={{ color: "var(--gold-ink)", fontFamily: "var(--font-body)" }}
           >
             Where we build
           </span>
@@ -93,7 +93,7 @@ export function DriveStrip() {
             }}
           >
             One quiet pocket.{" "}
-            <span style={{ color: "var(--accent-gold)", fontStyle: "italic" }}>Three villages.</span>
+            <span style={{ color: "var(--gold-ink)", fontStyle: "italic" }}>Three villages.</span>
           </motion.h2>
 
           <motion.p

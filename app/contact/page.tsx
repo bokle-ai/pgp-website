@@ -201,7 +201,7 @@ export default function ContactPage() {
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-2.5 w-full py-4 text-sm font-semibold transition-all hover:brightness-105 active:scale-[0.98]"
                     style={{
-                      backgroundColor: "#25D366",
+                      backgroundColor: "#128C7E",
                       color: "white",
                       borderRadius: 18,
                       fontFamily: "var(--font-body)",

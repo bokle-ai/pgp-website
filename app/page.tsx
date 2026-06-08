@@ -337,7 +337,7 @@ export default function Home() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2.5 px-5 py-3 text-sm font-medium transition-opacity hover:opacity-90 w-fit"
                     style={{
-                      backgroundColor: "#25D366",
+                      backgroundColor: "#128C7E",
                       color: "white",
                       fontFamily: "var(--font-montserrat, sans-serif)",
                       fontWeight: 500,

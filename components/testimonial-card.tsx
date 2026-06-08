@@ -99,7 +99,7 @@ export function TestimonialCard({
           <p
             className="mt-1 text-[10px] uppercase truncate"
             style={{
-              color: "var(--accent-gold)",
+              color: "var(--gold-ink)",
               fontFamily: "var(--font-montserrat, sans-serif)",
               letterSpacing: "0.18em",
               fontWeight: 700,

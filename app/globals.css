@@ -8,8 +8,11 @@
   --accent-gold: #D4A017;
   --accent-gold-soft: #F2C75C;
   --ink: #1A1A1A;
-  --ink-muted: #4D5D55;
-  --ink-faint: #8A9A90;
+  --ink-muted: #3F4F47;
+  --ink-faint: #5E6F65;
+  /* Gold tuned for TEXT on light surfaces (passes WCAG AA ~5:1).
+     --accent-gold stays bright for fills and for text on the dark green. */
+  --gold-ink: #856200;
   --line: #E5DDD0;
   --line-dark: #1A4A35;
   --success: #2E7D5B;

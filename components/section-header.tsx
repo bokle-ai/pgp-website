@@ -73,7 +73,7 @@ export function SectionHeader({
           <span
             className="text-xs uppercase tracking-widest font-medium"
             style={{
-              color: "var(--accent-gold)",
+              color: titleDark ? "var(--accent-gold)" : "var(--gold-ink)",
               letterSpacing: "0.18em",
               fontFamily: "var(--font-montserrat, sans-serif)",
             }}

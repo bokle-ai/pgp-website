@@ -280,7 +280,7 @@ export function Hero() {
             <motion.div
               className="absolute right-4 bottom-6 z-20 px-5 py-4 rounded-xl"
               style={{
-                backgroundColor: "rgba(15,61,46,0.85)",
+                backgroundColor: "rgba(12,53,39,0.95)",
                 border: "1px solid rgba(212,160,23,0.5)",
                 backdropFilter: "blur(10px)",
                 WebkitBackdropFilter: "blur(10px)",

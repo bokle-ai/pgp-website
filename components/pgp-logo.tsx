@@ -62,7 +62,6 @@ export function PGPLogo({
         height: h,
         objectFit: "contain",
         display: "block",
-        transition: "width 0.3s ease, height 0.3s ease",
       }}
     />
   );

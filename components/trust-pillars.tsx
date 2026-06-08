@@ -104,16 +104,12 @@ export function TrustPillars() {
           <span
             style={{
               fontFamily: "var(--font-playfair, Georgia, serif)",
-              fontWeight: 500,
+              fontWeight: 600,
               fontSize: "clamp(4rem, 8vw, 6.5rem)",
               lineHeight: 1,
               letterSpacing: "-0.03em",
               display: "block",
-              backgroundImage:
-                "linear-gradient(135deg, #D4A017 0%, #E0B43F 50%, #C68F12 100%)",
-              WebkitBackgroundClip: "text",
-              backgroundClip: "text",
-              color: "transparent",
+              color: "var(--gold-ink)",
             }}
           >
             310+
@@ -204,28 +200,23 @@ export function TrustPillars() {
             }}
             whileHover={prefersReduced ? {} : { y: -4 }}
           >
-            <div
-              className="w-11 h-11 mb-4 rounded-xl flex items-center justify-center"
-              style={{
-                backgroundColor: "rgba(212,160,23,0.12)",
-                border: "1px solid rgba(212,160,23,0.28)",
-              }}
-            >
-              <PillarIcon kind={i} />
+            <div className="flex items-center gap-3 mb-3">
+              <span className="shrink-0" aria-hidden="true">
+                <PillarIcon kind={i} />
+              </span>
+              <h3
+                style={{
+                  fontFamily: "var(--font-playfair, Georgia, serif)",
+                  fontWeight: 600,
+                  fontSize: "1.1rem",
+                  color: "var(--ink)",
+                  lineHeight: 1.25,
+                  letterSpacing: "-0.005em",
+                }}
+              >
+                {p.title}
+              </h3>
             </div>
-            <h4
-              className="mb-2"
-              style={{
-                fontFamily: "var(--font-playfair, Georgia, serif)",
-                fontWeight: 600,
-                fontSize: "1.1rem",
-                color: "var(--ink)",
-                lineHeight: 1.25,
-                letterSpacing: "-0.005em",
-              }}
-            >
-              {p.title}
-            </h4>
             <p
               className="text-[13.5px]"
               style={{

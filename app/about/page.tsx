@@ -143,10 +143,7 @@ export default function AboutPage() {
                     className="text-[5.5rem] leading-none font-bold tabular-nums"
                     style={{
                       fontFamily: "var(--font-heading)",
-                      backgroundImage: "linear-gradient(135deg, #D4A017 0%, #E0B43F 50%, #C68F12 100%)",
-                      WebkitBackgroundClip: "text",
-                      backgroundClip: "text",
-                      color: "transparent",
+                      color: "var(--gold-ink)",
                       letterSpacing: "-0.04em",
                     }}
                   >

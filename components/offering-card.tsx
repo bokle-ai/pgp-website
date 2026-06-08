@@ -110,7 +110,7 @@ export function OfferingCard({ type, animationDelay = 0 }: OfferingCardProps) {
         <span
           className="text-[10px] uppercase mb-3"
           style={{
-            color: "var(--accent-gold)",
+            color: "var(--gold-ink)",
             fontFamily: "var(--font-montserrat, sans-serif)",
             letterSpacing: "0.22em",
             fontWeight: 700,

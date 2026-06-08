@@ -102,7 +102,7 @@ export function ProjectCard({
         <div
           className="inline-flex items-center gap-1.5 text-[11px] uppercase"
           style={{
-            color: "var(--accent-gold)",
+            color: "var(--gold-ink)",
             fontFamily: "var(--font-body)",
             fontWeight: 700,
             letterSpacing: "0.14em",
