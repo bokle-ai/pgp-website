@@ -179,7 +179,7 @@ export function VisitForm() {
             id="phone"
             type="tel"
             autoComplete="tel"
-            placeholder="98765 43210"
+            placeholder="82485 92353"
             style={inputStyle}
           />
           {errors.phone && <p style={errorStyle}>{errors.phone.message}</p>}

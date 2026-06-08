@@ -16,7 +16,6 @@ interface SectionHeaderProps {
 }
 
 export function SectionHeader({
-  eyebrow,
   title,
   subtitle,
   titleDark = false,
@@ -57,30 +56,6 @@ export function SectionHeader({
           style={{ backgroundColor: "var(--accent-gold)", width: 64 }}
           aria-hidden="true"
         />
-      )}
-
-      {eyebrow && (
-        <motion.div variants={fadeUp} className="flex items-center gap-3 mb-4">
-          <motion.div
-            className="h-px shrink-0"
-            initial={prefersReduced ? { width: 32 } : { width: 0 }}
-            whileInView={{ width: 32 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.15, ease: EASE }}
-            style={{ backgroundColor: "var(--accent-gold)" }}
-            aria-hidden="true"
-          />
-          <span
-            className="text-xs uppercase tracking-widest font-medium"
-            style={{
-              color: titleDark ? "var(--accent-gold)" : "var(--gold-ink)",
-              letterSpacing: "0.18em",
-              fontFamily: "var(--font-montserrat, sans-serif)",
-            }}
-          >
-            {eyebrow}
-          </span>
-        </motion.div>
       )}
 
       <motion.h2

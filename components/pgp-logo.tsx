@@ -48,7 +48,9 @@ export function PGPLogo({
   /* ── Full horizontal lockup (default, also used for "full"/"stacked") ── */
   const h = height ?? 48;
   const w = Math.round(h * H_RATIO);
-  const src = darkMode ? "/logo-h-light.png" : "/logo-h.png";
+  // Footer (darkMode) keeps the original coloured emblem with a cream wordmark
+  // so it reads on the dark green without flattening the mark.
+  const src = darkMode ? "/logo-footer.png" : "/logo-h.png";
   return (
     <Image
       src={src}

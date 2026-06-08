@@ -4,9 +4,9 @@ export const siteConfig = {
   tagline: "Land that turns into legacy.",
   description:
     "DTCP-approved plots across Papanthangal, Perumpallam, and Cheyyar, with turnkey construction at honest rates across Tamil Nadu.",
-  phone: "+91 98765 43210",
-  phonePlain: "9876543210",
-  whatsapp: "919876543210",
+  phone: "+91 82485 92353",
+  phonePlain: "8248592353",
+  whatsapp: "918248592353",
   email: "info@primegoldenproperties.in",
   address: "No. 12, GST Road, Maraimalai Nagar, Chengalpattu District, Tamil Nadu 603209",
   rera: "TN/01/Building/0123/2024",
