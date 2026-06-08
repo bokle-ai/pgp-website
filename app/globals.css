@@ -38,11 +38,19 @@
   --font-montserrat: var(--font-body);
 }
 
+html {
+  /* Guard against stray horizontal overflow that lets the page slide
+     left/right on mobile. Nothing here needs horizontal page scroll. */
+  overflow-x: hidden;
+}
+
 body {
   background-color: var(--bg-cream);
   color: var(--ink);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
