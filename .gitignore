@@ -46,3 +46,8 @@ next-env.d.ts
 # Impeccable design tool (local only)
 .claude/skills/impeccable/
 .impeccable/
+
+# Installed design skills (local dev tools, not site code)
+.agents/
+.claude/skills/
+skills-lock.json
