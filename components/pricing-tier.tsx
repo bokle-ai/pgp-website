@@ -108,7 +108,7 @@ export function PricingTier({ tier, animationDelay = 0 }: PricingTierProps) {
         <span
           className="text-[10px] uppercase mb-4 tracking-widest"
           style={{
-            color: "var(--accent-gold)",
+            color: isFeatured ? "var(--accent-gold)" : "var(--gold-ink)",
             fontFamily: "var(--font-body)",
             fontWeight: 700,
           }}
@@ -185,24 +185,30 @@ export function PricingTier({ tier, animationDelay = 0 }: PricingTierProps) {
 
         <Link
           href="/contact?type=construction"
-          className="inline-flex items-center justify-center gap-2 text-[14px] transition-all hover:brightness-110 active:scale-[0.98]"
+          className="group/cta inline-flex items-center justify-between gap-2 text-[14px] pl-5 pr-2 py-2 active:scale-[0.98] ease-[cubic-bezier(0.32,0.72,0,1)] transition-transform duration-300"
           style={{
-            background: isFeatured
-              ? "linear-gradient(135deg, var(--accent-gold) 0%, #E0B43F 100%)"
-              : "transparent",
-            color: isFeatured ? "var(--bg-deep)" : "var(--bg-deep)",
+            backgroundColor: isFeatured ? "var(--accent-gold)" : "transparent",
+            color: isFeatured ? "#1A1305" : "var(--bg-deep)",
             border: isFeatured ? "none" : "1.5px solid rgba(15,61,46,0.25)",
             fontFamily: "var(--font-body)",
-            fontWeight: 600,
-            padding: "13px 22px",
+            fontWeight: isFeatured ? 700 : 600,
             borderRadius: 999,
-            boxShadow: isFeatured
-              ? "0 8px 22px rgba(212,160,23,0.4), inset 0 1px 0 rgba(255,255,255,0.3)"
-              : "none",
+            boxShadow: isFeatured ? "inset 0 1px 0 rgba(255,255,255,0.3)" : "none",
           }}
         >
           Request a quote
-          <span aria-hidden="true">→</span>
+          <span
+            aria-hidden="true"
+            className="inline-flex items-center justify-center w-8 h-8 rounded-full ease-[cubic-bezier(0.32,0.72,0,1)] transition-transform duration-300 group-hover/cta:translate-x-0.5"
+            style={{
+              backgroundColor: isFeatured
+                ? "rgba(26,19,5,0.12)"
+                : "rgba(15,61,46,0.08)",
+              color: isFeatured ? "#1A1305" : "var(--gold-ink)",
+            }}
+          >
+            &rarr;
+          </span>
         </Link>
       </div>
     </motion.div>

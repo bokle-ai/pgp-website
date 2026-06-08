@@ -49,64 +49,72 @@ export function OfferingCard({ type, animationDelay = 0 }: OfferingCardProps) {
 
   return (
     <motion.div
-      className="group relative flex flex-col h-full overflow-hidden"
+      /* Outer shell — the "tray" the inner card sits in (double-bezel) */
+      className="group relative h-full p-1.5"
       style={{
-        backgroundColor: "white",
-        borderRadius: 24,
-        border: "1px solid rgba(15,61,46,0.07)",
-        boxShadow: "0 8px 32px rgba(15,61,46,0.08), 0 2px 8px rgba(15,61,46,0.04)",
+        backgroundColor: "rgba(15,61,46,0.025)",
+        borderRadius: 26,
+        boxShadow:
+          "inset 0 0 0 1px rgba(15,61,46,0.08), 0 1px 2px rgba(15,61,46,0.04), 0 18px 48px -18px rgba(15,61,46,0.18)",
+        willChange: "transform",
       }}
-      initial={
-        prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 32 }
-      }
+      initial={prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 32 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.7, delay: animationDelay, ease: EASE }}
-      whileHover={prefersReduced ? {} : { y: -8, scale: 1.015, boxShadow: "0 20px 48px rgba(15,61,46,0.14), 0 4px 12px rgba(15,61,46,0.06)" }}
+      whileHover={prefersReduced ? {} : { y: -6, transition: { duration: 0.5, ease: EASE } }}
     >
-      {/* Image header */}
-      <div className="relative aspect-[16/10] overflow-hidden">
-        <Image
-          src={d.image}
-          alt={d.imageAlt}
-          fill
-          className="object-cover transition-transform duration-700 group-hover:scale-[1.06]"
-          sizes="(max-width: 768px) 100vw, 33vw"
-        />
-        {/* Bottom fade so the eyebrow chip below it reads cleanly */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(180deg, rgba(15,61,46,0) 50%, rgba(15,61,46,0.35) 100%)",
-          }}
-        />
-        {d.badge && (
+      {/* Inner core */}
+      <div
+        className="relative flex flex-col h-full overflow-hidden"
+        style={{
+          backgroundColor: "white",
+          borderRadius: 20,
+          boxShadow: "inset 0 1px 0 rgba(255,255,255,0.7)",
+        }}
+      >
+        {/* Image header */}
+        <div className="relative aspect-[16/10] overflow-hidden">
+          <Image
+            src={d.image}
+            alt={d.imageAlt}
+            fill
+            className="object-cover ease-[cubic-bezier(0.32,0.72,0,1)] transition-transform duration-[900ms] group-hover:scale-[1.07]"
+            sizes="(max-width: 768px) 100vw, 33vw"
+          />
           <div
-            className="absolute top-4 left-4 inline-flex items-center gap-1.5 px-3 py-1.5 text-[11px] uppercase"
+            aria-hidden="true"
+            className="absolute inset-0 pointer-events-none"
             style={{
-              backgroundColor: "var(--accent-gold)",
-              color: "var(--bg-deep)",
-              fontFamily: "var(--font-montserrat, sans-serif)",
-              fontWeight: 700,
-              letterSpacing: "0.12em",
-              borderRadius: 999,
-              boxShadow: "0 6px 18px rgba(0,0,0,0.25)",
+              background:
+                "linear-gradient(180deg, rgba(15,61,46,0) 55%, rgba(15,61,46,0.32) 100%)",
             }}
-          >
-            <span
-              className="w-1.5 h-1.5 rounded-full"
-              style={{ backgroundColor: "var(--bg-deep)" }}
-              aria-hidden="true"
-            />
-            {d.badge}
-          </div>
-        )}
-      </div>
+          />
+          {d.badge && (
+            <div
+              className="absolute top-4 left-4 inline-flex items-center gap-1.5 px-3 py-1.5 text-[11px] uppercase"
+              style={{
+                backgroundColor: "var(--accent-gold)",
+                color: "var(--bg-deep)",
+                fontFamily: "var(--font-montserrat, sans-serif)",
+                fontWeight: 700,
+                letterSpacing: "0.12em",
+                borderRadius: 999,
+                boxShadow: "0 6px 18px rgba(15,61,46,0.22)",
+              }}
+            >
+              <span
+                className="w-1.5 h-1.5 rounded-full"
+                style={{ backgroundColor: "var(--bg-deep)" }}
+                aria-hidden="true"
+              />
+              {d.badge}
+            </div>
+          )}
+        </div>
 
-      {/* Content */}
-      <div className="flex flex-col flex-1 p-7 lg:p-8">
+        {/* Content */}
+        <div className="flex flex-col flex-1 p-7 lg:p-8">
         <span
           className="text-[10px] uppercase mb-3"
           style={{
@@ -182,28 +190,29 @@ export function OfferingCard({ type, animationDelay = 0 }: OfferingCardProps) {
           ))}
         </ul>
 
-        <Link
-          href={d.cta.href}
-          className="inline-flex items-center gap-2 self-start text-[14px] transition-all group/link"
-          style={{
-            color: "var(--bg-deep)",
-            fontFamily: "var(--font-montserrat, sans-serif)",
-            fontWeight: 600,
-            backgroundColor: "var(--accent-gold)",
-            padding: "10px 18px",
-            borderRadius: 999,
-            boxShadow:
-              "0 6px 16px rgba(212,160,23,0.32), inset 0 1px 0 rgba(255,255,255,0.28)",
-          }}
-        >
-          {d.cta.label}
-          <span
-            className="transition-transform group-hover/link:translate-x-1"
-            aria-hidden="true"
+          <Link
+            href={d.cta.href}
+            className="group/cta inline-flex items-center gap-3 self-start text-[14px] pl-5 pr-2 py-2 active:scale-[0.98] ease-[cubic-bezier(0.32,0.72,0,1)] transition-transform duration-300"
+            style={{
+              color: "#1A1305",
+              fontFamily: "var(--font-montserrat, sans-serif)",
+              fontWeight: 700,
+              backgroundColor: "var(--accent-gold)",
+              borderRadius: 999,
+              boxShadow: "inset 0 1px 0 rgba(255,255,255,0.3)",
+            }}
           >
-            →
-          </span>
-        </Link>
+            {d.cta.label}
+            {/* Button-in-button trailing icon */}
+            <span
+              aria-hidden="true"
+              className="inline-flex items-center justify-center w-8 h-8 rounded-full ease-[cubic-bezier(0.32,0.72,0,1)] transition-transform duration-300 group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-px"
+              style={{ backgroundColor: "rgba(26,19,5,0.12)" }}
+            >
+              &rarr;
+            </span>
+          </Link>
+        </div>
       </div>
     </motion.div>
   );

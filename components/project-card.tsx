@@ -25,29 +25,36 @@ export function ProjectCard({
 
   return (
     <motion.article
-      className="group relative flex flex-col overflow-hidden h-full"
+      /* Outer shell (double-bezel tray) */
+      className="group relative h-full p-1.5"
       style={{
-        backgroundColor: "white",
-        borderRadius: 20,
-        border: "1px solid rgba(15,61,46,0.08)",
-        boxShadow: "0 4px 24px rgba(15,61,46,0.07)",
+        backgroundColor: "rgba(15,61,46,0.025)",
+        borderRadius: 22,
+        boxShadow:
+          "inset 0 0 0 1px rgba(15,61,46,0.08), 0 1px 2px rgba(15,61,46,0.04), 0 16px 40px -16px rgba(15,61,46,0.18)",
+        willChange: "transform",
       }}
       initial={prefersReduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 32 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.65, delay: animationDelay, ease: EASE }}
-      whileHover={prefersReduced ? {} : {
-        y: -8,
-        boxShadow: "0 20px 48px rgba(15,61,46,0.14)",
-      }}
+      whileHover={prefersReduced ? {} : { y: -6, transition: { duration: 0.5, ease: EASE } }}
     >
+      <div
+        className="relative flex flex-col overflow-hidden h-full"
+        style={{
+          backgroundColor: "white",
+          borderRadius: 16,
+          boxShadow: "inset 0 1px 0 rgba(255,255,255,0.7)",
+        }}
+      >
       {/* Image, wider aspect */}
       <div className="relative aspect-[16/10] overflow-hidden">
         <Image
           src={project.image}
           alt={`${project.name} plotted layout in ${project.location}`}
           fill
-          className="object-cover transition-transform duration-700 group-hover:scale-[1.07]"
+          className="object-cover ease-[cubic-bezier(0.32,0.72,0,1)] transition-transform duration-[900ms] group-hover:scale-[1.07]"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
 
@@ -152,29 +159,28 @@ export function ProjectCard({
           </span>
         </div>
 
-        {/* CTA */}
+        {/* CTA — button-in-button */}
         <Link
           href={`/projects/${project.slug}`}
-          className="mt-auto inline-flex items-center justify-between text-[13.5px] transition-all hover:brightness-110 active:scale-[0.98] group/cta"
+          className="group/cta mt-auto inline-flex items-center justify-between text-[13.5px] pl-5 pr-2 py-2 active:scale-[0.98] ease-[cubic-bezier(0.32,0.72,0,1)] transition-transform duration-300"
           style={{
             color: "var(--bg-cream)",
             fontFamily: "var(--font-body)",
             fontWeight: 600,
             backgroundColor: "var(--bg-deep)",
-            padding: "11px 18px",
             borderRadius: 999,
           }}
         >
           View project
-          <motion.span
-            className="inline-flex"
-            animate={prefersReduced ? {} : undefined}
-            whileHover={prefersReduced ? {} : { x: 3 }}
+          <span
             aria-hidden="true"
+            className="inline-flex items-center justify-center w-8 h-8 rounded-full ease-[cubic-bezier(0.32,0.72,0,1)] transition-transform duration-300 group-hover/cta:translate-x-0.5"
+            style={{ backgroundColor: "rgba(248,245,239,0.14)", color: "var(--accent-gold)" }}
           >
             <ArrowRight size={15} />
-          </motion.span>
+          </span>
         </Link>
+      </div>
       </div>
     </motion.article>
   );
