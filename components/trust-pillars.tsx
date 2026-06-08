@@ -2,233 +2,157 @@
 
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import type { Variants } from "framer-motion";
 import { EASE } from "@/lib/animation";
 
-const pillars = [
+const principles = [
   {
-    icon: "📍",
-    title: "Local expertise, local accountability.",
-    body: "We work three corridors. Not thirty. We're around when you need us.",
+    title: "Local expertise, local accountability",
+    body: "We work three corridors, not thirty. The same faces walk you through the plot and pick up the phone two years later.",
   },
   {
-    icon: "📜",
-    title: "Clear titles, every time.",
-    body: "DTCP / CMDA approval, patta, EC, parent docs, verified before you sign.",
+    title: "Clear titles, every time",
+    body: "DTCP / CMDA approval, patta, EC and parent documents, verified and shared before you sign anything.",
   },
   {
-    icon: "🤝",
-    title: "One team, end-to-end.",
-    body: "Plot and construction, handled by people who know your project.",
+    title: "One team, end to end",
+    body: "The people who sell you the plot are the people who build on it. No handoffs, no finger-pointing.",
   },
   {
-    icon: "💰",
-    title: "Transparent pricing.",
-    body: "Per-sq-ft rates published. Government charges itemised. No hidden costs.",
+    title: "Published, honest pricing",
+    body: "Per-square-foot rates are printed on this website. Government charges itemised. No quote-then-upcharge.",
   },
 ];
 
-function PillarIcon({ kind }: { kind: number }) {
-  const paths: Record<number, React.ReactNode> = {
-    0: (
-      <path
-        d="M14 26c4.5-5.5 9-10.4 9-15a9 9 0 10-18 0c0 4.6 4.5 9.5 9 15zm0-12.5a3 3 0 110-6 3 3 0 010 6z"
-        fill="currentColor"
-      />
-    ),
-    1: (
-      <path
-        d="M6 5h13l4 4v15a2 2 0 01-2 2H6a2 2 0 01-2-2V7a2 2 0 012-2zm12 1.5V10h3.5L18 6.5zM8 13h12v1.5H8V13zm0 4h12v1.5H8V17zm0 4h8v1.5H8V21z"
-        fill="currentColor"
-      />
-    ),
-    2: (
-      <path
-        d="M10 8a3 3 0 116 0 3 3 0 01-6 0zm-6 14a6 6 0 0118 0v1H4v-1zm15-9a2.5 2.5 0 110-5 2.5 2.5 0 010 5zm5 9v.5h-4v-.5a8 8 0 00-1.4-4.5A4.5 4.5 0 0124 22z"
-        fill="currentColor"
-      />
-    ),
-    3: (
-      <path
-        d="M14 4a10 10 0 100 20 10 10 0 000-20zm.9 16v-1.4c-2-.3-3.4-1.4-3.5-3.3h1.7c.1 1 .8 1.7 1.9 1.9V14c-2.2-.5-3.3-1.5-3.3-3.1 0-1.7 1.3-2.8 3.3-3v-1.3h1.3v1.3c2 .2 3.2 1.2 3.4 3h-1.7c-.1-.8-.7-1.4-1.7-1.6v3l.5.1c2.2.5 3.4 1.5 3.4 3.2 0 1.8-1.4 2.9-3.5 3.1V20h-1.3z"
-        fill="currentColor"
-      />
-    ),
-  };
-  return (
-    <svg
-      width="28"
-      height="28"
-      viewBox="0 0 28 28"
-      style={{ color: "var(--accent-gold)" }}
-      aria-hidden="true"
-    >
-      {paths[kind]}
-    </svg>
-  );
-}
+const facts = [
+  { value: "12", label: "years" },
+  { value: "3", label: "corridors" },
+  { value: "6", label: "active projects" },
+];
 
 export function TrustPillars() {
-  const prefersReduced = useReducedMotion();
-
-  const container: Variants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: prefersReduced ? 0 : 0.1,
-        delayChildren: 0.1,
-      },
-    },
-  };
-
-  const item: Variants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: EASE },
-    },
-  };
+  const reduce = useReducedMotion();
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
-      {/* Left, heritage statement */}
-      <motion.div
-        className="lg:col-span-5"
-        initial={prefersReduced ? "visible" : "hidden"}
-        whileInView="visible"
-        viewport={{ once: true, margin: "-60px" }}
-        variants={container}
+    <div className="max-w-5xl">
+      {/* Lead statement — the 310+ figure woven into the voice */}
+      <motion.p
+        initial={reduce ? { opacity: 1 } : { opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.7, ease: EASE }}
+        className="max-w-[28ch]"
+        style={{
+          fontFamily: "var(--font-heading)",
+          fontWeight: 600,
+          fontSize: "clamp(1.5rem, 2.6vw, 2.3rem)",
+          color: "var(--ink)",
+          lineHeight: 1.22,
+          letterSpacing: "-0.02em",
+        }}
       >
-        <motion.div variants={item}>
-          <span
-            style={{
-              fontFamily: "var(--font-playfair, Georgia, serif)",
-              fontWeight: 600,
-              fontSize: "clamp(4rem, 8vw, 6.5rem)",
-              lineHeight: 1,
-              letterSpacing: "-0.03em",
-              display: "block",
-              color: "var(--gold-ink)",
-            }}
-          >
-            310+
-          </span>
-        </motion.div>
-        <motion.p
-          variants={item}
-          className="mt-5 max-w-[24ch]"
-          style={{
-            fontFamily: "var(--font-playfair, Georgia, serif)",
-            fontWeight: 400,
-            fontSize: "1.6rem",
-            color: "var(--ink)",
-            lineHeight: 1.3,
-            letterSpacing: "-0.01em",
-          }}
-        >
-          families have trusted us with their land decisions since 2013.
-        </motion.p>
+        <span style={{ color: "var(--gold-ink)" }}>310+ families</span> have
+        trusted us with their land since 2013. Here is what they were buying
+        into.
+      </motion.p>
 
-        <motion.div
-          variants={item}
-          className="mt-8 flex flex-wrap gap-2"
-        >
-          {["12 years", "3 corridors", "6 active projects"].map((s) => (
-            <span
-              key={s}
-              className="inline-flex items-center px-3 py-1.5 text-[11px] uppercase"
-              style={{
-                color: "var(--bg-deep)",
-                backgroundColor: "rgba(212,160,23,0.18)",
-                border: "1px solid rgba(212,160,23,0.32)",
-                letterSpacing: "0.16em",
-                fontFamily: "var(--font-montserrat, sans-serif)",
-                fontWeight: 700,
-                borderRadius: 999,
-              }}
-            >
-              {s}
-            </span>
-          ))}
-        </motion.div>
-
-        <motion.div variants={item} className="mt-8">
-          <Link
-            href="/about"
-            className="inline-flex items-center gap-2 text-sm transition-opacity hover:opacity-80 group/link"
-            style={{
-              color: "var(--bg-deep)",
-              backgroundColor: "var(--accent-gold)",
-              padding: "11px 22px",
-              borderRadius: 999,
-              fontFamily: "var(--font-montserrat, sans-serif)",
-              fontWeight: 600,
-              boxShadow:
-                "0 6px 16px rgba(212,160,23,0.32), inset 0 1px 0 rgba(255,255,255,0.28)",
-            }}
-          >
-            Our story
-            <span
-              className="transition-transform group-hover/link:translate-x-1"
-              aria-hidden="true"
-            >
-              →
-            </span>
-          </Link>
-        </motion.div>
-      </motion.div>
-
-      {/* Right, pillar grid */}
-      <motion.div
-        className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-5"
-        variants={container}
-        initial={prefersReduced ? "visible" : "hidden"}
-        whileInView="visible"
-        viewport={{ once: true, margin: "-60px" }}
+      {/* Index of principles — hairline-ruled rows, no cards */}
+      <div
+        className="mt-11 lg:mt-14"
+        style={{ borderTop: "1px solid rgba(15,61,46,0.18)" }}
       >
-        {pillars.map((p, i) => (
+        {principles.map((p, i) => (
           <motion.div
             key={p.title}
-            variants={item}
-            className="flex flex-col p-6"
-            style={{
-              backgroundColor: "white",
-              borderRadius: 18,
-              border: "1px solid rgba(15,61,46,0.08)",
-              boxShadow: "0 6px 20px rgba(15,61,46,0.05)",
-            }}
-            whileHover={prefersReduced ? {} : { y: -4 }}
+            className="grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-1.5 md:gap-12 py-6 lg:py-7"
+            style={{ borderBottom: "1px solid rgba(15,61,46,0.12)" }}
+            initial={reduce ? { opacity: 1 } : { opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.55, delay: i * 0.08, ease: EASE }}
           >
-            <div className="flex items-center gap-3 mb-3">
-              <span className="shrink-0" aria-hidden="true">
-                <PillarIcon kind={i} />
-              </span>
-              <h3
-                style={{
-                  fontFamily: "var(--font-playfair, Georgia, serif)",
-                  fontWeight: 600,
-                  fontSize: "1.1rem",
-                  color: "var(--ink)",
-                  lineHeight: 1.25,
-                  letterSpacing: "-0.005em",
-                }}
-              >
-                {p.title}
-              </h3>
-            </div>
+            <h3
+              style={{
+                fontFamily: "var(--font-heading)",
+                fontWeight: 600,
+                fontSize: "clamp(1.2rem, 1.7vw, 1.5rem)",
+                color: "var(--ink)",
+                letterSpacing: "-0.01em",
+                lineHeight: 1.2,
+              }}
+            >
+              {p.title}
+            </h3>
             <p
-              className="text-[13.5px]"
+              className="text-[15px] md:pt-1"
               style={{
                 color: "var(--ink-muted)",
-                lineHeight: 1.6,
-                fontFamily: "var(--font-montserrat, sans-serif)",
+                lineHeight: 1.65,
+                fontFamily: "var(--font-body)",
+                maxWidth: "52ch",
               }}
             >
               {p.body}
             </p>
           </motion.div>
         ))}
+      </div>
+
+      {/* Proof figures + story link */}
+      <motion.div
+        initial={reduce ? { opacity: 1 } : { opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-40px" }}
+        transition={{ duration: 0.55, delay: 0.1, ease: EASE }}
+        className="mt-9 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6"
+      >
+        <div className="flex items-baseline gap-x-7 gap-y-2 flex-wrap">
+          {facts.map((f) => (
+            <span
+              key={f.label}
+              className="inline-flex items-baseline gap-1.5"
+              style={{ fontFamily: "var(--font-body)", color: "var(--ink-muted)" }}
+            >
+              <span
+                style={{
+                  fontFamily: "var(--font-heading)",
+                  fontWeight: 700,
+                  fontSize: "1.35rem",
+                  color: "var(--ink)",
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                {f.value}
+              </span>
+              <span className="text-sm">{f.label}</span>
+            </span>
+          ))}
+        </div>
+
+        <Link
+          href="/about"
+          className="group inline-flex items-center gap-2 text-[15px] self-start sm:self-auto"
+          style={{
+            color: "var(--bg-deep)",
+            fontFamily: "var(--font-body)",
+            fontWeight: 600,
+          }}
+        >
+          <span
+            style={{
+              borderBottom: "1.5px solid var(--accent-gold)",
+              paddingBottom: 2,
+            }}
+          >
+            Read our story
+          </span>
+          <span
+            aria-hidden="true"
+            className="transition-transform group-hover:translate-x-1"
+            style={{ color: "var(--gold-ink)" }}
+          >
+            &rarr;
+          </span>
+        </Link>
       </motion.div>
     </div>
   );
