@@ -33,30 +33,38 @@ export function VisitForm() {
   });
 
   const onSubmit = async (data: FormData) => {
+    // Honeypot: silently drop bot submissions.
+    if (data.honeypot) {
+      setSubmitted(true);
+      return;
+    }
+
+    const endpoint = process.env.NEXT_PUBLIC_SHEETS_ENDPOINT;
+    if (!endpoint) {
+      alert("Form is not configured yet. Please call us directly.");
+      return;
+    }
+
     setSubmitting(true);
     try {
-      const res = await fetch("https://api.web3forms.com/submit", {
+      // text/plain keeps this a "simple" request, so the browser skips the
+      // CORS preflight that Google Apps Script can't answer.
+      await fetch(endpoint, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
         body: JSON.stringify({
-          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "YOUR_KEY_HERE",
-          subject: `Site Visit Request, ${data.name}, ${data.location}`,
-          from_name: "PGP Website",
+          source: "Site Visit Form",
           name: data.name,
           phone: data.phone,
           email: data.email || "Not provided",
           location: data.location,
           preferred_date: data.date || "Not specified",
           message: data.message || "None",
-          botcheck: data.honeypot,
         }),
       });
-
-      if (res.ok) {
-        setSubmitted(true);
-      } else {
-        alert("Something went wrong. Please call us directly.");
-      }
+      // Apps Script appends the row on the server even when the opaque
+      // response can't be read, so a non-throwing request means success.
+      setSubmitted(true);
     } catch {
       alert("Something went wrong. Please call us directly.");
     } finally {
