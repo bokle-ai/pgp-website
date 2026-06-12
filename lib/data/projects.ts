@@ -11,10 +11,11 @@ export interface Project {
   rate: number;                 // derived ₹/sq ft (for sorting/filtering)
   status: ProjectStatus;
   image: string;
-  approval: string;
+  approval: string;             // "DTCP" etc. Empty string = no approval badge.
   amenities: string[];
 }
 
+// Final inventory — 9 projects across the Cheyyar Taluk corridor.
 export const projects: Project[] = [
   {
     slug: "sulaman-nagar",
@@ -59,23 +60,9 @@ export const projects: Project[] = [
     amenities: ["Ready to Construct"],
   },
   {
-    slug: "amma-nagar",
-    name: "Amma Nagar",
-    location: "Thavasi, Cheyyar",
-    locationSlug: "cheyyar",
-    plotSizeSqFt: 2400,
-    sizes: "2,400 sq ft",
-    priceInLakhs: 5,
-    rate: 208,
-    status: "available",
-    image: "/images/brand/project-amma-nagar.webp",
-    approval: "DTCP",
-    amenities: ["Ready to Construct"],
-  },
-  {
-    slug: "brindavanan-nagar-sengadu",
-    name: "Brindavanan Nagar",
-    location: "Sengadu",
+    slug: "brindavanan-nagar-sengathankudi",
+    name: "Brindavanan Nagar (Sengathankudi)",
+    location: "Sengathankudi, Cheyyar",
     locationSlug: "cheyyar",
     plotSizeSqFt: 1200,
     sizes: "1,200 sq ft",
@@ -94,7 +81,7 @@ export const projects: Project[] = [
   },
   {
     slug: "brindavanan-nagar-irungal",
-    name: "Brindavanan Nagar",
+    name: "Brindavanan Nagar (Irungal)",
     location: "Irungal, Cheyyar Taluk",
     locationSlug: "cheyyar",
     plotSizeSqFt: 1000,
@@ -111,5 +98,61 @@ export const projects: Project[] = [
       "Fully Compounded",
       "24×7 Security",
     ],
+  },
+  {
+    slug: "sks-nagar",
+    name: "SKS Nagar",
+    location: "Sengadu, Cheyyar",
+    locationSlug: "cheyyar",
+    plotSizeSqFt: 1200,
+    sizes: "1,200 sq ft",
+    priceInLakhs: 3,
+    rate: 250,
+    status: "available",
+    image: "/images/brand/location-cheyyar.webp",
+    approval: "DTCP",
+    amenities: ["Ready to Construct"],
+  },
+  {
+    slug: "mahalakshmi-nagar",
+    name: "Mahalakshmi Nagar",
+    location: "Cheyyar Town",
+    locationSlug: "cheyyar",
+    plotSizeSqFt: 1200,
+    sizes: "1,200 sq ft",
+    priceInLakhs: 30,
+    rate: 2500,
+    status: "available",
+    image: "/images/brand/project-amma-nagar.webp",
+    approval: "",
+    amenities: ["Blacktop Road", "Main City Road in Town"],
+  },
+  {
+    slug: "arunachalam-nagar",
+    name: "Arunachalam Nagar",
+    location: "Puliyarambakkam, Cheyyar",
+    locationSlug: "cheyyar",
+    plotSizeSqFt: 1200,
+    sizes: "1,200 sq ft",
+    priceInLakhs: 6.5,
+    rate: 542,
+    status: "available",
+    image: "/images/brand/location-perumpallam.webp",
+    approval: "",
+    amenities: ["Fully Surrendered by Owner", "Blacktop Road"],
+  },
+  {
+    slug: "rich-india",
+    name: "Rich India",
+    location: "Meranam, Cheyyar",
+    locationSlug: "cheyyar",
+    plotSizeSqFt: 1200,
+    sizes: "1,200 sq ft",
+    priceInLakhs: 5.4,
+    rate: 450,
+    status: "available",
+    image: "/images/brand/location-papanthangal.webp",
+    approval: "DTCP",
+    amenities: ["Blacktop Road"],
   },
 ];

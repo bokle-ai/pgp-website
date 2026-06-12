@@ -146,17 +146,19 @@ export function ProjectCard({
           >
             {project.sizes}
           </span>
-          <span
-            className="text-[12px] px-2.5 py-1 rounded-full"
-            style={{
-              backgroundColor: "rgba(212,160,23,0.1)",
-              color: "var(--bg-deep)",
-              fontFamily: "var(--font-body)",
-              fontWeight: 600,
-            }}
-          >
-            {project.approval} Approved
-          </span>
+          {project.approval && (
+            <span
+              className="text-[12px] px-2.5 py-1 rounded-full"
+              style={{
+                backgroundColor: "rgba(212,160,23,0.1)",
+                color: "var(--bg-deep)",
+                fontFamily: "var(--font-body)",
+                fontWeight: 600,
+              }}
+            >
+              {project.approval} Approved
+            </span>
+          )}
         </div>
 
         {/* CTA — button-in-button */}

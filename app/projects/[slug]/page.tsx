@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!project) return {};
   return {
     title: `${project.name} | Prime Golden Properties`,
-    description: `${project.approval} approved plotted layout in ${project.location}. ${project.sizes} plots starting ₹${project.priceInLakhs} Lakhs, ready to construct.`,
+    description: `${project.approval ? `${project.approval} approved plotted layout` : "Plotted layout"} in ${project.location}. ${project.sizes} plots starting ₹${project.priceInLakhs} Lakhs, ready to construct.`,
   };
 }
 
@@ -51,7 +51,9 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
               </ol>
             </nav>
             <div className="flex items-center gap-2 mb-3">
-              <span className="px-2.5 py-1 rounded-full text-xs font-medium" style={{ backgroundColor: "var(--accent-gold)", color: "var(--bg-deep)", fontFamily: "var(--font-montserrat, sans-serif)" }}>{project.approval} Approved</span>
+              {project.approval && (
+                <span className="px-2.5 py-1 rounded-full text-xs font-medium" style={{ backgroundColor: "var(--accent-gold)", color: "var(--bg-deep)", fontFamily: "var(--font-montserrat, sans-serif)" }}>{project.approval} Approved</span>
+              )}
               <span className="px-2.5 py-1 rounded-full text-xs font-medium" style={{ backgroundColor: project.status === "available" ? "#2E7D5B" : project.status === "few-left" ? "#B8860B" : "#8B3A3A", color: "white", fontFamily: "var(--font-montserrat, sans-serif)" }}>
                 {project.status === "available" ? "Available" : project.status === "few-left" ? "Few Left" : "Sold Out"}
               </span>
@@ -75,7 +77,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                     { label: "Price", value: `₹${project.priceInLakhs} Lakhs` },
                     { label: "Plot size", value: project.sizes },
                     { label: "Rate", value: `₹${project.rate.toLocaleString("en-IN")}/sq ft` },
-                    { label: "Approval", value: project.approval },
+                    { label: "Approval", value: project.approval || "Direct from owner" },
                   ].map((d) => (
                     <div key={d.label} className="p-4" style={{ border: "1px solid var(--line)" }}>
                       <p className="text-xs uppercase tracking-wide mb-1" style={{ color: "var(--ink-faint)", fontFamily: "var(--font-montserrat, sans-serif)", letterSpacing: "0.08em" }}>{d.label}</p>

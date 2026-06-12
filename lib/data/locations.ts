@@ -59,10 +59,10 @@ export const locations: Location[] = [
     name: "Cheyyar",
     tagline: "Space, security, and peace of mind.",
     number: "03",
-    shortDesc: "Three gated layouts in Thavasi, Sengadu, and Irungal, ideal for investment and retirement.",
+    shortDesc: "Several layouts in and around Cheyyar town, from budget plots to main-road frontage.",
     body: [
-      "Cheyyar town and its surrounding villages, Thavasi, Sengadu, Irungal, sit in Tiruvannamalai district, roughly 100 km south-west of Chennai. Our three layouts here range from 1,000 to 2,400 sq ft, starting at just ₹5 Lakhs.",
-      "The Brindavanan Nagar projects (Sengadu and Irungal) come with full amenities: water line, CCTV, a fully compounded perimeter, and 24×7 security. Amma Nagar in Thavasi offers a generous 2,400 sq ft plot at ₹5 Lakhs, exceptional value for families planning a future home.",
+      "Cheyyar town and its surrounding villages, Sengadu, Irungal, Sengathankudi, Meranam and Puliyarambakkam, sit in Tiruvannamalai district, roughly 100 km south-west of Chennai. Our layouts here range from 1,000 to 1,200 sq ft, starting at just ₹3 Lakhs.",
+      "The Brindavanan Nagar layouts (Sengathankudi and Irungal) come with full amenities: water line, CCTV, a fully compounded perimeter, and 24×7 security. SKS Nagar in Sengadu starts at just ₹3 Lakhs, while Mahalakshmi Nagar sits on a blacktop main road right in Cheyyar town.",
     ],
     stats: {
       activeProjects: 3,
