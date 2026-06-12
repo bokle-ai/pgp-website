@@ -69,17 +69,6 @@ export default function ContactPage() {
             }}
           />
           <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
-            <motion.div
-              className="flex items-center gap-3 mb-5"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, ease: EASE }}
-            >
-              <div className="h-px w-8 shrink-0" style={{ backgroundColor: "var(--accent-gold)" }} aria-hidden="true" />
-              <span className="text-xs uppercase tracking-[0.18em] font-medium" style={{ color: "var(--accent-gold)", fontFamily: "var(--font-body)" }}>
-                Get in touch
-              </span>
-            </motion.div>
             <motion.h1
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}

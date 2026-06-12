@@ -52,18 +52,6 @@ export default function AboutPage() {
             }}
           />
           <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-10 w-full">
-            <motion.div
-              className="flex items-center gap-3 mb-5"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, ease: EASE }}
-            >
-              <div className="h-px w-8 shrink-0" style={{ backgroundColor: "var(--accent-gold)" }} aria-hidden="true" />
-              <span className="text-xs uppercase tracking-[0.18em] font-medium" style={{ color: "var(--accent-gold)", fontFamily: "var(--font-body)" }}>
-                Our story
-              </span>
-            </motion.div>
-
             <motion.h1
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
@@ -191,10 +179,6 @@ export default function AboutPage() {
         <section className="py-24" style={{ backgroundColor: "var(--bg-cream)" }} aria-label="Company milestones">
           <div className="max-w-5xl mx-auto px-6 lg:px-10">
             <ScrollReveal>
-              <div className="flex items-center gap-3 mb-4">
-                <div className="h-px w-8 shrink-0" style={{ backgroundColor: "var(--accent-gold)" }} aria-hidden="true" />
-                <span className="text-xs uppercase tracking-[0.18em]" style={{ color: "var(--accent-gold)", fontFamily: "var(--font-body)", fontWeight: 700 }}>Timeline</span>
-              </div>
               <h2 style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: "clamp(1.8rem, 3vw + 1rem, 3rem)", color: "var(--ink)", lineHeight: 1.1, letterSpacing: "-0.025em" }}>
                 How we got here.
               </h2>
@@ -264,10 +248,6 @@ export default function AboutPage() {
         <section className="py-24" style={{ backgroundColor: "white" }} aria-label="Our values">
           <div className="max-w-5xl mx-auto px-6 lg:px-10">
             <ScrollReveal>
-              <div className="flex items-center gap-3 mb-4">
-                <div className="h-px w-8 shrink-0" style={{ backgroundColor: "var(--accent-gold)" }} aria-hidden="true" />
-                <span className="text-xs uppercase tracking-[0.18em]" style={{ color: "var(--accent-gold)", fontFamily: "var(--font-body)", fontWeight: 700 }}>How we work</span>
-              </div>
               <h2 style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: "clamp(1.8rem, 3vw + 1rem, 3rem)", color: "var(--ink)", lineHeight: 1.1, letterSpacing: "-0.025em" }}>
                 Four things we never compromise on.
               </h2>

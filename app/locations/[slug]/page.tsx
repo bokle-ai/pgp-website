@@ -87,12 +87,6 @@ export default async function LocationPage({
                 <li style={{ color: "var(--accent-gold)" }}>{location.name}</li>
               </ol>
             </nav>
-            <div
-              className="text-xs uppercase tracking-widest mb-3 font-medium"
-              style={{ color: "var(--accent-gold)", fontFamily: "var(--font-montserrat, sans-serif)", letterSpacing: "0.18em" }}
-            >
-              {location.number}, Location guide
-            </div>
             <h1
               className="mb-3"
               style={{
@@ -198,15 +192,6 @@ export default async function LocationPage({
           <section className="py-24 lg:py-32" style={{ backgroundColor: "white" }}>
             <div className="max-w-7xl mx-auto px-6 lg:px-10">
               <div className="mb-12">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="h-px w-8" style={{ backgroundColor: "var(--accent-gold)" }} aria-hidden="true" />
-                  <span
-                    className="text-xs uppercase tracking-widest font-medium"
-                    style={{ color: "var(--accent-gold)", letterSpacing: "0.18em", fontFamily: "var(--font-montserrat, sans-serif)" }}
-                  >
-                    Active inventory
-                  </span>
-                </div>
                 <h2
                   style={{
                     fontFamily: "var(--font-playfair, Georgia, serif)",
