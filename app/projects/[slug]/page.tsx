@@ -85,15 +85,41 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                     </div>
                   ))}
                 </div>
+                {/* Description */}
+                <div className="space-y-4">
+                  {project.description.map((para, i) => (
+                    <p key={i} className="text-[15px]" style={{ color: "var(--ink-muted)", fontFamily: "var(--font-montserrat, sans-serif)", lineHeight: 1.7 }}>
+                      {para}
+                    </p>
+                  ))}
+                </div>
+
+                {/* Why choose */}
                 <div>
-                  <h2 className="mb-3" style={{ fontFamily: "var(--font-playfair, Georgia, serif)", fontWeight: 600, fontSize: "1.375rem", color: "var(--ink)" }}>Amenities</h2>
-                  <ul className="grid grid-cols-2 gap-2">
-                    {project.amenities.map((a) => (
-                      <li key={a} className="flex items-center gap-2 text-sm" style={{ color: "var(--ink-muted)", fontFamily: "var(--font-montserrat, sans-serif)" }}>
-                        <span style={{ color: "var(--accent-gold)" }} aria-hidden="true">•</span> {a}
+                  <h2 className="mb-4" style={{ fontFamily: "var(--font-heading)", fontWeight: 600, fontSize: "1.375rem", color: "var(--ink)" }}>Why choose {project.name}?</h2>
+                  <ul className="space-y-2.5">
+                    {project.whyChoose.map((point) => (
+                      <li key={point} className="flex items-start gap-3 text-[14.5px]" style={{ color: "var(--ink-muted)", fontFamily: "var(--font-montserrat, sans-serif)", lineHeight: 1.6 }}>
+                        <svg width="18" height="18" viewBox="0 0 18 18" className="mt-0.5 shrink-0" aria-hidden="true">
+                          <path d="M3.5 9.5l3.5 3.5 7.5-8" fill="none" stroke="var(--accent-gold)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                        {point}
                       </li>
                     ))}
                   </ul>
+                </div>
+
+                {/* Features & amenities */}
+                <div>
+                  <h2 className="mb-4" style={{ fontFamily: "var(--font-heading)", fontWeight: 600, fontSize: "1.375rem", color: "var(--ink)" }}>Features &amp; amenities</h2>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-px" style={{ backgroundColor: "var(--line)", border: "1px solid var(--line)" }}>
+                    {project.features.map((f) => (
+                      <div key={f.title} className="p-5" style={{ backgroundColor: "var(--bg-cream)" }}>
+                        <p className="mb-1 text-[15px]" style={{ fontFamily: "var(--font-heading)", fontWeight: 600, color: "var(--ink)" }}>{f.title}</p>
+                        <p className="text-[13.5px]" style={{ color: "var(--ink-muted)", fontFamily: "var(--font-montserrat, sans-serif)", lineHeight: 1.55 }}>{f.desc}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
               <div className="lg:col-span-5 p-8" style={{ backgroundColor: "var(--bg-deep)", position: "sticky", top: "110px", alignSelf: "start" }}>

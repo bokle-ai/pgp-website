@@ -24,7 +24,7 @@ export const locations: Location[] = [
     shortDesc: "Village layout in Cheyyar Taluk with clear titles and ready-to-construct plots.",
     body: [
       "Papanthangal is a village inside Cheyyar Taluk in Tiruvannamalai district, roughly 100 km south-west of Chennai and a short drive from Cheyyar town. The area appeals to families looking for spacious plots, breathing room, and prices that simply aren't available closer to the city.",
-      "Our Sulaman Nagar layout here offers 1,200 sq ft plots at ₹9 Lakhs. Ready-to-construct status means you can break ground immediately after registration.",
+      "Our Teachers Colony layout here offers 1,200 sq ft plots at ₹9 Lakhs. Ready-to-construct status means you can break ground immediately after registration.",
     ],
     stats: {
       activeProjects: 1,

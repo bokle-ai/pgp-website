@@ -18,8 +18,8 @@ export type MapProject = {
 // (12.662 N, 79.543 E) so beacons fan out instead of stacking on the same pin.
 export const MAP_PROJECTS: MapProject[] = [
   {
-    slug: 'sulaman-nagar',
-    name: 'Sulaman Nagar',
+    slug: 'teachers-colony',
+    name: 'Teachers Colony',
     corridor: 'papanthangal',
     corridorDisplay: 'Papanthangal, Cheyyar',
     sizes: '1,200 sq ft',
